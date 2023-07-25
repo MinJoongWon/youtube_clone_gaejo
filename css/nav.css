@@ -1,0 +1,76 @@
+*{
+    margin:0;
+}
+
+.nav{
+    width:100%;
+    height: 56px;
+    background-color: #212121;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.nav-yt-button{
+    display:flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.nav-profile {
+    display: flex;
+    justify-content: flex-end;
+    
+    align-items: center;
+}
+
+.nav-searchBoxArea {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+/* nav-yt-button */
+
+.nav-yt-button .yt-button-icon {
+    color: white;
+}
+
+/* end nav-yt-button */
+
+/* searchBoxArea */
+.nav-searchBoxArea input{
+    background-color: #121212;
+    width:362px;
+    height:40px;
+    border:0;
+    border-radius: 2px 0px 0px 2px;
+    
+}
+
+.nav-searchBoxArea input::placeholder {
+    color:#aaaaaa;
+}
+
+.nav-searchBoxArea .searchBox-Button {
+    width:50px;
+    height:40px;
+    background-color: #303030;
+    color:white;
+    text-align: center;
+    line-height: 40px;
+}
+  
+/* end searchBoxArea */
+
+/* nav-profile */
+.nav-profile {
+    color: white;
+}
+
+.nav-profile-create,
+.nav-profile-apps,
+.nav-profile-notifications {
+  padding: 10px;
+}
