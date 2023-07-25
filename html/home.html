@@ -13,21 +13,20 @@
     <!-- nav -->
     <div class="nav">
         <nav>
-            <div class="hamburger">
-                <span class="material-symbols-outlined">menu</span>
-                <span>yt button</span>
+            <div class="nav-yt-button">
+                <span class="yt-button-icon material-symbols-outlined">menu</span>
+                <span class="yt-button-logo">yt button</span>
             </div>
-            <div class="nav-searchBox">
-                <div class="searchBox">
-                    <input placeholder="Search">
-                    <span class="material-symbols-outlined">search</span>
-                </div>
+            <div class="nav-searchBoxArea">
+                <input class="searchBox" placeholder="Search">
+                <span class="searchBox-Button material-symbols-outlined">search</span>
+                <span class="searchBox-icon"></span>
             </div>
             <div class="nav-profile">
-                <span>create</span>
-                <span class="material-symbols-outlined">apps</span>
-                <span class="material-symbols-outlined">notifications</span>
-                <span>profile</span>
+                <span class="nav-profile-create">create</span>
+                <span class="nav-profile-apps material-symbols-outlined">apps</span>
+                <span class="nav-profile-notifications material-symbols-outlined">notifications</span>
+                <img class="nav-profile-pic">
             </div>
         </nav>
     </div>
@@ -35,7 +34,7 @@
     <!-- sidebar -->
     <div class="sidebar">
         <nav>
-            <div class="sidebar-top1">
+            <div class="sidebar-top">
                 <ul>
                     <li><span class="material-symbols-outlined">home</span><span>HOME</span></li>
                     <li>Explore</li>
@@ -50,6 +49,7 @@
                     <li>Your Videos</li>
                     <li>Watch Later</li>
                     <li>Liked Videos</li>
+                    <li>Show More</li>
                 </ul>
             </div>
 
@@ -77,28 +77,41 @@
     <!-- section -->
     <div class="section">
         <section>
-            <div>
+            <div class="top-menu">
                 <ul>
                     <li>All</li>
                     <li>Item</li>
                     <li>Item</li>
                     <li>Item</li>
+                    <li>...</li>
                 </ul>
             </div>
-            <div>
-                <img>
-                <div class="profileImg">
-                    <img>
+
+            <div class="thumbnail">
+                <div class="thumbnail-item">
+                    <div class="thumbnail-item-image">
+                        <img>
+                    </div>
+                    <div class="thumbnail-item-videoTime">
+                        <span>24:59</span>
+                    </div>
                 </div>
-                <div class="title">
-                    <span>lorem ipsum</span>
-                </div>
-                <div class="author">
-                    <span>James Gouse</span>
-                </div>
-                <div>
-                    <span>15K Views</span>
-                    <span>1 week ago</span>
+                
+                <div class="thumbnail-desc">
+                    <div class="thumbnail-profile-pic">
+                        <img class="user-avatar">
+                    </div>
+                    <div class="thumbnail-desc-title">
+                        <span>lorem ipsum</span>
+                    </div>
+                    <div class="thumbnail-desc-info">
+                        <div class="thumbnail-channelName">
+                            <span>James Gouse</span>
+                        </div>
+                        <div class="thumbnail-time">
+                            <span>15K Views . 1 week ago</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
