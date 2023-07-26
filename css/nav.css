@@ -81,10 +81,22 @@
 /* nav-profile */
 .nav-profile {
     color: white;
+    height: 40px;
+    gap: 8px;
+    padding: 8px;
 }
 
 .nav-profile-create,
 .nav-profile-apps,
 .nav-profile-notifications {
   padding: 10px;
+}
+
+.nav-profile-pic {
+    padding: 4px 14px;
+    
+}
+.nav-profile-pic > img {
+    width: 32px;
+    height: 32px;
 }
