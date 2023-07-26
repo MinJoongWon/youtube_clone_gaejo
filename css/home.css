@@ -23,8 +23,6 @@
     width: 276px;
     height: 247px;
     padding: 0 0 18px 0;
-
-    border: 1px solid red;
 }
 
 .thumbnail-item {
@@ -58,8 +56,6 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-
-    border: 1px solid blue;
 }
 
 .thumbnail-desc-info {
@@ -73,7 +69,6 @@
 .thumbnail-desc-box {
     display: flex;
     gap: 6px;
-    border: 1px solid red;
     flex-direction: column;
     width: 204px;
     height: 74px;
