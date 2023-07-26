@@ -1,0 +1,11 @@
+.section {
+    display: flex;
+    width: 100%;
+    float: right;
+    padding: 0;
+}
+
+.home-body {
+    display: flex;
+    justify-content: center;
+}
