@@ -56,3 +56,8 @@ li {
 .sidebar-subscriptions > ul > :first-child {
   font-weight: 700;
 }
+
+.sidebar-subscriptions > ul > li > img {
+  width: 24px;
+  height: 24px;
+}

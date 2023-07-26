@@ -3,3 +3,7 @@
 span, p, li {
     font-family: 'Roboto';
 }
+
+.user-avatar {
+    border-radius: 24px;
+}

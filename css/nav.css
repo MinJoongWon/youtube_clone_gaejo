@@ -37,6 +37,20 @@
     color: white;
 }
 
+.yt-button-icon {
+    padding: 8px;
+    height: 100%;
+}
+
+.yt-button-logo {
+    padding: 18px 14px 18px 16px;
+}
+
+.yt-button-logo > img {
+    width: 90px;
+    height: 20px;
+}
+
 /* end nav-yt-button */
 
 /* searchBoxArea */
@@ -46,7 +60,7 @@
     height:40px;
     border:0;
     border-radius: 2px 0px 0px 2px;
-    
+    color:#aaaaaa;
 }
 
 .nav-searchBoxArea input::placeholder {
@@ -67,10 +81,22 @@
 /* nav-profile */
 .nav-profile {
     color: white;
+    height: 40px;
+    gap: 8px;
+    padding: 8px;
 }
 
 .nav-profile-create,
 .nav-profile-apps,
 .nav-profile-notifications {
   padding: 10px;
+}
+
+.nav-profile-pic {
+    padding: 4px 14px;
+    
+}
+.nav-profile-pic > img {
+    width: 32px;
+    height: 32px;
 }
