@@ -77,6 +77,7 @@ async function displayHomeItem() {
     thumbnail.appendChild(createDiv);
 }
 
+// video.html에 비디오 리스트 출력
 async function displayVideoItem() {
     let videoList = await getVideoList();
     let videoTag = document.querySelector('.videos');
