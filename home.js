@@ -18,6 +18,20 @@ async function getVideoList() {
     }
 }
 
+// 채널 정보
+async function channelData(channelId) {
+    try {
+        const channelUrl = `http://oreumi.appspot.com/channel/getChannelInfo?video_channel=${channelId}`;
+        const response = await fetch(channelUrl, {
+            method: 'POST'
+        });
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('API 호출에 실패했습니다:', error);
+    }
+}
+
 // 비디오 정보
 async function videoData(videoId) {
     try {
@@ -36,15 +50,21 @@ async function displayHomeItem() {
     let thumbnail = document.querySelector('.thumbnail-box');
     let createDiv = document.createElement("div");
     let info = '';
-
+    
     let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
     let videoInfoList = await Promise.all(videoInfoPromises);
 
+    
     for (let i = 0; i < videoList.length; i++) {
         let videoInfo = videoInfoList[i];
         let videoId = videoList[i].video_id;
-
+        
         let videoURL = `location.href='../html/video.html?id=${videoId}'`;
+        
+        // 속도 느림 -> 개선 필요
+        let channel = await channelData(videoList[i].video_channel);
+        let channelImg = channel.channel_profile;
+        let channelUrl = `location.href='../html/channel.html?id=${videoInfo.video_channel}'`;
 
         info += `
         <div class="thumbnail">
@@ -56,7 +76,7 @@ async function displayHomeItem() {
             
             <div class="thumbnail-desc">
                 <div class="thumbnail-profile-pic">
-                    <img class="user-avatar" src="../images/sidebar_user_avatar.png">
+                    <img class="user-avatar" src="${channelImg}" onclick="${channelUrl}">
                 </div>
                 <div class="thumbnail-desc-box">
                     <div class="thumbnail-desc-title">
@@ -64,7 +84,7 @@ async function displayHomeItem() {
                     </div>
                     <div class="thumbnail-desc-info">
                         <div class="thumbnail-channelName">
-                            <span>${videoInfo.video_channel}</span>
+                            <span><a href='../html/channel.html?id=${videoInfo.video_channel}'>${videoInfo.video_channel}</a></span>
                         </div>
                         <div class="thumbnail-time">
                             <span>${videoInfo.views.toLocaleString()} Views .</span>
@@ -130,8 +150,9 @@ async function getVideoPlayerData() {
         let views = document.querySelector('.video-views');
         let upload_date = document.querySelector('.time');
         let video_detail = document.querySelector('.video-description > p');
-
+        
         let data = videoData(id);
+        let name = '';
         data.then((v) => {
             player.src = v.video_link;
             title.innerHTML = v.video_title;
@@ -139,6 +160,15 @@ async function getVideoPlayerData() {
             views.innerHTML = v.views.toLocaleString();
             upload_date.innerHTML = v.upload_date;
             video_detail.innerHTML = v.video_detail;
+            
+            name = v.video_channel;
         });
+
+        let subscribers = document.querySelector('.subscribers');
+        let channel = channelData(name);
+        channel.then((c) => {
+            subscribers.innerHTML = c.subscribers.toLocaleString();
+        });
+        
     }
 }   
