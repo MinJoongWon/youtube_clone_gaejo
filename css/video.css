@@ -11,7 +11,15 @@
 .primary {
     background-color: #181818;
     width: 664px;
-    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+section {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 .youtube-player video {
@@ -224,7 +232,6 @@
 /* aside */
 .secondary {
     width: 426px;
-    height: 100%;
 }
 
 aside {
@@ -265,7 +272,7 @@ aside {
 /* end aside - top-menu */
 
 /* aside - thumbnail */
-.secondary-thumbnail video {
+.secondary-thumbnail img {
     width: 168px;
     height: 94px;
 }
@@ -273,13 +280,18 @@ aside {
 .videos {
     display: flex;
     flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.video-item {
+    padding-bottom: 10px;
 }
 
 .video-text {
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .video-text p {
