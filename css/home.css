@@ -47,6 +47,11 @@
     height: 36px;
 }
 
+.thumbnail-pic {
+    width:276px;
+    height: 155px;
+}
+
 .thumbnail-desc-title {
     padding-top: 12px;
     color: white;
@@ -106,6 +111,12 @@ section {
     border-radius: 32px;
     border: 0.3px solid var(--gray-color, #AAA);
     background: var(--border-color, #303030);
+    font-size: 14px;
+}
+
+.top-menu-item li:hover {
+    background-color: white;
+    color: #030303;
 }
 
 .top-menu-icon {
