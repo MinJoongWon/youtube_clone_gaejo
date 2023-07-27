@@ -1,19 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/home.css">
     <title>Channel</title>
 </head>
+
 <body>
+    <!-- nav -->
+    <nav class="nav">
+        <div class="nav-yt-button">
+            <div class="yt-button-icon">
+                <span class="material-symbols-outlined">menu</span>
+            </div>
+            <div class="yt-button-logo">
+                <img src="../images/youtube_logo.png">
+            </div>
+        </div>
+        <div class="nav-searchBoxArea">
+            <input class="searchBox" placeholder="Search">
+            <span class="searchBox-Button material-symbols-outlined">search</span>
+            <!-- mic 버튼 형태수정 필요 -->
+            <span class="searchBox-Button material-symbols-outlined">mic</span>
+            <span class="searchBox-icon"></span>
+        </div>
+        <div class="nav-profile">
+            <span class="nav-profile-create material-symbols-outlined">video_call</span>
+            <span class="nav-profile-apps material-symbols-outlined">apps</span>
+            <span class="nav-profile-notifications material-symbols-outlined">notifications</span>
+            <div class="nav-profile-pic">
+                <img class="user-avatar" src="../images/channel_profile.png">
+            </div>
+        </div>
+    </nav>
     <!-- header -->
     <!-- header -->
 
     <!-- aside -->
+    <!-- sidebar -->
+    <div class="sidebar">
+        <aside>
+            <div class="sidebar-top">
+                <ul>
+                    <li><span class="material-symbols-outlined">home</span><span>Home</span></li>
+                    <li><span class="material-symbols-outlined">explore</span>Explore</li>
+                    <li><span class="material-symbols-outlined">subscriptions</span>Subscriptions</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-top2">
+                <ul>
+                    <li><span class="material-symbols-outlined">video_library</span>Libary</li>
+                    <li><span class="material-symbols-outlined">history</span>History</li>
+                    <li><span class="material-symbols-outlined">smart_display</span>Your Videos</li>
+                    <li><span class="material-symbols-outlined">schedule</span>Watch Later</li>
+                    <li><span class="material-symbols-outlined">thumb_up</span>Liked Videos</li>
+                    <li><span class="material-symbols-outlined">stat_minus_1</span>Show More</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-subscriptions">
+                <ul>
+                    <li>SUBSCRIPTIONS</li>
+                    <li><img class="user-avatar" src="../images/oreumi_logo.jpg">오르미 2기</li>
+                    <li><img class="user-avatar" src="../images/cooldog.jpg">8조 개조 </li>
+                    <li><img class="user-avatar" src="../images/sidebar_user_eunha.jpg">강은하</li>
+                    <li><img class="user-avatar" src="../images/sidebar_user_chaerim.jpg">이채림</li>
+                    <li><img class="user-avatar" src="../images/sidebar_user_junsung.jpg">임준성</li>
+                    <li><img class="user-avatar" src="../images/sidebar_user_joongwon.jpg">민중원</li>
+                    <li><img class="user-avatar" src="../images/sidebar_user_avatar.png">James Gouse</li>
+                    <li><span class="material-symbols-outlined">stat_minus_1</span>Show 13 More</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-more-from">
+                <ul>
+                    <li>MORE FROM YOUTUBE</li>
+                    <li><span class="material-symbols-outlined">smart_display</span>Youtube Premium</li>
+                    <li><span class="material-symbols-outlined">sports_esports</span>Gaming</li>
+                    <li><span class="material-symbols-outlined">sensors</span>Live</li>
+                    <li><span class="material-symbols-outlined">Trophy</span>Sports</li>
+                </ul>
+            </div>
+            <div class="sidebar-bottom">
+                <ul>
+                    <li><span class="material-symbols-outlined">settings</span>Settings</li>
+                    <li><span class="material-symbols-outlined">flag</span>Report history</li>
+                    <li><span class="material-symbols-outlined">help</span>Help</li>
+                    <li><span class="material-symbols-outlined">Feedback</span>Send feedback</li>
+                </ul>
+            </div>
+            <!-- 사이드바 풋터 추가 css 작업필요 -->
+            <div class="sidebar-footer">
+                <ul>
+                    <li>About Press Copyright</li>
+                    <li>Contact us Creators</li>
+                    <li>Advertise Developers</li>
+                    <li>Terms Pricacy Policy & Safety</li>
+                    <li>How Youtube works</li>
+                    <li>Test new features</li>
+                    <li>© 2021 Google LLC</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
     <!-- aside -->
 
     <div class="channel-section">
@@ -62,6 +160,7 @@
             <div class="small-video">
                 <div class="player">
                     <img>
+                    <video src="https://storage.googleapis.com/oreumi.appspot.com/video_20.mp4" controls></video>
                     <div class="shadows">
 
                     </div>
@@ -95,7 +194,9 @@
                     </div>
                     <div class="descriptions">
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sit dignissimos, consequuntur natus cumque voluptates. Eveniet architecto magni, magnam neque modi molestias! Reprehenderit explicabo est debitis? Iste neque a consectetur?
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sit dignissimos,
+                            consequuntur natus cumque voluptates. Eveniet architecto magni, magnam neque modi molestias!
+                            Reprehenderit explicabo est debitis? Iste neque a consectetur?
                         </p>
                     </div>
                 </div>
@@ -119,6 +220,8 @@
                                 <span>12:23</span>
                             </div>
                             <div class="video-desc">
+                                <video src="https://storage.googleapis.com/oreumi.appspot.com/video_19.mp4"
+                                    controls></video>
                                 <p>title</p>
                                 <div class="video-desc-views">
                                     <p class="channel-name">James Gouse</p>
@@ -133,4 +236,5 @@
     </div>
 </body>
 <script src="../channel.js"></script>
+
 </html>
