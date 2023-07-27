@@ -17,6 +17,7 @@
     float: center;
     padding: 24px;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
 .thumbnail {

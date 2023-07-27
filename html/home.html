@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/nav.css">
-    <title>Document</title>
+    <title>Home</title>
 </head>
+
 <body>
     <!-- nav -->
     <nav class="nav">
@@ -19,12 +22,14 @@
                 <span class="material-symbols-outlined">menu</span>
             </div>
             <div class="yt-button-logo">
-                    <img src="../images/youtube_logo.png">
+                <img src="../images/youtube_logo.png">
             </div>
         </div>
         <div class="nav-searchBoxArea">
             <input class="searchBox" placeholder="Search">
             <span class="searchBox-Button material-symbols-outlined">search</span>
+            <!-- mic 버튼 형태수정 필요 -->
+            <span class="searchBox-Button material-symbols-outlined">mic</span>
             <span class="searchBox-icon"></span>
         </div>
         <div class="nav-profile">
@@ -48,7 +53,7 @@
                         <li><span class="material-symbols-outlined">subscriptions</span>Subscriptions</li>
                     </ul>
                 </div>
-                    
+
                 <div class="sidebar-top2">
                     <ul>
                         <li><span class="material-symbols-outlined">video_library</span>Libary</li>
@@ -62,22 +67,46 @@
 
                 <div class="sidebar-subscriptions">
                     <ul>
-                    <li>Subscriptions</li>
-                    <li><img class="user-avatar" src="../images/sidebar_user_avatar.png">James Gouste</li>
-                    <li><img class="user-avatar" src="../images/sidebar_user_avatar2.png">Alan Cooper</li>
+                        <li>SUBSCRIPTIONS</li>
+                        <li><img class="user-avatar" src="../images/oreumi_logo.jpg">오르미 2기</li>
+                        <li><img class="user-avatar" src="../images/cooldog.jpg">8조 개조 </li>
+                        <li><img class="user-avatar" src="../images/sidebar_user_eunha.jpg">강은하</li>
+                        <li><img class="user-avatar" src="../images/sidebar_user_chaerim.jpg">이채림</li>
+                        <li><img class="user-avatar" src="../images/sidebar_user_junsung.jpg">임준성</li>
+                        <li><img class="user-avatar" src="../images/sidebar_user_joongwon.jpg">민중원</li>
+                        <li><img class="user-avatar" src="../images/sidebar_user_avatar.png">James Gouse</li>
+                        <li><span class="material-symbols-outlined">stat_minus_1</span>Show 13 More</li>
                     </ul>
                 </div>
 
                 <div class="sidebar-more-from">
                     <ul>
+                        <li>MORE FROM YOUTUBE</li>
                         <li><span class="material-symbols-outlined">smart_display</span>Youtube Premium</li>
                         <li><span class="material-symbols-outlined">sports_esports</span>Gaming</li>
                         <li><span class="material-symbols-outlined">sensors</span>Live</li>
+                        <li><span class="material-symbols-outlined">Trophy</span>Sports</li>
                     </ul>
                 </div>
-
                 <div class="sidebar-bottom">
-
+                    <ul>
+                        <li><span class="material-symbols-outlined">settings</span>Settings</li>
+                        <li><span class="material-symbols-outlined">flag</span>Report history</li>
+                        <li><span class="material-symbols-outlined">help</span>Help</li>
+                        <li><span class="material-symbols-outlined">Feedback</span>Send feedback</li>
+                    </ul>
+                </div>
+                <!-- 사이드바 풋터 추가 css 작업필요 -->
+                <div class="sidebar-footer">
+                    <ul>
+                        <li>About Press Copyright</li>
+                        <li>Contact us Creators</li>
+                        <li>Advertise Developers</li>
+                        <li>Terms Pricacy Policy & Safety</li>
+                        <li>How Youtube works</li>
+                        <li>Test new features</li>
+                        <li>© 2021 Google LLC</li>
+                    </ul>
                 </div>
             </aside>
         </div>
@@ -92,7 +121,14 @@
                             <li>Item</li>
                             <li>Item</li>
                             <li>Item</li>
-                            <li>...</li>
+                            <li>Item</li>
+                            <li>Item</li>
+                            <li>Item</li>
+                            <li>Item</li>
+                            <li>Item</li>
+                            <li>Item</li>
+                            <li>Item</li>
+                            <li>Item</li>
                         </ul>
                     </div>
                     <div class="top-menu-icon">
@@ -113,7 +149,7 @@
                                 <span>24:59</span>
                             </div> -->
                         </div>
-                        
+
                         <div class="thumbnail-desc">
                             <div class="thumbnail-profile-pic">
                                 <img class="user-avatar" src="../images/sidebar_user_avatar.png">
@@ -139,4 +175,12 @@
     </div>
 </body>
 <script src="../home.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        displayHomeItem().catch(err => {
+            console.error('API 호출에 실패하였습니다.: ', err);
+        });
+    });
+</script>
+
 </html>
