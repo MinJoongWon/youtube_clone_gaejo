@@ -140,7 +140,7 @@ async function getVideoPlayerData() {
 
     if (idx !== -1) {
         let id = currentUrl.substring(idx + 4);
-        let player = document.querySelector('#video');
+        let player = document.querySelector('video');
         let title = document.querySelector('.title > span');
         let channelName = document.querySelector('.profile-name > p');
         let views = document.querySelector('.video-views');
@@ -150,12 +150,14 @@ async function getVideoPlayerData() {
         let data = videoData(id);
         let name = '';
         data.then((v) => {
+            console.log(v);
             player.src = v.video_link;
             title.innerHTML = v.video_title;
             channelName.innerHTML = v.video_channel;
             views.innerHTML = v.views.toLocaleString();
             upload_date.innerHTML = v.upload_date;
             video_detail.innerHTML = v.video_detail;
+            
             
             name = v.video_channel;
         });
