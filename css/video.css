@@ -1,6 +1,6 @@
 @import url("http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700");
 
-*{
+* {
     font-family: Roboto;
     display: flex;
     flex-wrap: wrap;
@@ -11,6 +11,7 @@
 .primary {
     background-color: #181818;
     width: 664px;
+    padding: 24px 0px 0px 24px;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -25,6 +26,7 @@ section {
 .youtube-player video {
     width: 640px;
     height: 360px;
+    flex-shrink: 0;
 }
 
 .youtube-title {
@@ -36,17 +38,11 @@ section {
 }
 
 /* section - video-info */
-.video-info .info {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .video-info {
-    width: 640px;
-    height: 95px;
-    padding-left: 10px;
+    display: flex;
+    padding: 20px 0px 8px 0px;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 .video-info .title {
@@ -54,42 +50,74 @@ section {
     font-size: 18px;
 }
 
-.video-info .info-text {
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 91px;
+}
+
+.info-text {
     color: #aaaaaa;
+    display: flex;
+    padding: 12px 0px;
+    gap: 10px;
 }
 
-.video-info .top-level {
+.info.top-level {
     display: flex;
+    align-items: flex-start;
+    gap: 8px;
 }
 
-.video-like, .video-dislike, .video-share, .video-save, .video-more {
-    display: flex;
-    align-items: center;
+/* top-level span tag */
+.video-like span,
+.video-dislike span,
+.video-share span,
+.video-save span,
+.video-more span {
+    padding: 6px;
+    gap: 10px;
     color: white;
-    padding-left: 15px;
-    font-size: 14px;
 }
 
-.video-like span, .video-dislike span, .video-share span, .video-save span, .video-more span {
-    padding-right: 10px;
+/* top-level p tag */
+.video-like p,
+.video-dislike p,
+.video-share p,
+.video-save p,
+.video-more p {
+    padding: 10px 6px 10px 0px;
+    gap: 10px;
+    color: white;
 }
 
 /* end section - video-info */
 
 
 /* section - channel-title */
+.video-desc {
+    display: flex;
+    width: 640px;
+    flex-shrink: 0;
+}
+
 .channel-title {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left:15px;
     width: 640px;
+    height: 51px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
 }
 
 .profile-pic {
-    width: 48px;
-    height: 48px;
+    display: inline-flex;
+    padding: 0px 16px 3px 0px;
+    align-items: flex-start;
+    gap: 10px;
 }
+
 .user-avatar {
     border-radius: 50%;
     width: 48px;
@@ -97,8 +125,11 @@ section {
 }
 
 .profile-name {
-    color: white;
+    display: flex;
+    padding: 11px 0px 10px 0px;
     flex-direction: column;
+    align-items: flex-start;
+    color: white;
 }
 
 .profile-name .subscribers {
@@ -106,8 +137,13 @@ section {
 }
 
 .subscribes-btn {
-    padding-right: 15px;
-    align-items: center;
+    display: flex;
+    width: 124px;
+    padding: 7px 4px 8px 4px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-left: auto;
 }
 
 .subscribes-btn button {
@@ -123,29 +159,37 @@ section {
 
 .video-description {
     color: white;
+    display: flex;
+    padding: 12px 0px 0px 64px;
+    align-items: flex-start;
+    gap: 10px;
     font-size: 14px;
-    padding-left: 63px;
+    /*padding-left: 78px; */
 }
 
 .show-more-btn button {
-    background-color: transparent;
+    display: flex;
+    padding: 8px 0px 0px 64px;
+    align-items: flex-start;
+    gap: 10px;
     border: none;
     color: #aaaaaa;
-    padding-left: 63px;
 }
+
 /* end section - channel-title */
 
 /* section - comment-area */
 .comment-area {
     width: 640px;
     height: 144px;
-    padding-left: 15px;
     display: flex;
     flex-direction: column;
 }
 
 .short-By-area {
     display: flex;
+    padding-top: 24px;
+    padding-bottom: 24px;
     align-items: center;
     color: white;
 }
@@ -155,12 +199,12 @@ section {
 }
 
 .comment-input-area {
+    width: 100%;
     display: flex;
     align-items: center;
 }
 
 .comment-inputBos {
-    padding-left: 15px;
     width: 100%;
     border: none;
     border-bottom: 1px solid #303030;
@@ -172,17 +216,20 @@ section {
 .comment-inputBos input::placeholder {
     color: #aaaaaa;
 }
+
 /* section - comment-area */
 
 /* comments */
 .comments {
-    padding-left: 15px;
-    padding-bottom: 15px;
     display: flex;
+    align-content: flex-start;
 }
 
 .comment {
+    width: 640px;
+    padding-bottom: 16px;
     color: white;
+    flex-direction: column;
 }
 
 .comment-header {
@@ -227,6 +274,7 @@ section {
 .comment-dislike {
     padding-right: 10px;
 }
+
 /* end comments */
 
 /* aside */
@@ -269,6 +317,7 @@ aside {
     background-color: white;
     color: #030303;
 }
+
 /* end aside - top-menu */
 
 /* aside - thumbnail */
