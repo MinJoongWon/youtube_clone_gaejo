@@ -1,6 +1,6 @@
 
 
-const channelInfoApi = 'http://oreumi.appspot.com/channel/getChannelInfo?video_channel=0';
+const channelInfoApi = 'http://oreumi.appspot.com/channel/getChannelInfo?video_channel=oreumi';
 
 async function getChannelInfo() {
     try {
@@ -26,7 +26,18 @@ async function displayChannelInfo() {
         channelBanner.src = v.channel_banner;
         channelProfile.src = v.channel_profile;
         channelName.innerHTML = v.channel_name;
-        channelSubscribers.innerHTML = v.subscribers;
-        console.log(v.subscribers);
+        channelSubscribers.innerHTML = formatSubscribersCount(v.subscribers);
     });
+}
+
+function formatSubscribersCount(subscribers) {
+    if (subscribers < 1000) {
+        return subscribers.toString();
+    } else if(subscribers < 1000000) {
+        const thousands = (subscribers / 1000).toFixed(1);
+        return `${thousands}K`;
+    } else {
+        const millions = (subscribers / 1000000).toFixed(1);
+        return `${millions}M`;
+    }
 }
