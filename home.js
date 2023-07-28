@@ -48,7 +48,6 @@ async function videoData(videoId) {
 async function displayHomeItem() {
     let videoList = await getVideoList();
     let thumbnail = document.querySelector('.thumbnail-box');
-    let createDiv = document.createElement("div");
     let info = '';
     
     let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
@@ -96,15 +95,13 @@ async function displayHomeItem() {
         </div>`;
     }
 
-    createDiv.innerHTML = info;
-    thumbnail.appendChild(createDiv);
+    thumbnail.innerHTML = info;
 }
 
 // video.html에 비디오 리스트 출력
 async function displayVideoItem() {
     let videoList = await getVideoList();
     let videoTag = document.querySelector('.videos');
-    let createDiv = document.createElement("div");
     let info = '';
 
     let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
@@ -133,8 +130,7 @@ async function displayVideoItem() {
             </div>`;
     }
 
-    createDiv.innerHTML = info;
-    videoTag.appendChild(createDiv);
+    videoTag.innerHTML = info;
 }
 
 // video.html 비디오 플레이어 데이터 추가
