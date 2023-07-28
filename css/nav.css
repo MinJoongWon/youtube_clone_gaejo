@@ -10,6 +10,14 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+
+    /* 내맘같지 않은 코드 */
+    /* position: fixed;
+    z-index: 1; */
+}
+
+.nav span, img {
+    cursor: pointer;
 }
 
 .nav-yt-button{
@@ -54,28 +62,49 @@
 /* end nav-yt-button */
 
 /* searchBoxArea */
-.nav-searchBoxArea input{
+.nav-searchBoxArea {
+    gap: 4px;
+}
+
+.searchBox {
+    display: flex;
+    border-radius: 2px;
+    border: 1px solid #303030;
+}
+
+.nav-searchBoxArea > .searchBox > input{
     background-color: #121212;
     width:362px;
-    height:40px;
     border:0;
-    border-radius: 2px 0px 0px 2px;
     color:#aaaaaa;
+    text-indent: 6px;
 }
 
-.nav-searchBoxArea input::placeholder {
+.nav-searchBoxArea > input::placeholder {
     color:#aaaaaa;
+    padding: 6px 2px;
 }
 
-.nav-searchBoxArea .searchBox-Button {
+.searchBox-icon > span {
     width:50px;
     height:40px;
     background-color: #303030;
     color:white;
     text-align: center;
     line-height: 40px;
+    border: 1px solid var(--border-color, #303030);
 }
-  
+
+.mic {
+    display: flex;
+    padding: 8px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 40px;
+    background: var(--black, #000);
+    color:white;
+}
+
 /* end searchBoxArea */
 
 /* nav-profile */
@@ -93,8 +122,9 @@
 }
 
 .nav-profile-pic {
+    display: flex;
     padding: 4px 14px;
-    
+    justify-content: center;
 }
 .nav-profile-pic > img {
     width: 32px;
