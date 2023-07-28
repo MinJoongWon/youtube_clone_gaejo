@@ -1,240 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="../css/main.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/nav.css" />
     <link rel="stylesheet" href="../css/video.css" />
     <title>Video</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- nav -->
     <nav class="nav">
-        <div class="nav-yt-button">
-            <div class="yt-button-icon">
-                <span class="material-symbols-outlined">menu</span>
-            </div>
-            <div class="yt-button-logo">
-                <img src="../images/youtube_logo.png">
-            </div>
+      <div class="nav-yt-button">
+        <div class="yt-button-icon">
+          <span class="material-symbols-outlined">menu</span>
         </div>
-        <div class="nav-searchBoxArea">
-            <input class="searchBox" placeholder="Search">
-            <span class="searchBox-Button material-symbols-outlined">search</span>
-            <!-- mic 버튼 형태수정 필요 -->
-            <span class="searchBox-Button material-symbols-outlined">mic</span>
-            <span class="searchBox-icon"></span>
+        <div class="yt-button-logo">
+          <img src="../images/youtube_logo.png" />
         </div>
-        <div class="nav-profile">
-            <span class="nav-profile-create material-symbols-outlined">video_call</span>
-            <span class="nav-profile-apps material-symbols-outlined">apps</span>
-            <span class="nav-profile-notifications material-symbols-outlined">notifications</span>
-            <div class="nav-profile-pic">
-                <img class="user-avatar" src="../images/oreumi_logo.jpg">
-            </div>
+      </div>
+      <div class="nav-searchBoxArea">
+        <div class="searchBox">
+          <input class="searchBox-input" placeholder="Search" />
+          <div class="searchBox-icon">
+            <span class="searchBox-Button material-symbols-outlined"
+              >search</span
+            >
+          </div>
         </div>
+        <div class="mic">
+          <span class="searchBox-Button material-symbols-outlined">mic</span>
+        </div>
+      </div>
+      <div class="nav-profile">
+        <span class="nav-profile-create material-symbols-outlined"
+          >video_call</span
+        >
+        <span class="nav-profile-apps material-symbols-outlined">apps</span>
+        <span class="nav-profile-notifications material-symbols-outlined"
+          >notifications</span
+        >
+        <div class="nav-profile-pic">
+          <img class="user-avatar" src="../images/oreumi_logo.jpg" />
+        </div>
+      </div>
     </nav>
 
     <!-- header -->
     <!-- header -->
 
     <div class="video-body">
-        <!-- section -->
-        <div class="primary">
-            <seciton>
-                <!-- 비디오화면 -->
-                <div class="videoPlayer">
-                    <div class="youtube-player">
-                        <video src="https://storage.googleapis.com/oreumi.appspot.com/video_0.mp4" controls></video>
-                        <div class="shadows">
-
-                        </div>
-                    </div>
-                    <div class="video-info">
-                        <div class="title">
-                            <span>
-                                Blind Woodtner: Turning passion into fine art
-                            </span>
-                        </div>
-                        <div class="info">
-                            <div class="top-level">
-                                <div class="info-text">
-                                    <span class="video-views">576,969</span>
-                                    <span> views </span>
-                                    <span class="time">Oct 8, 2021</span>
-                                </div>
-                                <div class="video-like">
-                                    <span class="material-symbols-outlined">thumb_up</span>
-                                    <p>1.7 K</p>
-                                </div>
-                                <div class="video-dislike">
-                                    <span class="material-symbols-outlined">thumb_down</span>
-                                    <p>632</p>
-                                </div>
-                                <div class="video-share">
-                                    <span class="material-symbols-outlined">share</span>
-                                    <p>SHARE</p>
-                                </div>
-                                <div class="video-save">
-                                    <span class="material-symbols-outlined">playlist_add</span>
-                                    <p>SAVE</p>
-                                </div>
-                                <div class="video-more">
-                                    <span class="material-symbols-outlined">more_horiz</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <!-- section -->
+      <div class="primary">
+        <seciton>
+          <!-- 비디오화면 -->
+          <div class="videoPlayer">
+            <div class="youtube-player">
+              <video
+                src="https://storage.googleapis.com/oreumi.appspot.com/video_0.mp4"
+                controls
+              ></video>
+              <div class="shadows"></div>
+            </div>
+            <div class="video-info">
+              <div class="title">
+                <span> Blind Woodtner: Turning passion into fine art </span>
+              </div>
+              <div class="info">
+                <div class="info-text">
+                  <span class="video-views">576,969</span>
+                  <span> views </span>
+                  <span class="time">Oct 8, 2021</span>
                 </div>
-
-                <!-- 비디오설명 -->
-                <div class="video-desc">
-
-
-                    <div class="channel-title">
-                        <div class="profile-pic">
-                            <img class="user-avatar" src="../images/channel_profile.png">
-                        </div>
-                        <div class="profile-name">
-                            <p>Marcus Levin</p>
-                            <p class="subscribers">1.2M subscribes</p>
-                        </div>
-                        <div class="subscribes-btn">
-                            <button>SUBSCRIBES</button>
-                        </div>
-                    </div>
-                    <div class="video-description">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi animi, culpa voluptate
-                            corrupti ut quod et atque illo consectetur quam officia ipsa repellat deserunt, repellendus
-                            maxime explicabo ea est dignissimos.
-                        </p>
-                    </div>
-                    <div class="show-more-btn">
-                        <button>show more</button>
-                    </div>
+                <div class="top-level">
+                  <div class="video-like">
+                    <span class="material-symbols-outlined">thumb_up</span>
+                    <p>1.7 K</p>
+                  </div>
+                  <div class="video-dislike">
+                    <span class="material-symbols-outlined">thumb_down</span>
+                    <p>632</p>
+                  </div>
+                  <div class="video-share">
+                    <span class="material-symbols-outlined">share</span>
+                    <p>SHARE</p>
+                  </div>
+                  <div class="video-save">
+                    <span class="material-symbols-outlined">playlist_add</span>
+                    <p>SAVE</p>
+                  </div>
+                  <div class="video-more">
+                    <span class="material-symbols-outlined">more_horiz</span>
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
 
-                <!-- 댓글 -->
-                <div class="comment-area">
-                    <div class="short-By">
-                        <div class="count">
-                            <img class="dropdown-icon">
-                        </div>
-                        <div class="short-By-area">
-                            <span class="material-symbols-outlined">sort</span>
-                            <p>SORT BY</p>
-                        </div>
-                    </div>
-                    <div class="comment-input-area">
-                        <div class="profile-pic">
-                            <img src="../images/sidebar_user_avatar4.png" class="user-avatar">
-                        </div>
-                        <div>
-                            <input class="comment-inputBos" placeholder="Add a public comment...">
-                        </div>
-                    </div>
+          <!-- 비디오설명 -->
+          <div class="video-desc">
+            <div class="channel-title">
+              <div class="profile-pic">
+                <img class="user-avatar" src="../images/channel_profile.png" />
+              </div>
+              <div class="profile-name">
+                <p>Marcus Levin</p>
+                <p class="subscribers">1.2M subscribes</p>
+              </div>
+              <div class="subscribes-btn">
+                <button>SUBSCRIBES</button>
+              </div>
+            </div>
+            <div class="video-description">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Eligendi animi, culpa voluptate corrupti ut quod et atque illo
+                consectetur quam officia ipsa repellat deserunt, repellendus
+                maxime explicabo ea est dignissimos.
+              </p>
+            </div>
+            <div class="show-more-btn">
+              <button>show more</button>
+            </div>
+          </div>
+
+          <!-- 댓글 -->
+          <div class="comment-area">
+            <div class="short-By">
+              <div class="count">
+                <img class="dropdown-icon" />
+              </div>
+              <div class="short-By-area">
+                <span class="comments-count">286 Comments</span>
+                <span class="material-symbols-outlined">sort</span>
+                <p>SORT BY</p>
+              </div>
+            </div>
+            <div class="comment-input-area">
+              <div class="profile-pic">
+                <img
+                  src="../images/sidebar_user_avatar4.png"
+                  class="user-avatar"
+                />
+              </div>
+              <div>
+                <input
+                  class="comment-inputBos"
+                  placeholder="Add a public comment..."
+                />
+              </div>
+            </div>
+          </div>
+          <div class="comments">
+            <div class="comment">
+              <div class="comment1">
+                <div class="profile-pic">
+                  <img
+                    src="../images/sidebar_user_avatar.png"
+                    class="user-avatar"
+                  />
                 </div>
-                <div class="comments">
-                    <div class="comment">
-                        <div class="profile-pic">
-                            <img src="../images/sidebar_user_avatar.png" class="user-avatar">
-                        </div>
-                        <div class="comment-header">
-                            <span>
-                                <span class="comment-name">James Gouse</span>
-                                <span class="published-date">8 hours ago</span>
-                            </span>
+                <div class="comment-header">
+                  <div>
+                    <div class="comment-name">James Gouse</div>
+                    <div class="published-date">8 hours ago</div>
+                  </div>
 
-                            <div class="comment-text">
-                                <p>
-                                    Wow, world is full of different skills
-                                </p>
-                            </div>
-                            <div class="comment-toolbar">
-                                <div class="comment-like">
-                                    <span class="material-symbols-outlined">thumb_up</span>
-                                    <span>3</span>
-                                </div>
-                                <div class="comment-dislike">
-                                    <span class="material-symbols-outlined">thumb_down</span>
-                                    <span>1</span>
-                                </div>
-                                <div class="reply">
-                                    <span>REPLY</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="profile-pic">
-                            <img src="../images/sidebar_user_avatar2.png" class="user-avatar">
-                        </div>
-                        <div class="comment-header">
-                            <span>
-                                <span class="comment-name">Alan Cooper</span>
-                                <span class="published-date">4 days ago</span>
-                            </span>
-
-                            <div class="comment-text">
-                                <p>
-                                    Can you provide?
-                                    On January 2, 2022
-                                </p>
-                            </div>
-                            <div class="comment-toolbar">
-                                <div class="comment-like">
-                                    <span class="material-symbols-outlined">thumb_up</span>
-                                </div>
-                                <div class="comment-dislike">
-                                    <span class="material-symbols-outlined">thumb_down</span>
-                                </div>
-                                <div class="reply">
-                                    <span>REPLY</span>
-                                </div>
-                            </div>
-                        </div>
+                  <div class="comment-text">
+                    <p>Wow, world is full of different skills</p>
+                  </div>
+                  <div class="comment-toolbar">
+                    <div class="comment-like">
+                      <span class="material-symbols-outlined">thumb_up</span>
+                      <span>3</span>
                     </div>
-                </div>
-            </seciton>
-        </div>
-        <!-- section -->
-
-        <!-- aside: 재생목록리스트 -->
-        <div class="secondary">
-            <aside>
-                <div class="top-menu">
-                    <ul>
-                        <li>ALL</li>
-                        <li>From Marcus Levin</li>
-                    </ul>
-                </div>
-
-                <div class="videos">
-                    <div class="video-item">
-                        <div class="secondary-thumbnail">
-                        </div>
+                    <div class="comment-dislike">
+                      <span class="material-symbols-outlined">thumb_down</span>
+                      <span>1</span>
                     </div>
+                    <div class="reply">
+                      <span>REPLY</span>
+                    </div>
+                  </div>
                 </div>
-        </div>
+              </div>
+              <div class="comment2">
+                <div class="profile-pic">
+                  <img
+                    src="../images/sidebar_user_avatar2.png"
+                    class="user-avatar"
+                  />
+                </div>
+                <div class="comment-header">
+                  <div>
+                    <span class="comment-name">Alan Cooper</span>
+                    <span class="published-date">4 days ago</span>
+                  </div>
+
+                  <div class="comment-text">
+                    <p>Can you provide? On January 2, 2022</p>
+                  </div>
+                  <div class="comment-toolbar">
+                    <div class="comment-like">
+                      <span class="material-symbols-outlined">thumb_up</span>
+                    </div>
+                    <div class="comment-dislike">
+                      <span class="material-symbols-outlined">thumb_down</span>
+                    </div>
+                    <div class="reply">
+                      <span>REPLY</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </seciton>
+      </div>
+      <!-- section -->
+
+      <!-- aside: 재생목록리스트 -->
+      <div class="secondary">
+        <aside>
+          <div class="top-menu">
+            <ul>
+              <li>ALL</li>
+              <li>From Marcus Levin</li>
+            </ul>
+          </div>
+
+          <div class="videos">
+            <div class="video-item">
+              <div class="secondary-thumbnail"></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <!-- aside -->
     </div>
-    </aside>
-    </div>
-    <!-- aside -->
-    </div>
-</body>
-<script src="../home.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        displayVideoItem().catch(err => {
-            console.error('API 호출에 실패하였습니다.: ', err);
-        });
-        getVideoPlayerData();
+  </body>
+  <script src="../home.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      displayVideoItem().catch((err) => {
+        console.error("API 호출에 실패하였습니다.: ", err);
+      });
+      getVideoPlayerData();
     });
-</script>
-
+  </script>
 </html>

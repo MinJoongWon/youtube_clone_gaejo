@@ -26,11 +26,15 @@
             </div>
         </div>
         <div class="nav-searchBoxArea">
-            <input class="searchBox" placeholder="Search">
-            <span class="searchBox-Button material-symbols-outlined">search</span>
-            <!-- mic 버튼 형태수정 필요 -->
-            <span class="searchBox-Button material-symbols-outlined">mic</span>
-            <span class="searchBox-icon"></span>
+            <div class="searchBox">
+                <input class="searchBox-input" placeholder="Search">
+                <div class="searchBox-icon">
+                    <span class="searchBox-Button material-symbols-outlined">search</span>
+                </div>
+            </div>
+            <div class="mic">
+                <span class="searchBox-Button  material-symbols-outlined">mic</span>
+            </div>
         </div>
         <div class="nav-profile">
             <span class="nav-profile-create material-symbols-outlined">video_call</span>
@@ -49,64 +53,67 @@
                 <div class="sidebar-top">
                     <ul>
                         <li><span class="material-symbols-outlined">home</span><span>Home</span></li>
-                        <li><span class="material-symbols-outlined">explore</span>Explore</li>
-                        <li><span class="material-symbols-outlined">subscriptions</span>Subscriptions</li>
+                        <li><span class="material-symbols-outlined">explore</span><span>Explore</span></li>
+                        <li><span class="material-symbols-outlined">subscriptions</span><span>Subscriptions</span></li>
                     </ul>
                 </div>
 
                 <div class="sidebar-top2">
                     <ul>
-                        <li><span class="material-symbols-outlined">video_library</span>Libary</li>
-                        <li><span class="material-symbols-outlined">history</span>History</li>
-                        <li><span class="material-symbols-outlined">smart_display</span>Your Videos</li>
-                        <li><span class="material-symbols-outlined">schedule</span>Watch Later</li>
-                        <li><span class="material-symbols-outlined">thumb_up</span>Liked Videos</li>
-                        <li><span class="material-symbols-outlined">stat_minus_1</span>Show More</li>
+                        <li><span class="material-symbols-outlined">video_library</span><span>Libary</span></li>
+                        <li><span class="material-symbols-outlined">history</span><span>History</span></li>
+                        <li><span class="material-symbols-outlined">smart_display</span><span>Your Videos</span></li>
+                        <li><span class="material-symbols-outlined">schedule</span><span>Watch Later</span></li>
+                        <li><span class="material-symbols-outlined">thumb_up</span><span>Liked Videos</span></li>
+                        <li><span class="material-symbols-outlined">stat_minus_1</span><span>Show More</span></li>
                     </ul>
                 </div>
 
                 <div class="sidebar-subscriptions">
                     <ul>
                         <li>SUBSCRIPTIONS</li>
-                        <li><img class="user-avatar" src="../images/oreumi_logo.jpg">오르미 2기</li>
-                        <li><img class="user-avatar" src="../images/cooldog.jpg">8조 개조 </li>
-                        <li><img class="user-avatar" src="../images/sidebar_user_eunha.jpg">강은하</li>
-                        <li><img class="user-avatar" src="../images/sidebar_user_chaerim.jpg">이채림</li>
-                        <li><img class="user-avatar" src="../images/sidebar_user_junsung.jpg">임준성</li>
-                        <li><img class="user-avatar" src="../images/sidebar_user_joongwon.jpg">민중원</li>
-                        <li><img class="user-avatar" src="../images/sidebar_user_avatar.png">James Gouse</li>
-                        <li><span class="material-symbols-outlined">stat_minus_1</span>Show 13 More</li>
+                        <li><img class="user-avatar" src="../images/oreumi_logo.jpg"><span>오르미 2기</span></li>
+                        <li><img class="user-avatar" src="../images/cooldog.jpg"><span>8조 개조</span></li>
+                        <li><img class="user-avatar" src="../images/sidebar_user_eunha.jpg"><span>강은하</span></li>
+                        <li><img class="user-avatar" src="../images/sidebar_user_chaerim.jpg"><span>이채림</span></li>
+                        <li><img class="user-avatar" src="../images/sidebar_user_junsung.jpg"><span>임준성</span></li>
+                        <li><img class="user-avatar" src="../images/sidebar_user_joongwon.jpg"><span>민중원</span></li>
+                        <li><img class="user-avatar" src="../images/sidebar_user_avatar.png"><span>James Gouse</span></li>
+                        <li><span class="material-symbols-outlined">stat_minus_1</span><span>Show 13 More</span></li>
                     </ul>
                 </div>
 
                 <div class="sidebar-more-from">
                     <ul>
                         <li>MORE FROM YOUTUBE</li>
-                        <li><span class="material-symbols-outlined">smart_display</span>Youtube Premium</li>
-                        <li><span class="material-symbols-outlined">sports_esports</span>Gaming</li>
-                        <li><span class="material-symbols-outlined">sensors</span>Live</li>
-                        <li><span class="material-symbols-outlined">Trophy</span>Sports</li>
+                        <li><span class="material-symbols-outlined">smart_display</span><span>Youtube Premium</span></li>
+                        <li><span class="material-symbols-outlined">sports_esports</span><span>Gaming</li>
+                        <li><span class="material-symbols-outlined">sensors</span><span>Live</li>
+                        <li><span class="material-symbols-outlined">Trophy</span><span>Sports</span></li>
                     </ul>
                 </div>
                 <div class="sidebar-bottom">
                     <ul>
-                        <li><span class="material-symbols-outlined">settings</span>Settings</li>
-                        <li><span class="material-symbols-outlined">flag</span>Report history</li>
-                        <li><span class="material-symbols-outlined">help</span>Help</li>
-                        <li><span class="material-symbols-outlined">Feedback</span>Send feedback</li>
+                        <li><span class="material-symbols-outlined">settings</span><span>Settings</span></li>
+                        <li><span class="material-symbols-outlined">flag</span><span>Report history</span></li>
+                        <li><span class="material-symbols-outlined">help</span><span>Help</span></li>
+                        <li><span class="material-symbols-outlined">Feedback</span><span>Send feedback</span></li>
                     </ul>
                 </div>
-                <!-- 사이드바 풋터 추가 css 작업필요 -->
                 <div class="sidebar-footer">
-                    <ul>
-                        <li>About Press Copyright</li>
-                        <li>Contact us Creators</li>
-                        <li>Advertise Developers</li>
-                        <li>Terms Pricacy Policy & Safety</li>
-                        <li>How Youtube works</li>
-                        <li>Test new features</li>
-                        <li>© 2021 Google LLC</li>
-                    </ul>
+                    <p>
+                        <span>About</span><span>Press</span><span>Copyright</span>
+                        <span>Contact us</span><span>Creators</span>
+                        <span>Advertise</span><span>Developers</span>
+                    </p>
+                    <p>
+                        <span>Terms</span><span>Pricacy</span><span>Policy & Safety</span>
+                        <span>How Youtube workss</span>
+                        <span>Test new features</span>
+                    </p>
+                    <p>
+                        <span>© 2021 Google LLC</span>
+                    </p>
                 </div>
             </aside>
         </div>
@@ -117,18 +124,18 @@
                 <div class="top-menu">
                     <div class="top-menu-item">
                         <ul>
-                            <li>All</li>
-                            <li>Item</li>
-                            <li>Item</li>
-                            <li>Item</li>
-                            <li>Item</li>
-                            <li>Item</li>
-                            <li>Item</li>
-                            <li>Item</li>
-                            <li>Item</li>
-                            <li>Item</li>
-                            <li>Item</li>
-                            <li>Item</li>
+                            <li><span>All</span></li>
+                            <li><span>Item</span></li>
+                            <li><span>Item</span></li>
+                            <li><span>Item</span></li>
+                            <li><span>Item</span></li>
+                            <li><span>Item</span></li>
+                            <li><span>Item</span></li>
+                            <li><span>Item</span></li>
+                            <li><span>Item</span></li>
+                            <li><span>Item</span></li>
+                            <li><span>Item</span></li>
+                            <li><span>Item</span></li>
                         </ul>
                     </div>
                     <div class="top-menu-icon">

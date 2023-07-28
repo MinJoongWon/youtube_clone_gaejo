@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/home.css">
-    <link rel="stylesheet" href="../css/channel.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/nav.css" />
+    <link rel="stylesheet" href="../css/sidebar.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/channel.css" />
     <title>Channel</title>
-</head>
+  </head>
 
-<body>
+  <body>
+    <!-- nav -->
     <!-- nav -->
     <nav class="nav">
         <div class="nav-yt-button">
@@ -27,11 +29,15 @@
             </div>
         </div>
         <div class="nav-searchBoxArea">
-            <input class="searchBox" placeholder="Search">
-            <span class="searchBox-Button material-symbols-outlined">search</span>
-            <!-- mic 버튼 형태수정 필요 -->
-            <span class="searchBox-Button material-symbols-outlined">mic</span>
-            <span class="searchBox-icon"></span>
+            <div class="searchBox">
+                <input class="searchBox-input" placeholder="Search">
+                <div class="searchBox-icon">
+                    <span class="searchBox-Button material-symbols-outlined">search</span>
+                </div>
+            </div>
+            <div class="mic">
+                <span class="searchBox-Button  material-symbols-outlined">mic</span>
+            </div>
         </div>
         <div class="nav-profile">
             <span class="nav-profile-create material-symbols-outlined">video_call</span>
@@ -41,201 +47,443 @@
                 <img class="user-avatar" src="../images/oreumi_logo.jpg">
             </div>
         </div>
-    </nav>
-    <!-- header -->
-    <!-- header -->
 
-    <!-- aside -->
-    <!-- sidebar -->
-    <div class="sidebar">
+     <!-- sidebar -->
+     <div class="sidebar">
         <aside>
             <div class="sidebar-top">
                 <ul>
                     <li><span class="material-symbols-outlined">home</span><span>Home</span></li>
-                    <li><span class="material-symbols-outlined">explore</span>Explore</li>
-                    <li><span class="material-symbols-outlined">subscriptions</span>Subscriptions</li>
+                    <li><span class="material-symbols-outlined">explore</span><span>Explore</span></li>
+                    <li><span class="material-symbols-outlined">subscriptions</span><span>Subscriptions</span></li>
                 </ul>
             </div>
 
             <div class="sidebar-top2">
                 <ul>
-                    <li><span class="material-symbols-outlined">video_library</span>Libary</li>
-                    <li><span class="material-symbols-outlined">history</span>History</li>
-                    <li><span class="material-symbols-outlined">smart_display</span>Your Videos</li>
-                    <li><span class="material-symbols-outlined">schedule</span>Watch Later</li>
-                    <li><span class="material-symbols-outlined">thumb_up</span>Liked Videos</li>
-                    <li><span class="material-symbols-outlined">stat_minus_1</span>Show More</li>
+                    <li><span class="material-symbols-outlined">video_library</span><span>Libary</span></li>
+                    <li><span class="material-symbols-outlined">history</span><span>History</span></li>
+                    <li><span class="material-symbols-outlined">smart_display</span><span>Your Videos</span></li>
+                    <li><span class="material-symbols-outlined">schedule</span><span>Watch Later</span></li>
+                    <li><span class="material-symbols-outlined">thumb_up</span><span>Liked Videos</span></li>
+                    <li><span class="material-symbols-outlined">stat_minus_1</span><span>Show More</span></li>
                 </ul>
             </div>
 
             <div class="sidebar-subscriptions">
                 <ul>
                     <li>SUBSCRIPTIONS</li>
-                    <li><img class="user-avatar" src="../images/oreumi_logo.jpg">오르미 2기</li>
-                    <li><img class="user-avatar" src="../images/cooldog.jpg">8조 개조 </li>
-                    <li><img class="user-avatar" src="../images/sidebar_user_eunha.jpg">강은하</li>
-                    <li><img class="user-avatar" src="../images/sidebar_user_chaerim.jpg">이채림</li>
-                    <li><img class="user-avatar" src="../images/sidebar_user_junsung.jpg">임준성</li>
-                    <li><img class="user-avatar" src="../images/sidebar_user_joongwon.jpg">민중원</li>
-                    <li><img class="user-avatar" src="../images/sidebar_user_avatar.png">James Gouse</li>
-                    <li><span class="material-symbols-outlined">stat_minus_1</span>Show 13 More</li>
+                    <li><img class="user-avatar" src="../images/oreumi_logo.jpg"><span>오르미 2기</span></li>
+                    <li><img class="user-avatar" src="../images/cooldog.jpg"><span>8조 개조</span></li>
+                    <li><img class="user-avatar" src="../images/sidebar_user_eunha.jpg"><span>강은하</span></li>
+                    <li><img class="user-avatar" src="../images/sidebar_user_chaerim.jpg"><span>이채림</span></li>
+                    <li><img class="user-avatar" src="../images/sidebar_user_junsung.jpg"><span>임준성</span></li>
+                    <li><img class="user-avatar" src="../images/sidebar_user_joongwon.jpg"><span>민중원</span></li>
+                    <li><img class="user-avatar" src="../images/sidebar_user_avatar.png"><span>James Gouse</span></li>
+                    <li><span class="material-symbols-outlined">stat_minus_1</span><span>Show 13 More</span></li>
                 </ul>
             </div>
 
             <div class="sidebar-more-from">
                 <ul>
                     <li>MORE FROM YOUTUBE</li>
-                    <li><span class="material-symbols-outlined">smart_display</span>Youtube Premium</li>
-                    <li><span class="material-symbols-outlined">sports_esports</span>Gaming</li>
-                    <li><span class="material-symbols-outlined">sensors</span>Live</li>
-                    <li><span class="material-symbols-outlined">Trophy</span>Sports</li>
+                    <li><span class="material-symbols-outlined">smart_display</span><span>Youtube Premium</span></li>
+                    <li><span class="material-symbols-outlined">sports_esports</span><span>Gaming</li>
+                    <li><span class="material-symbols-outlined">sensors</span><span>Live</li>
+                    <li><span class="material-symbols-outlined">Trophy</span><span>Sports</span></li>
                 </ul>
             </div>
             <div class="sidebar-bottom">
                 <ul>
-                    <li><span class="material-symbols-outlined">settings</span>Settings</li>
-                    <li><span class="material-symbols-outlined">flag</span>Report history</li>
-                    <li><span class="material-symbols-outlined">help</span>Help</li>
-                    <li><span class="material-symbols-outlined">Feedback</span>Send feedback</li>
+                    <li><span class="material-symbols-outlined">settings</span><span>Settings</span></li>
+                    <li><span class="material-symbols-outlined">flag</span><span>Report history</span></li>
+                    <li><span class="material-symbols-outlined">help</span><span>Help</span></li>
+                    <li><span class="material-symbols-outlined">Feedback</span><span>Send feedback</span></li>
                 </ul>
             </div>
-            <!-- 사이드바 풋터 추가 css 작업필요 -->
             <div class="sidebar-footer">
-                <ul>
-                    <li>About Press Copyright</li>
-                    <li>Contact us Creators</li>
-                    <li>Advertise Developers</li>
-                    <li>Terms Pricacy Policy & Safety</li>
-                    <li>How Youtube works</li>
-                    <li>Test new features</li>
-                    <li>© 2021 Google LLC</li>
-                </ul>
+                <p>
+                    <span>About</span><span>Press</span><span>Copyright</span>
+                    <span>Contact us</span><span>Creators</span>
+                    <span>Advertise</span><span>Developers</span>
+                </p>
+                <p>
+                    <span>Terms</span><span>Pricacy</span><span>Policy & Safety</span>
+                    <span>How Youtube workss</span>
+                    <span>Test new features</span>
+                </p>
+                <p>
+                    <span>© 2021 Google LLC</span>
+                </p>
             </div>
         </aside>
     </div>
-    <!-- aside -->
 
-    <div class="channel-section">
+    <!-- header -->
+    <!-- header -->
+
+    <div class="channel-body">
+      <!-- aside -->
+      <!-- sidebar -->
+      <div class="sidebar">
+        <aside>
+          <div class="sidebar-top">
+            <ul>
+              <li>
+                <span class="material-symbols-outlined">home</span
+                ><span>Home</span>
+              </li>
+              <li>
+                <span class="material-symbols-outlined">explore</span>Explore
+              </li>
+              <li>
+                <span class="material-symbols-outlined">subscriptions</span
+                >Subscriptions
+              </li>
+            </ul>
+          </div>
+
+          <div class="sidebar-top2">
+            <ul>
+              <li>
+                <span class="material-symbols-outlined">video_library</span
+                >Libary
+              </li>
+              <li>
+                <span class="material-symbols-outlined">history</span>History
+              </li>
+              <li>
+                <span class="material-symbols-outlined">smart_display</span>Your
+                Videos
+              </li>
+              <li>
+                <span class="material-symbols-outlined">schedule</span>Watch
+                Later
+              </li>
+              <li>
+                <span class="material-symbols-outlined">thumb_up</span>Liked
+                Videos
+              </li>
+              <li>
+                <span class="material-symbols-outlined">stat_minus_1</span>Show
+                More
+              </li>
+            </ul>
+          </div>
+
+          <div class="sidebar-subscriptions">
+            <ul>
+              <li>SUBSCRIPTIONS</li>
+              <li>
+                <img
+                  class="user-avatar"
+                  src="../images/oreumi_logo.jpg"
+                />오르미 2기
+              </li>
+              <li>
+                <img class="user-avatar" src="../images/cooldog.jpg" />8조 개조
+              </li>
+              <li>
+                <img
+                  class="user-avatar"
+                  src="../images/sidebar_user_eunha.jpg"
+                />강은하
+              </li>
+              <li>
+                <img
+                  class="user-avatar"
+                  src="../images/sidebar_user_chaerim.jpg"
+                />이채림
+              </li>
+              <li>
+                <img
+                  class="user-avatar"
+                  src="../images/sidebar_user_junsung.jpg"
+                />임준성
+              </li>
+              <li>
+                <img
+                  class="user-avatar"
+                  src="../images/sidebar_user_joongwon.jpg"
+                />민중원
+              </li>
+              <li>
+                <img
+                  class="user-avatar"
+                  src="../images/sidebar_user_avatar.png"
+                />James Gouse
+              </li>
+              <li>
+                <span class="material-symbols-outlined">stat_minus_1</span>Show
+                13 More
+              </li>
+            </ul>
+          </div>
+
+          <div class="sidebar-more-from">
+            <ul>
+              <li>MORE FROM YOUTUBE</li>
+              <li>
+                <span class="material-symbols-outlined">smart_display</span
+                >Youtube Premium
+              </li>
+              <li>
+                <span class="material-symbols-outlined">sports_esports</span
+                >Gaming
+              </li>
+              <li>
+                <span class="material-symbols-outlined">sensors</span>Live
+              </li>
+              <li>
+                <span class="material-symbols-outlined">Trophy</span>Sports
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-bottom">
+            <ul>
+              <li>
+                <span class="material-symbols-outlined">settings</span>Settings
+              </li>
+              <li>
+                <span class="material-symbols-outlined">flag</span>Report
+                history
+              </li>
+              <li><span class="material-symbols-outlined">help</span>Help</li>
+              <li>
+                <span class="material-symbols-outlined">Feedback</span>Send
+                feedback
+              </li>
+            </ul>
+          </div>
+          <!-- 사이드바 풋터 추가 css 작업필요 -->
+          <div class="sidebar-footer">
+            <ul>
+              <li>About Press Copyright</li>
+              <li>Contact us Creators</li>
+              <li>Advertise Developers</li>
+              <li>Terms Pricacy Policy & Safety</li>
+              <li>How Youtube works</li>
+              <li>Test new features</li>
+              <li>© 2021 Google LLC</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+      <!-- aside -->
+
+      <div class="channel-section">
         <section>
-            <!-- 채널 상단 부분 -->
-            <div class="channel">
-                <div class="channel-cover">
-                    <img src="../images/channel_cover.png">
-                </div>
-
-                <div class="channel-title">
-                    <div class="channel-profile">
-                        <div class="profile-pic">
-                            <img class="user-avatar" src="../images/channel_profile.png">
-                        </div>
-                        <ul>
-                            <li class="channel-profile-name">Marcus Levin</li>
-                            <li class="channel-subscribes">1.2M subscribers</li>
-                        </ul>
-                    </div>
-                    <div class="channel-subscribes-btn">
-                        <button>SUBSCRIBES</button>
-                    </div>
-                </div>
-
-                <div class="channel-toolbar">
-                    <div class="channel-toolbar-menu">
-                        <ul>
-                            <li>HOME</li>
-                            <li>VIDEOS</li>
-                            <li>PLAYLISTS</li>
-                            <li>COMMUNITY</li>
-                            <li>CHANNELS</li>
-                            <li>ABOUT</li>
-                        </ul>
-                    </div>
-                    <div class="channel-toolbar-search">
-                        <span class="material-symbols-outlined">search</span>
-                        <input>
-                        <button class="leftArrow">></button>
-                    </div>
-                </div>
+          <!-- 채널 상단 부분 -->
+          <div class="channel">
+            <div class="channel-cover">
+              <img src="../images/channel_cover.png" />
             </div>
 
-            <!-- 메인 플레이 부분 -->
-            <div class="small-video">
-                <div class="player">
-                    <img>
-                    <video src="https://storage.googleapis.com/oreumi.appspot.com/video_20.mp4" controls></video>
-                    <div class="shadows">
-
-                    </div>
-                    <div class="bottom-controls">
-                        <div class="timeline">
-
-                        </div>
-                        <div>
-                            <img>
-                            <img>
-                            <img>
-                            <img>
-                        </div>
-                        <div>
-                            <img>
-                            <img>
-                            <img>
-                            <img>
-                            <img>
-                        </div>
-                    </div>
+            <div class="channel-title">
+              <div class="channel-profile">
+                <div class="profile-pic">
+                  <img
+                    class="user-avatar"
+                    src="../images/channel_profile.png"
+                  />
                 </div>
-                <div class="small-video-desc">
-                    <div class="video-title">
-                        <p class="title">
-                            Title Title Title
-                        </p>
-                        <p class="time">
-                            576,969 views . 3 weeks ago
-                        </p>
-                    </div>
-                    <div class="descriptions">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sit dignissimos,
-                            consequuntur natus cumque voluptates. Eveniet architecto magni, magnam neque modi molestias!
-                            Reprehenderit explicabo est debitis? Iste neque a consectetur?
-                        </p>
-                    </div>
+                <div class="channel-profile-desc">
+                  <ul>
+                    <li class="channel-profile-name">Marcus Levin</li>
+                    <li class="channel-subscribes">1.2M subscribers</li>
+                  </ul>
                 </div>
+              </div>
+              <div class="channel-subscribes-btn">
+                <button>SUBSCRIBES</button>
+              </div>
             </div>
 
-            <!-- 플레이 리스트 부분 -->
-            <div class="content">
-                <content>
-                    <div class="play-list">
-                        <p>Search On '21</p>
-                        <div class="play-btn">
-                            <span class="material-symbols-outlined">play_arrow</span>
-                            <p>PLAY ALL</p>
-                        </div>
-                    </div>
+            <div class="channel-toolbar">
+              <div class="channel-toolbar-menu">
+                <ul>
+                  <li>HOME</li>
+                  <li>VIDEOS</li>
+                  <li>PLAYLISTS</li>
+                  <li>COMMUNITY</li>
+                  <li>CHANNELS</li>
+                  <li>ABOUT</li>
+                </ul>
+              </div>
+              <div class="channel-toolbar-search">
+                <span class="material-symbols-outlined">search</span>
+                <input />
+                <button class="leftArrow">></button>
+              </div>
+            </div>
+          </div>
 
-                    <div class="video-card">
-                        <div class="xsamll-video">
-                            <div class="thumnail-images">
+          <!-- 메인 플레이 부분 -->
+          <div class="small-video">
+            <div class="player">
+              <!-- <img> -->
+              <video
+                src="https://storage.googleapis.com/oreumi.appspot.com/video_20.mp4"
+                controls
+              ></video>
+              <!-- <div class="shadows">
+    
+                        </div>
+                        <div class="bottom-controls">
+                            <div class="timeline">
+    
+                            </div>
+                            <div>
                                 <img>
-                                <span>12:23</span>
+                                <img>
+                                <img>
+                                <img>
                             </div>
-                            <div class="video-desc">
-                                <video src="https://storage.googleapis.com/oreumi.appspot.com/video_19.mp4"
-                                    controls></video>
-                                <p>title</p>
-                                <div class="video-desc-views">
-                                    <p class="channel-name">James Gouse</p>
-                                    <p class="channel-views">1M view. 3 years ago</p>
-                                </div>
+                            <div>
+                                <img>
+                                <img>
+                                <img>
+                                <img>
+                                <img>
                             </div>
-                        </div>
-                    </div>
-                </content>
+                        </div> -->
             </div>
-        </section>
-    </div>
-</body>
-<script src="../channel.js"></script>
+            <div class="small-video-desc">
+              <div class="video-title">
+                <p class="title">Title Title Title</p>
+                <p class="time">576,969 views . 3 weeks ago</p>
+              </div>
+              <div class="descriptions">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Assumenda sit dignissimos, consequuntur natus cumque
+                  voluptates. Eveniet architecto magni, magnam neque modi
+                  molestias! Reprehenderit explicabo est debitis? Iste neque a
+                  consectetur?
+                </p>
+              </div>
+            </div>
+          </div>
 
+          <!-- 플레이 리스트 부분 -->
+          <div class="content">
+            <content>
+              <div class="play-list">
+                <p>Search On '21</p>
+                <div class="play-btn">
+                  <!-- <span class="material-symbols-outlined">play_arrow</span> -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path d="M6 4L18 12L6 20V4Z" fill="#AAAAAA" />
+                  </svg>
+                  <p>PLAY ALL</p>
+                </div>
+              </div>
+
+              <div class="video-card">
+                <div class="xsamll-video">
+                  <div class="thumnail-images">
+                    <img />
+                    <span>12:23</span>
+                  </div>
+                  <div class="video-desc">
+                    <video
+                      src="https://storage.googleapis.com/oreumi.appspot.com/video_19.mp4"
+                      controls
+                    ></video>
+                    <p>title</p>
+                    <div class="video-desc-views">
+                      <p class="channel-name">James Gouse</p>
+                      <p class="channel-views">1M view. 3 years ago</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="xsamll-video">
+                  <div class="thumnail-images">
+                    <img />
+                    <span>12:23</span>
+                  </div>
+                  <div class="video-desc">
+                    <video
+                      src="https://storage.googleapis.com/oreumi.appspot.com/video_19.mp4"
+                      controls
+                    ></video>
+                    <p>title</p>
+                    <div class="video-desc-views">
+                      <p class="channel-name">James Gouse</p>
+                      <p class="channel-views">1M view. 3 years ago</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="xsamll-video">
+                  <div class="thumnail-images">
+                    <img />
+                    <span>12:23</span>
+                  </div>
+                  <div class="video-desc">
+                    <video
+                      src="https://storage.googleapis.com/oreumi.appspot.com/video_19.mp4"
+                      controls
+                    ></video>
+                    <p>title</p>
+                    <div class="video-desc-views">
+                      <p class="channel-name">James Gouse</p>
+                      <p class="channel-views">1M view. 3 years ago</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="xsamll-video">
+                  <div class="thumnail-images">
+                    <img />
+                    <span>12:23</span>
+                  </div>
+                  <div class="video-desc">
+                    <video
+                      src="https://storage.googleapis.com/oreumi.appspot.com/video_19.mp4"
+                      controls
+                    ></video>
+                    <p>title</p>
+                    <div class="video-desc-views">
+                      <p class="channel-name">James Gouse</p>
+                      <p class="channel-views">1M view. 3 years ago</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="xsamll-video">
+                  <div class="thumnail-images">
+                    <img />
+                    <span>12:23</span>
+                  </div>
+                  <div class="video-desc">
+                    <video
+                      src="https://storage.googleapis.com/oreumi.appspot.com/video_19.mp4"
+                      controls
+                    ></video>
+                    <p>title</p>
+                    <div class="video-desc-views">
+                      <p class="channel-name">James Gouse</p>
+                      <p class="channel-views">1M view. 3 years ago</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </content>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+  <script src="../channel.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      displayChannelInfo().catch((err) => {
+        console.error("API 호출에 실패하였습니다.: ", err);
+      });
+    });
+  </script>
 </html>
