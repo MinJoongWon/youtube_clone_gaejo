@@ -22,32 +22,31 @@
               <span class="material-symbols-outlined">menu</span>
           </div>
           <div class="yt-button-logo">
-              <img src="../images/youtube_logo.png">
+            <a href="./home.html">
+              <img src="../images/youtube_logo.png" alt="youtube logo" title="Youtube">
+          </a>
           </div>
       </div>
       <div class="nav-searchBoxArea">
           <div class="searchBox">
               <input class="searchBox-input" placeholder="Search">
               <div class="searchBox-icon">
-                  <span class="searchBox-Button material-symbols-outlined">search</span>
+                  <span class="searchBox-Button material-symbols-outlined"title="검색">search</span>
               </div>
           </div>
           <div class="mic">
-              <span class="searchBox-Button  material-symbols-outlined">mic</span>
+              <span class="searchBox-Button  material-symbols-outlined" title="음성으로 검색">mic</span>
           </div>
       </div>
       <div class="nav-profile">
-          <span class="nav-profile-create material-symbols-outlined">video_call</span>
+          <span class="nav-profile-create material-symbols-outlined" title="만들기">video_call</span>
           <span class="nav-profile-apps material-symbols-outlined">apps</span>
-          <span class="nav-profile-notifications material-symbols-outlined">notifications</span>
+          <span class="nav-profile-notifications material-symbols-outlined" title="알림">notifications</span>
           <div class="nav-profile-pic">
-              <img class="user-avatar" src="../images/oreumi_logo.jpg">
+              <img class="user-avatar" src="../images/oreumi_logo.jpg" alt="user avatar" title="avatar">
           </div>
       </div>
     </nav>
-
-    <!-- header -->
-    <!-- header -->
 
     <div class="video-body">
       <!-- section -->
@@ -238,14 +237,15 @@
       </div>
       <!-- aside -->
     </div>
-  </body>
-  <script src="../home.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      displayVideoItem().catch((err) => {
-        console.error("API 호출에 실패하였습니다.: ", err);
-      });
-      getVideoPlayerData();
+</body>
+<script src="../home.js"></script>
+<script src="../video.js"></script> 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    displayVideoItem().catch((err) => {
+      console.error("API 호출에 실패하였습니다.: ", err);
     });
-  </script>
+    getVideoPlayerData();
+  });
+</script>
 </html>
