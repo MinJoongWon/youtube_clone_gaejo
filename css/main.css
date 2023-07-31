@@ -19,3 +19,7 @@ a {
 .user-avatar {
   border-radius: 24px;
 }
+
+input {
+    color:#aaaaaa;
+}

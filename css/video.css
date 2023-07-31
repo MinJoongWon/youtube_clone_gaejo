@@ -6,10 +6,11 @@
   flex-wrap: wrap;
   background-color: #181818;
 }
-/* video.css 새로 추가*/
+
 .video-body {
-  margin-top: 56px;
+    margin-top: 56px;
 }
+
 /* section - primary */
 .primary {
   background-color: #181818;

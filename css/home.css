@@ -4,13 +4,15 @@
 }
 
 .section {
-  display: flex;
-  width: 100%;
-  float: right;
-  padding: 0;
-  gap: 40px 16px;
+    display: flex;
+    width: 100%;
+    float: right;
+    padding: 0;
+    gap: 40px 16px;
+    background-color: black;
 
-  background-color: black;
+    margin-top: 112px;
+    margin-left: 240px;
 }
 
 .thumbnail-box {
@@ -27,9 +29,7 @@
   padding: 0 0 18px 0;
 }
 
-.thumbnail-item {
-  width: 200px;
-}
+.thumbnail-item {}
 
 .thumbnail-item-image > img {
   width: 276px;
@@ -89,19 +89,19 @@ section {
 }
 
 .top-menu {
-  display: flex;
-  position: relative;
-  width: 100%;
-  border-top: 1px solid #aaaaaaa9;
-  border-bottom: 1px solid #aaaaaaa9;
-  background-color: #212121;
-  overflow: hidden;
-  height: 56px;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1;
+    display: flex;
+    position: relative;
+    width: 100%;
+    border-top: 1px solid #aaaaaaa9;
+    border-bottom: 1px solid #aaaaaaa9;
+    background-color: #212121;
+    overflow: hidden;
+
+    position: fixed;
+    top: 56px;
+    right: 0;
+    left: 240px;
+    z-index: 1;
 }
 
 .top-menu-item > ul > li:first-child {
