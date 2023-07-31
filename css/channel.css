@@ -124,11 +124,23 @@
   line-height: normal;
   text-transform: uppercase;
 }
+
 .channel-toolbar-menu li {
   display: flex;
   padding: 16px 32px 15px 32px;
   align-items: flex-start;
   gap: 10px;
+  
+}
+
+.channel-toolbar-menu li:hover {
+  color: white;
+  
+}
+
+.channel-toolbar-menu li:first-child {
+  color: white;
+  border-bottom: solid 2px #aaaaaa;
 }
 
 .channel-toolbar-search {
@@ -147,7 +159,7 @@
   padding-left: 0px;
   align-items: flex-start;
   gap: 202px;
-
+  outline: none;
   border: none;
   appearance: none;
   -webkit-appearance: none;
@@ -242,9 +254,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  border-top: 1px solid #aaaaaa;
+  border-top: 1px solid #303030;
   width: 100%;
-
   display: flex;
   padding-top: 8px;
   align-items: flex-start;

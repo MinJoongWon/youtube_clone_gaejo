@@ -52,9 +52,9 @@ img {
   padding: 18px 14px 18px 16px;
 }
 
-.yt-button-logo > img {
-  width: 90px;
-  height: 20px;
+.yt-button-logo img {
+    width: 90px;
+    height: 20px;
 }
 
 /* end nav-yt-button */
@@ -70,12 +70,13 @@ img {
   border: 1px solid #303030;
 }
 
-.nav-searchBoxArea > .searchBox > input {
-  background-color: #121212;
-  width: 362px;
-  border: 0;
-  color: #aaaaaa;
-  text-indent: 6px;
+.nav-searchBoxArea > .searchBox > input{
+    background-color: #121212;
+    width:362px;
+    border:0;
+    color:#aaaaaa;
+    text-indent: 6px;
+    outline: none;
 }
 
 .nav-searchBoxArea > input::placeholder {
