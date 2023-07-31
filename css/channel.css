@@ -1,8 +1,10 @@
 .channel-body {
   display: flex;
+  margin-top: 56px;
+  margin-left: 240px;
 }
 
-.channel-section, 
+.channel-section,
 .channel {
   width: 100%;
   overflow: hidden;
@@ -74,7 +76,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-} 
+}
 
 .channel-subscribes-btn > button {
   display: flex;
@@ -82,10 +84,10 @@
   align-items: flex-start;
   gap: 10px;
   border-radius: 2px;
-  background: #C00;
+  background: #c00;
   border: none;
 
-  color: var(--white-color, #FFF);
+  color: var(--white-color, #fff);
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
@@ -136,7 +138,7 @@
   display: flex;
   padding: 12px 8px;
   align-items: flex-start;
-  color: #AAAAAA;
+  color: #aaaaaa;
 }
 
 .channel-toolbar-search > input {
@@ -159,7 +161,7 @@
   border: none;
   background-color: #181818;
   cursor: pointer;
-  color: #AAAAAA;
+  color: #aaaaaa;
 }
 
 /* channel-section */
@@ -177,7 +179,9 @@
   padding-bottom: 0px;
 }
 
-.video-title, .title, .time {
+.video-title,
+.title,
+.time {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -185,7 +189,7 @@
 }
 
 .time {
-  color: var(--gray-color, #AAA);
+  color: var(--gray-color, #aaa);
   font-family: Roboto;
   font-size: 13px;
   font-style: normal;
@@ -204,9 +208,9 @@
 }
 
 .descriptions {
-  color: var(--white-color, #FFF);
+  color: var(--white-color, #fff);
   font-variant-numeric: stacked-fractions;
-  font-feature-settings: 'hlig' on, 'dlig' on;
+  font-feature-settings: "hlig" on, "dlig" on;
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
@@ -231,13 +235,13 @@
 }
 
 .play-list {
-  color: var(--white-color, #FFF);
+  color: var(--white-color, #fff);
   font-family: Roboto;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  border-top: 1px solid #AAAAAA;
+  border-top: 1px solid #aaaaaa;
   width: 100%;
 
   display: flex;
@@ -265,7 +269,7 @@
 }
 
 .play-btn > * {
-  color: var(--gray-color, #AAA);
+  color: var(--gray-color, #aaa);
   font-family: Roboto;
   font-size: 16px;
   font-style: normal;
@@ -275,7 +279,7 @@
 }
 
 .video-desc > p {
-  color: var(--white-color, #FFF);
+  color: var(--white-color, #fff);
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
@@ -289,7 +293,7 @@
 }
 
 .video-desc-views {
-  color: var(--gray-color, #AAA);
+  color: var(--gray-color, #aaa);
   font-family: Roboto;
   font-size: 12px;
   font-style: normal;

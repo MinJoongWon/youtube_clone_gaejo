@@ -1,18 +1,28 @@
 @import url("http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700");
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .sidebar {
   display: flex;
   width: 240px;
   float: left;
   background-color: #212121;
-  padding-right: 16px;
+  padding: 12px 0;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   color: var(--white-color, #fff);
+
+  overflow: scroll;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  bottom: 0;
 }
 
-.sidebar-top, 
+.sidebar-top,
 .sidebar-top2,
 .sidebar-subscriptions,
 .sidebar-more-from,
@@ -37,7 +47,7 @@ li {
 .sidebar-top > ul > li > span,
 .sidebar-top2 > ul > li > span,
 .sidebar-subscriptions > ul > li > span,
-.sidebar-more-from > ul > li > span, 
+.sidebar-more-from > ul > li > span,
 .sidebar-bottom > ul > li > span {
   align-self: center;
 }
@@ -45,7 +55,7 @@ li {
 .sidebar-top > ul > li,
 .sidebar-top2 > ul > li,
 .sidebar-subscriptions > ul > li,
-.sidebar-more-from > ul > li, 
+.sidebar-more-from > ul > li,
 .sidebar-bottom > ul > li {
   display: flex;
   gap: 24px;
@@ -62,7 +72,7 @@ li {
 .sidebar-top > ul > li:hover,
 .sidebar-top2 > ul > li:hover,
 .sidebar-subscriptions > ul > li:hover,
-.sidebar-more-from > ul > li:hover, 
+.sidebar-more-from > ul > li:hover,
 .sidebar-bottom > ul > li:hover {
   background-color: #303030;
   cursor: pointer;
@@ -72,13 +82,13 @@ li {
   padding-top: 12px;
 }
 
-.sidebar-subscriptions > ul > :first-child, 
+.sidebar-subscriptions > ul > :first-child,
 .sidebar-more-from > ul > :first-child {
   font-weight: 700;
   cursor: default !important;
 }
 
-.sidebar-subscriptions > ul > :first-child:hover, 
+.sidebar-subscriptions > ul > :first-child:hover,
 .sidebar-more-from > ul > :first-child:hover {
   font-weight: 700;
   background-color: #212121;

@@ -1,14 +1,16 @@
 @import url("http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700");
 
-span, p, li {
-    font-family: 'Roboto';
+span,
+p,
+li {
+  font-family: "Roboto";
 }
 
 a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 .user-avatar {
-    border-radius: 24px;
+  border-radius: 24px;
 }
