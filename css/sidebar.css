@@ -14,7 +14,6 @@
   justify-content: flex-start;
   align-items: flex-start;
   color: var(--white-color, #fff);
-
   overflow: scroll;
   position: fixed;
   top: 56px;
