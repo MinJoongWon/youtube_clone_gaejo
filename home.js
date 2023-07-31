@@ -49,17 +49,17 @@ async function displayHomeItem() {
     let videoList = await getVideoList();
     let thumbnail = document.querySelector('.thumbnail-box');
     let info = '';
-    
+
     let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
     let videoInfoList = await Promise.all(videoInfoPromises);
 
-    
+
     for (let i = 0; i < videoList.length; i++) {
         let videoInfo = videoInfoList[i];
         let videoId = videoList[i].video_id;
-        
+
         let videoURL = `location.href='../html/video.html?id=${videoId}'`;
-        
+
         // 속도 느림 -> 개선 필요
         let channel = await channelData(videoList[i].video_channel);
         let channelImg = channel.channel_profile;
@@ -135,7 +135,7 @@ async function displayVideoItem() {
 
 // video.html 비디오 플레이어 데이터 추가
 async function getVideoPlayerData() {
-    const currentUrl = window.location.href; 
+    const currentUrl = window.location.href;
     let idx = currentUrl.indexOf('?');
 
     if (idx !== -1) {
@@ -146,7 +146,7 @@ async function getVideoPlayerData() {
         let views = document.querySelector('.video-views');
         let upload_date = document.querySelector('.time');
         let video_detail = document.querySelector('.video-description > p');
-        
+
         let data = videoData(id);
         let name = '';
         data.then((v) => {
@@ -154,11 +154,12 @@ async function getVideoPlayerData() {
             player.src = v.video_link;
             title.innerHTML = v.video_title;
             channelName.innerHTML = v.video_channel;
+            channelName.setAttribute("title", v.video_channel);
             views.innerHTML = v.views.toLocaleString();
             upload_date.innerHTML = v.upload_date;
             video_detail.innerHTML = v.video_detail;
-            
-            
+
+
             name = v.video_channel;
         });
 
@@ -167,6 +168,6 @@ async function getVideoPlayerData() {
         channel.then((c) => {
             subscribers.innerHTML = c.subscribers.toLocaleString();
         });
-        
+
     }
 }   
