@@ -4,6 +4,10 @@ span, p, li {
     font-family: 'Roboto';
 }
 
+input {
+    color:#aaaaaa;
+}
+
 a {
     text-decoration: none;
     color: white;
