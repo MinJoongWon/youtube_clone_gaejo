@@ -1,73 +1,76 @@
 @import url("http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700");
 
 * {
-    font-family: Roboto;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #181818;
+  font-family: Roboto;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #181818;
 }
-
+/* video.css 새로 추가*/
+.video-body {
+  margin-top: 56px;
+}
 /* section - primary */
 .primary {
-    background-color: #181818;
-    width: 664px;
-    padding: 24px 0px 0px 24px;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
+  background-color: #181818;
+  width: 664px;
+  padding: 24px 0px 0px 24px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 section {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .youtube-player video {
-    width: 640px;
-    height: 360px;
-    flex-shrink: 0;
+  width: 640px;
+  height: 360px;
+  flex-shrink: 0;
 }
 
 .youtube-title {
-    color: white;
-    /*position: absolute;*/
-    font-size: 14px;
-    padding-top: 10px;
-    padding-left: 10px;
+  color: white;
+  /*position: absolute;*/
+  font-size: 14px;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 /* section - video-info */
 .video-info {
-    display: flex;
-    padding: 20px 0px 8px 0px;
-    flex-direction: row;
-    align-items: flex-start;
+  display: flex;
+  padding: 20px 0px 8px 0px;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .video-info .title {
-    color: white;
-    font-size: 18px;
+  color: white;
+  font-size: 18px;
 }
 
 .info {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 91px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 91px;
 }
 
 .info-text {
-    color: #aaaaaa;
-    display: flex;
-    padding: 12px 0px;
-    gap: 10px;
+  color: #aaaaaa;
+  display: flex;
+  padding: 12px 0px;
+  gap: 10px;
 }
 
 .info.top-level {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 /* top-level span tag */
@@ -76,9 +79,9 @@ section {
 .video-share span,
 .video-save span,
 .video-more span {
-    padding: 6px;
-    gap: 10px;
-    color: white;
+  padding: 6px;
+  gap: 10px;
+  color: white;
 }
 
 /* top-level p tag */
@@ -87,268 +90,271 @@ section {
 .video-share p,
 .video-save p,
 .video-more p {
-    padding: 10px 6px 10px 0px;
-    gap: 10px;
-    color: white;
+  padding: 10px 6px 10px 0px;
+  gap: 10px;
+  color: white;
 }
 
 /* end section - video-info */
 
-
 /* section - channel-title */
 .video-desc {
-    display: flex;
-    width: 640px;
-    flex-shrink: 0;
+  display: flex;
+  width: 640px;
+  flex-shrink: 0;
 }
 
 .channel-title {
-    display: flex;
-    width: 640px;
-    height: 51px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+  display: flex;
+  width: 640px;
+  height: 51px;
+  align-items: flex-start;
+  gap: 5px;
 }
 
 .profile-pic {
-    display: inline-flex;
-    padding: 0px 16px 3px 0px;
-    align-items: flex-start;
-    gap: 10px;
+  display: inline-flex;
+  padding: 0px 16px 3px 0px;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .user-avatar {
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
 }
 
 .profile-name {
-    display: flex;
-    padding: 11px 0px 10px 0px;
-    flex-direction: column;
-    align-items: flex-start;
-    color: white;
+  display: flex;
+  padding: 10px 0px 10px 0px;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
 }
 
 .profile-name .subscribers {
-    color: #aaaaaa !important;
+  color: #aaaaaa !important;
 }
 
 .subscribes-btn {
-    display: flex;
-    width: 124px;
-    padding: 7px 4px 8px 4px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    margin-left: auto;
+  display: flex;
+  width: 124px;
+  padding: 7px 4px 8px 4px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-left: auto;
 }
 
 .subscribes-btn button {
-    width: 116px;
-    height: 36px;
-    background-color: #cc0000;
-    border: none;
-    border-radius: 2px 0px 0px 2px;
-    color: white;
-    align-items: center;
-    justify-content: center;
+  width: 116px;
+  height: 36px;
+  background-color: #cc0000;
+  border: none;
+  border-radius: 2px 0px 0px 2px;
+  color: white;
+  align-items: center;
+  justify-content: center;
 }
 
 .video-description {
-    color: white;
-    display: flex;
-    padding: 12px 0px 0px 64px;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 14px;
-    /*padding-left: 78px; */
+  color: white;
+  display: flex;
+  padding: 12px 0px 0px 64px;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  /*padding-left: 78px; */
 }
 
 .show-more-btn button {
-    display: flex;
-    padding: 8px 0px 0px 64px;
-    align-items: flex-start;
-    gap: 10px;
-    border: none;
-    color: #aaaaaa;
+  display: flex;
+  padding: 8px 0px 0px 64px;
+  align-items: flex-start;
+  gap: 10px;
+  border: none;
+  color: #aaaaaa;
 }
 
 /* end section - channel-title */
 
 /* section - comment-area */
 .comment-area {
-    width: 640px;
-    height: 144px;
-    display: flex;
-    flex-direction: column;
+  width: 640px;
+  height: 144px;
+  display: flex;
+  flex-direction: column;
 }
 
 .short-By-area {
-    display: flex;
-    padding-top: 24px;
-    padding-bottom: 24px;
-    align-items: center;
-    color: white;
+  display: flex;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  align-items: center;
+  color: white;
 }
 
 .short-By-area span {
-    padding-right: 10px;
+  padding-right: 10px;
 }
 
 .comment-input-area {
-    width: 100%;
-    display: flex;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .comment-inputBos {
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #303030;
-    background-color: transparent;
-    outline: none;
-    padding-bottom: 5px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #303030;
+  background-color: transparent;
+  outline: none;
+  padding-bottom: 5px;
 }
 
 .comment-inputBos input::placeholder {
-    color: #aaaaaa;
+  color: #aaaaaa;
 }
 
 /* section - comment-area */
 
 /* comments */
 .comments {
-    display: flex;
-    align-content: flex-start;
+  display: flex;
+  align-content: flex-start;
 }
 
 .comment {
-    width: 640px;
-    padding-bottom: 16px;
-    color: white;
-    flex-direction: column;
+  width: 640px;
+  padding-bottom: 16px;
+  color: white;
+  flex-direction: column;
 }
 
 .comment-header {
-    padding-left: 15px;
-    flex-direction: column;
+  padding-left: 15px;
+  flex-direction: column;
+  padding-bottom: 30px;
 }
 
 .comment-name {
-    font-size: 13px;
-    font-weight: 700;
+  font-size: 13px;
+  font-weight: 700;
+  padding-bottom: 7px;
 }
 
 .published-date {
-    color: #aaaaaa;
-    font-size: 12px;
+  color: #aaaaaa;
+  font-size: 12px;
+  padding-bottom: 7px;
 }
 
 .comment-text {
-    font-size: 14px;
+  font-size: 14px;
+  padding-bottom: 15px;
 }
 
 .comment-toolbar {
-    color: #aaaaaa;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
+  color: #aaaaaa;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
 }
 
 .comment-toolbar .material-symbols-outlined {
-    font-size: 13px;
-    padding-right: 2px;
+  font-size: 13px;
+  padding-right: 2px;
 }
 
 .comment-toolbar span {
-    padding-right: 5px;
+  padding-right: 5px;
 }
 
 .comment-like {
-    padding-right: 5px;
+  padding-right: 5px;
 }
 
 .comment-dislike {
-    padding-right: 10px;
+  padding-right: 10px;
 }
 
 /* end comments */
 
 /* aside */
 .secondary {
-    width: 426px;
+  width: 426px;
 }
 
 aside {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* end aside */
 
 /* aside - top-menu */
 .top-menu ul {
-    color: white;
-    display: flex;
-    display: inline-flex;
-    padding: 12px 12px 12px 24px;
-    align-items: flex-start;
-    gap: 10px;
+  color: white;
+  display: flex;
+  display: inline-flex;
+  padding: 12px 12px 12px 24px;
+  align-items: flex-start;
+
+  gap: 10px;
 }
 
 .top-menu li {
-    flex-wrap: nowrap;
-    display: flex;
-    padding: 8px 12px;
-    align-items: flex-start;
-    gap: 10px;
-    color: #fff;
-    border-radius: 32px;
-    border: 0.3px solid var(--gray-color, #AAA);
-    background: var(--border-color, #303030);
-    font-size: 14px;
+  flex-wrap: nowrap;
+  display: flex;
+  padding: 8px 12px;
+  align-items: flex-start;
+  gap: 10px;
+  color: #fff;
+  border-radius: 32px;
+  border: 0.3px solid var(--gray-color, #aaa);
+  background: var(--border-color, #303030);
+  font-size: 14px;
 }
 
 .top-menu li:hover {
-    background-color: white;
-    color: #030303;
+  background-color: white;
+  color: #030303;
 }
 
 /* end aside - top-menu */
 
 /* aside - thumbnail */
 .secondary-thumbnail img {
-    width: 168px;
-    height: 94px;
+  width: 168px;
+  height: 94px;
 }
 
 .videos {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
 }
 
 .video-item {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .video-text {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .video-text p {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .channel-desc {
-    font-size: 12px;
-    color: #aaaaaa !important;
-    flex-direction: column;
+  font-size: 12px;
+  color: #aaaaaa !important;
+  flex-direction: column;
 }

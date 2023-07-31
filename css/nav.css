@@ -1,57 +1,55 @@
-*{
-    margin:0;
+* {
+  margin: 0;
 }
 
-.nav{
-    width:100%;
-    height: 56px;
-    background-color: #212121;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+.nav {
+  width: 100%;
+  height: 56px;
+  background-color: #212121;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 
-    /* 내맘같지 않은 코드 */
-    /* position: fixed;
-    z-index: 1; */
+  flex-direction: row;
 }
 
-.nav span, img {
-    cursor: pointer;
+.nav span,
+img {
+  cursor: pointer;
 }
 
-.nav-yt-button{
-    display:flex;
-    align-items: center;
-    padding-left: 10px;
+.nav-yt-button {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
 }
 
 .nav-profile {
-    display: flex;
-    justify-content: flex-end;
-    
-    align-items: center;
+  display: flex;
+  justify-content: flex-end;
+
+  align-items: center;
 }
 
 .nav-searchBoxArea {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* nav-yt-button */
 
 .nav-yt-button .yt-button-icon {
-    color: white;
+  color: white;
 }
 
 .yt-button-icon {
-    padding: 8px;
-    height: 100%;
+  padding: 8px;
+  height: 100%;
 }
 
 .yt-button-logo {
-    padding: 18px 14px 18px 16px;
+  padding: 18px 14px 18px 16px;
 }
 
 .yt-button-logo img {
@@ -63,13 +61,13 @@
 
 /* searchBoxArea */
 .nav-searchBoxArea {
-    gap: 4px;
+  gap: 4px;
 }
 
 .searchBox {
-    display: flex;
-    border-radius: 2px;
-    border: 1px solid #303030;
+  display: flex;
+  border-radius: 2px;
+  border: 1px solid #303030;
 }
 
 .nav-searchBoxArea > .searchBox > input{
@@ -82,38 +80,38 @@
 }
 
 .nav-searchBoxArea > input::placeholder {
-    color:#aaaaaa;
-    padding: 6px 2px;
+  color: #aaaaaa;
+  padding: 6px 2px;
 }
 
 .searchBox-icon > span {
-    width:50px;
-    height:40px;
-    background-color: #303030;
-    color:white;
-    text-align: center;
-    line-height: 40px;
-    border: 1px solid var(--border-color, #303030);
+  width: 50px;
+  height: 40px;
+  background-color: #303030;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  border: 1px solid var(--border-color, #303030);
 }
 
 .mic {
-    display: flex;
-    padding: 8px;
-    align-items: flex-start;
-    gap: 10px;
-    border-radius: 40px;
-    background: var(--black, #000);
-    color:white;
+  display: flex;
+  padding: 8px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 40px;
+  background: var(--black, #000);
+  color: white;
 }
 
 /* end searchBoxArea */
 
 /* nav-profile */
 .nav-profile {
-    color: white;
-    height: 40px;
-    gap: 8px;
-    padding: 8px;
+  color: white;
+  height: 40px;
+  gap: 8px;
+  padding: 8px;
 }
 
 .nav-profile-create,
@@ -123,11 +121,11 @@
 }
 
 .nav-profile-pic {
-    display: flex;
-    padding: 4px 14px;
-    justify-content: center;
+  display: flex;
+  padding: 4px 14px;
+  justify-content: center;
 }
 .nav-profile-pic > img {
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
 }
