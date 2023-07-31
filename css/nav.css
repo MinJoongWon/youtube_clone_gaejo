@@ -54,7 +54,7 @@
     padding: 18px 14px 18px 16px;
 }
 
-.yt-button-logo > img {
+.yt-button-logo img {
     width: 90px;
     height: 20px;
 }
@@ -78,6 +78,7 @@
     border:0;
     color:#aaaaaa;
     text-indent: 6px;
+    outline: none;
 }
 
 .nav-searchBoxArea > input::placeholder {
