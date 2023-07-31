@@ -102,6 +102,15 @@ li {
   padding: 16px 24px 0px 24px;
 }
 
+.sidebar-footer span {
+  color: var(--gray-color, #AAA);
+  font-family: Roboto;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
 .sidebar-footer > p:nth-child(1) {
   padding: 12px 24px 0px 24px;
 }
