@@ -22,6 +22,7 @@ body {
   width: 664px;
   padding: 24px 0px 0px 24px;
   display: flex;
+  justify-content: flex-end;
 }
 
 section {
@@ -99,6 +100,15 @@ section {
     padding: 2px 0px;
 }
 
+.video-like:hover,
+.video-dislike:hover,
+.video-share:hover,
+.video-save:hover,
+.video-more:hover {
+    border-radius: 25px;
+    background-color: #303030;
+}
+
 /* top-level span tag */
 .video-like span, 
 .video-dislike span,
@@ -128,6 +138,11 @@ section {
   line-height: normal;
   text-transform: uppercase;
   display: inline;
+}
+
+.top-level span:hover, 
+.top-level p:hover {
+    cursor: pointer;
 }
 
 /* end section - video-info */
@@ -178,6 +193,10 @@ section {
   color: white;
 }
 
+.profile-name > p:hover {
+  cursor: pointer;
+}
+
 .profile-name .subscribers {
   color: #aaaaaa !important;
 }
@@ -208,6 +227,7 @@ section {
 
 .subscribes-btn button:hover {
     cursor: pointer;
+    opacity: 0.85;
 }
 
 .video-description {
@@ -315,12 +335,16 @@ section {
 }
 
 .comment-top {
-    padding-bottom: 2px;
+  padding-bottom: 2px;
 }
 .comment-name {
   font-size: 13px;
   font-weight: 700;
   padding-bottom: 7px;
+}
+
+.comment-name:hover {
+  cursor: pointer;
 }
 
 .published-date {
@@ -351,6 +375,14 @@ section {
   padding: 8px;
 }
 
+.comment-like > span:first-child:hover, 
+.comment-dislike > span:first-child:hover,
+.reply:hover {
+  cursor: pointer;
+  border-radius: 40px;
+  background-color: #303030;
+}
+
 .comment-like > span:last-child,
 .comment-dislike > span:last-child {
   padding: 7px 8px 7px 0px;
@@ -358,9 +390,11 @@ section {
 
 .reply {
   padding: 8px 16px;
-  align-items: flex-start;
 }
 
+.reply > span {
+    vertical-align: middle;
+}
 
 /* end comments */
 
@@ -381,7 +415,7 @@ aside {
 
 /* aside - top-menu */
 .top-menu {
-    padding: 1px 12px 2px 0px;
+  padding: 1px 12px 2px 0px;
 }
 
 .top-menu > ul {
