@@ -22,19 +22,18 @@ body {
   width: 664px;
   padding: 24px 0px 0px 24px;
   display: flex;
-  justify-content: flex-start;
 }
 
 section {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  width: 640px;
 }
 
-.youtube-player video {
+.youtube-player > video {
   width: 640px;
   height: 360px;
-  flex-shrink: 0;
 }
 
 .youtube-title {
@@ -136,8 +135,6 @@ section {
 /* section - channel-title */
 .video-desc {
   display: flex;
-  width: 640px;
-  flex-shrink: 0;
 
   border-top: 1px solid #303030;
   border-bottom: 1px solid #303030;
@@ -148,7 +145,6 @@ section {
 
 .channel-title {
   display: flex;
-  width: 640px;
   height: 51px;
   align-items: flex-start;
   padding-top: 16px;
@@ -163,7 +159,7 @@ section {
 
 .profile-pic {
   display: inline-flex;
-  padding: 0px 16px 3px 0px;
+  padding-right: 16px;
   align-items: flex-start;
   gap: 10px;
 }
@@ -258,16 +254,14 @@ section {
 
 /* section - comment-area */
 .comment-area {
-  width: 640px;
-  height: 144px;
   display: flex;
   flex-direction: column;
+  padding: 24px 0px 32px 0px;
+  gap: 24px;
 }
 
 .short-By-area {
   display: flex;
-  padding-top: 24px;
-  padding-bottom: 24px;
   align-items: center;
   color: white;
 }
@@ -282,16 +276,22 @@ section {
   align-items: center;
 }
 
-.comment-inputBos {
+.comment-inputBox {
+    width: 100%;
+    border-bottom: 1px solid #303030;
+    padding: 7px 0px 8px 0px;
+    gap: 4px;
+}
+
+.comment-inputBox input {
   width: 100%;
   border: none;
-  border-bottom: 1px solid #303030;
   background-color: transparent;
   outline: none;
   padding-bottom: 5px;
 }
 
-.comment-inputBos input::placeholder {
+.comment-inputBox input::placeholder {
   color: #aaaaaa;
 }
 
@@ -304,18 +304,19 @@ section {
 }
 
 .comment {
-  width: 640px;
+  display: flex;  
   padding-bottom: 16px;
   color: white;
-  flex-direction: column;
+  width: 100%;
 }
 
 .comment-header {
-  padding-left: 15px;
   flex-direction: column;
-  padding-bottom: 30px;
 }
 
+.comment-top {
+    padding-bottom: 2px;
+}
 .comment-name {
   font-size: 13px;
   font-weight: 700;
@@ -331,31 +332,35 @@ section {
 .comment-text {
   font-size: 14px;
   padding-bottom: 15px;
+  padding: 2px 0px;
 }
 
 .comment-toolbar {
   color: #aaaaaa;
-  font-size: 12px;
   display: flex;
   align-items: center;
-}
-
-.comment-toolbar .material-symbols-outlined {
-  font-size: 13px;
-  padding-right: 2px;
+  padding-top: 4px;
 }
 
 .comment-toolbar span {
-  padding-right: 5px;
+  font-size: 12px;
 }
 
-.comment-like {
-  padding-right: 5px;
+.comment-like > span:first-child, 
+.comment-dislike > span:first-child {
+  padding: 8px;
 }
 
-.comment-dislike {
-  padding-right: 10px;
+.comment-like > span:last-child,
+.comment-dislike > span:last-child {
+  padding: 7px 8px 7px 0px;
 }
+
+.reply {
+  padding: 8px 16px;
+  align-items: flex-start;
+}
+
 
 /* end comments */
 
