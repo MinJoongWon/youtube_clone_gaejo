@@ -21,7 +21,13 @@
   bottom: 0;
 }
 
-.sidebar-top,
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid #303030;
+}
+
 .sidebar-top2,
 .sidebar-subscriptions,
 .sidebar-more-from,

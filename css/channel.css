@@ -1,35 +1,50 @@
-.channel-body {
+.channel-section {
   display: flex;
+  flex-direction: column;
   margin-top: 56px;
   margin-left: 240px;
 }
 
-.channel-section,
-.channel {
-  width: 100%;
+section {
   overflow: hidden;
 }
 
-.channel-cover {
-  width: 100vh;
-  height: 192px;
+.channel {
   display: flex;
+  height: 340px;
+  flex-direction: column;
+}
+
+.channel-cover {
+  min-width: fit-content;
+  width: 100%;
+  min-height: 192px;
+  display: flex;
+  background-repeat: repeat-x;
+}
+
+.channel-cover>img {
+  background-repeat: repeat-x;
+  width: 100%;
+  min-width: fit-content;
 }
 
 .channel-title {
   display: flex;
   padding: 16px 65px 4px 65px;
   align-items: flex-start;
-  width: 100%;
-
   gap: 699px;
   background-color: #181818;
 }
+
 .channel-profile {
   display: flex;
-  flex-direction: row;
+  padding-right: 0px;
+  align-items: flex-start;
+  gap: 10px;
   color: var(--white-color, #fff);
 }
+
 .profile-pic {
   display: flex;
   width: 80px;
@@ -38,19 +53,20 @@
   padding-right: 24px;
 }
 
-.profile-pic > img {
+.profile-pic>img {
   border-radius: 80px;
   opacity: 0.6499999761581421;
 }
 
 .channel-profile-desc {
   display: flex;
+  width: 143px;
   padding: 18px 0px;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.channel-profile ul > li {
+.channel-profile ul>li {
   line-height: normal;
 }
 
@@ -61,6 +77,7 @@
   line-height: normal;
   display: flex;
 }
+
 .channel-subscribes {
   color: var(--gray-color, #aaa);
   font-size: 14px;
@@ -72,13 +89,14 @@
 
 .channel-subscribes-btn {
   display: flex;
+  width: 124px;
   padding: 22px 4px;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
 }
 
-.channel-subscribes-btn > button {
+.channel-subscribes-btn>button {
   display: flex;
   padding: 10px 16px;
   align-items: flex-start;
@@ -97,16 +115,18 @@
   text-transform: uppercase;
 }
 
-.channel-subscribes-btn > button:hover {
+.channel-subscribes-btn>button:hover {
   cursor: pointer;
+  opacity: 0.85;
 }
 
 /*toolbar*/
 .channel-toolbar {
   display: flex;
   flex-direction: row;
+  padding: 0px 65px;
+
   gap: 24px;
-  padding: 16px 32px 15px 32px;
   background-color: #181818;
   height: 48px;
   /* width: 100%; */
@@ -130,12 +150,12 @@
   padding: 16px 32px 15px 32px;
   align-items: flex-start;
   gap: 10px;
-  
+
 }
 
 .channel-toolbar-menu li:hover {
   color: white;
-  
+
 }
 
 .channel-toolbar-menu li:first-child {
@@ -147,14 +167,14 @@
   display: flex;
 }
 
-.channel-toolbar-search > span {
+.channel-toolbar-search>span {
   display: flex;
   padding: 12px 8px;
   align-items: flex-start;
   color: #aaaaaa;
 }
 
-.channel-toolbar-search > input {
+.channel-toolbar-search>input {
   display: flex;
   padding-left: 0px;
   align-items: flex-start;
@@ -184,8 +204,10 @@
 
 .small-video {
   display: inline-flex;
-  padding: 24px 287px 24px 65px;
   align-items: flex-start;
+  width: 848px;
+  height: 238px;
+  padding: 24px 287px 24px 65px;
 }
 
 .small-video-desc {
@@ -236,14 +258,15 @@
   padding-right: 24px;
   flex-direction: column;
   align-items: flex-start;
+  gap: 10px;
 }
 
-.player > video {
+.player>video {
   width: 424px;
   height: 238px;
 }
 
-.video-desc > video {
+.video-desc>video {
   width: 214px;
 }
 
@@ -261,7 +284,7 @@
   align-items: flex-start;
 }
 
-.play-list > p {
+.play-list>p {
   padding: 9px 8px 8px 0px;
   align-items: flex-start;
   gap: 10px;
@@ -273,14 +296,14 @@
   align-items: flex-start;
 }
 
-.play-btn > p {
+.play-btn>p {
   display: flex;
   padding: 3px 0px 2px 8px;
   align-items: flex-start;
   gap: 10px;
 }
 
-.play-btn > * {
+.play-btn>* {
   color: var(--gray-color, #aaa);
   font-family: Roboto;
   font-size: 16px;
@@ -290,7 +313,7 @@
   text-transform: uppercase;
 }
 
-.video-desc > p {
+.video-desc>p {
   color: var(--white-color, #fff);
   font-family: Roboto;
   font-size: 14px;
@@ -323,6 +346,10 @@
 
 .video-card {
   display: flex;
+  /*아래코드 살릴시 옆으로 퍼진것들 홈화면처럼
+  반응형으로 정렬*/
+  /* flex-wrap: wrap;
+  flex: 1 1 40%; */
   padding: 24px 0px;
   align-items: flex-start;
 }

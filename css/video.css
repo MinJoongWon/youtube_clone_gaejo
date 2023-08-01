@@ -2,13 +2,18 @@
 
 * {
   font-family: Roboto;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #181818;
+}
+
+body {
+    background: #181818;
 }
 
 .video-body {
     margin-top: 56px;
+    display: flex;
+    justify-content: center;
+    background-color: #181818;
+    gap: 24px;
 }
 
 /* section - primary */
@@ -17,25 +22,23 @@
   width: 664px;
   padding: 24px 0px 0px 24px;
   display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
+  justify-content: flex-end;
 }
 
 section {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  width: 640px;
 }
 
-.youtube-player video {
+.youtube-player > video {
   width: 640px;
   height: 360px;
-  flex-shrink: 0;
 }
 
 .youtube-title {
   color: white;
-  /*position: absolute;*/
   font-size: 14px;
   padding-top: 10px;
   padding-left: 10px;
@@ -47,11 +50,13 @@ section {
   padding: 20px 0px 8px 0px;
   flex-direction: row;
   align-items: flex-start;
+  flex-direction: column;
 }
 
 .video-info .title {
   color: white;
   font-size: 18px;
+  padding: 3px 0px 2px 0px;
 }
 
 .info {
@@ -68,21 +73,53 @@ section {
   gap: 10px;
 }
 
+.info-text span {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
 .info.top-level {
   display: flex;
   align-items: flex-start;
   gap: 8px;
 }
 
+.top-level {
+    display: flex;
+    gap: 8px;
+}
+
+.video-like,
+.video-dislike,
+.video-share,
+.video-save,
+.video-more {
+    display: flex;
+    padding: 2px 0px;
+}
+
+.video-like:hover,
+.video-dislike:hover,
+.video-share:hover,
+.video-save:hover,
+.video-more:hover {
+    border-radius: 25px;
+    background-color: #303030;
+}
+
 /* top-level span tag */
-.video-like span,
+.video-like span, 
 .video-dislike span,
 .video-share span,
 .video-save span,
 .video-more span {
   padding: 6px;
-  gap: 10px;
   color: white;
+
+  width: 24px;
+  height: 24px;
 }
 
 /* top-level p tag */
@@ -94,6 +131,18 @@ section {
   padding: 10px 6px 10px 0px;
   gap: 10px;
   color: white;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  display: inline;
+}
+
+.top-level span:hover, 
+.top-level p:hover {
+    cursor: pointer;
 }
 
 /* end section - video-info */
@@ -101,21 +150,31 @@ section {
 /* section - channel-title */
 .video-desc {
   display: flex;
-  width: 640px;
-  flex-shrink: 0;
+
+  border-top: 1px solid #303030;
+  border-bottom: 1px solid #303030;
+  flex-direction: column;
+
+  padding-bottom: 16px;
 }
 
 .channel-title {
   display: flex;
-  width: 640px;
   height: 51px;
   align-items: flex-start;
-  gap: 5px;
+  padding-top: 16px;
+}
+
+.channel-title p {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .profile-pic {
   display: inline-flex;
-  padding: 0px 16px 3px 0px;
+  padding-right: 16px;
   align-items: flex-start;
   gap: 10px;
 }
@@ -128,10 +187,14 @@ section {
 
 .profile-name {
   display: flex;
-  padding: 10px 0px 10px 0px;
+  padding: 11px 0px 10px 0px;
   flex-direction: column;
   align-items: flex-start;
   color: white;
+}
+
+.profile-name > p:hover {
+  cursor: pointer;
 }
 
 .profile-name .subscribers {
@@ -153,10 +216,18 @@ section {
   height: 36px;
   background-color: #cc0000;
   border: none;
-  border-radius: 2px 0px 0px 2px;
+  border-radius: 2px;
   color: white;
-  align-items: center;
-  justify-content: center;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.subscribes-btn button:hover {
+    cursor: pointer;
+    opacity: 0.85;
 }
 
 .video-description {
@@ -166,32 +237,51 @@ section {
   align-items: flex-start;
   gap: 10px;
   font-size: 14px;
-  /*padding-left: 78px; */
+}
+
+.video-description > p {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.show-more-btn {
+    padding: 8px 0px 0px 64px;
 }
 
 .show-more-btn button {
   display: flex;
-  padding: 8px 0px 0px 64px;
   align-items: flex-start;
   gap: 10px;
   border: none;
   color: #aaaaaa;
+
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  background-color: transparent;
+  padding: 0;
+}
+
+.show-more-btn button:hover {
+    cursor: pointer;
 }
 
 /* end section - channel-title */
 
 /* section - comment-area */
 .comment-area {
-  width: 640px;
-  height: 144px;
   display: flex;
   flex-direction: column;
+  padding: 24px 0px 32px 0px;
+  gap: 24px;
 }
 
 .short-By-area {
   display: flex;
-  padding-top: 24px;
-  padding-bottom: 24px;
   align-items: center;
   color: white;
 }
@@ -206,16 +296,22 @@ section {
   align-items: center;
 }
 
-.comment-inputBos {
+.comment-inputBox {
+    width: 100%;
+    border-bottom: 1px solid #303030;
+    padding: 7px 0px 8px 0px;
+    gap: 4px;
+}
+
+.comment-inputBox input {
   width: 100%;
   border: none;
-  border-bottom: 1px solid #303030;
   background-color: transparent;
   outline: none;
   padding-bottom: 5px;
 }
 
-.comment-inputBos input::placeholder {
+.comment-inputBox input::placeholder {
   color: #aaaaaa;
 }
 
@@ -228,22 +324,27 @@ section {
 }
 
 .comment {
-  width: 640px;
+  display: flex;  
   padding-bottom: 16px;
   color: white;
-  flex-direction: column;
+  width: 100%;
 }
 
 .comment-header {
-  padding-left: 15px;
   flex-direction: column;
-  padding-bottom: 30px;
 }
 
+.comment-top {
+  padding-bottom: 2px;
+}
 .comment-name {
   font-size: 13px;
   font-weight: 700;
   padding-bottom: 7px;
+}
+
+.comment-name:hover {
+  cursor: pointer;
 }
 
 .published-date {
@@ -255,30 +356,44 @@ section {
 .comment-text {
   font-size: 14px;
   padding-bottom: 15px;
+  padding: 2px 0px;
 }
 
 .comment-toolbar {
   color: #aaaaaa;
-  font-size: 12px;
   display: flex;
   align-items: center;
-}
-
-.comment-toolbar .material-symbols-outlined {
-  font-size: 13px;
-  padding-right: 2px;
+  padding-top: 4px;
 }
 
 .comment-toolbar span {
-  padding-right: 5px;
+  font-size: 12px;
 }
 
-.comment-like {
-  padding-right: 5px;
+.comment-like > span:first-child, 
+.comment-dislike > span:first-child {
+  padding: 8px;
 }
 
-.comment-dislike {
-  padding-right: 10px;
+.comment-like > span:first-child:hover, 
+.comment-dislike > span:first-child:hover,
+.reply:hover {
+  cursor: pointer;
+  border-radius: 40px;
+  background-color: #303030;
+}
+
+.comment-like > span:last-child,
+.comment-dislike > span:last-child {
+  padding: 7px 8px 7px 0px;
+}
+
+.reply {
+  padding: 8px 16px;
+}
+
+.reply > span {
+    vertical-align: middle;
 }
 
 /* end comments */
@@ -286,6 +401,8 @@ section {
 /* aside */
 .secondary {
   width: 426px;
+  display: flex;
+  padding: 24px 24px 0px 0px;
 }
 
 aside {
@@ -297,22 +414,39 @@ aside {
 /* end aside */
 
 /* aside - top-menu */
-.top-menu ul {
+.top-menu {
+  padding: 1px 12px 2px 0px;
+}
+
+.top-menu > ul {
   color: white;
   display: flex;
-  display: inline-flex;
-  padding: 12px 12px 12px 24px;
+  padding: 8px 8px 8px 0px;
   align-items: flex-start;
-
   gap: 10px;
 }
 
-.top-menu li {
+.top-menu > ul > li {
   flex-wrap: nowrap;
   display: flex;
-  padding: 8px 12px;
+  padding: 8px 8px 8px 0px;
   align-items: flex-start;
   gap: 10px;
+}
+
+.top-menu li > span:hover {
+  background-color: white;
+  color: #030303;
+
+  background-color: white;
+  color: #030303;
+  cursor: pointer;
+}
+
+.top-menu > ul > li > span {
+  display: flex;
+  padding: 8px 12px;
+
   color: #fff;
   border-radius: 32px;
   border: 0.3px solid var(--gray-color, #aaa);
@@ -320,17 +454,18 @@ aside {
   font-size: 14px;
 }
 
-.top-menu li:hover {
-  background-color: white;
-  color: #030303;
-}
-
 /* end aside - top-menu */
 
 /* aside - thumbnail */
+.secondary-thumbnail {
+    display: flex;
+    padding-top: 8px;
+}
+
 .secondary-thumbnail img {
-  width: 168px;
-  height: 94px;
+    width: 168px;
+    height: 94px;
+    padding-right: 8px;
 }
 
 .videos {
@@ -347,15 +482,32 @@ aside {
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  padding: 7px 0px;
 }
 
 .video-text p {
   font-size: 14px;
+  color: var(--white-color, #FFF);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  width: 202px;
+  word-break: break-all;
 }
 
 .channel-desc {
   font-size: 12px;
   color: #aaaaaa !important;
   flex-direction: column;
+  padding: 2px 0px;
+}
+
+.channel-desc span {
+    color: var(--gray-color, #AAA);
+
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; 
 }
