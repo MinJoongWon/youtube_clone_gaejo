@@ -4,6 +4,10 @@
   font-family: Roboto;
 }
 
+body {
+    background: #181818;
+}
+
 .video-body {
     margin-top: 56px;
     display: flex;
@@ -46,11 +50,13 @@ section {
   padding: 20px 0px 8px 0px;
   flex-direction: row;
   align-items: flex-start;
+  flex-direction: column;
 }
 
 .video-info .title {
   color: white;
   font-size: 18px;
+  padding: 3px 0px 2px 0px;
 }
 
 .info {
@@ -67,6 +73,13 @@ section {
   gap: 10px;
 }
 
+.info-text span {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
 .info.top-level {
   display: flex;
   align-items: flex-start;
@@ -75,17 +88,29 @@ section {
 
 .top-level {
     display: flex;
+    gap: 8px;
+}
+
+.video-like,
+.video-dislike,
+.video-share,
+.video-save,
+.video-more {
+    display: flex;
+    padding: 2px 0px;
 }
 
 /* top-level span tag */
-.video-like span,
+.video-like span, 
 .video-dislike span,
 .video-share span,
 .video-save span,
 .video-more span {
   padding: 6px;
-  gap: 10px;
   color: white;
+
+  width: 24px;
+  height: 24px;
 }
 
 /* top-level p tag */
@@ -97,6 +122,13 @@ section {
   padding: 10px 6px 10px 0px;
   gap: 10px;
   color: white;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  display: inline;
 }
 
 /* end section - video-info */
@@ -106,6 +138,12 @@ section {
   display: flex;
   width: 640px;
   flex-shrink: 0;
+
+  border-top: 1px solid #303030;
+  border-bottom: 1px solid #303030;
+  flex-direction: column;
+
+  padding-bottom: 16px;
 }
 
 .channel-title {
@@ -113,7 +151,14 @@ section {
   width: 640px;
   height: 51px;
   align-items: flex-start;
-  gap: 5px;
+  padding-top: 16px;
+}
+
+.channel-title p {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .profile-pic {
@@ -131,7 +176,7 @@ section {
 
 .profile-name {
   display: flex;
-  padding: 10px 0px 10px 0px;
+  padding: 11px 0px 10px 0px;
   flex-direction: column;
   align-items: flex-start;
   color: white;
@@ -156,10 +201,17 @@ section {
   height: 36px;
   background-color: #cc0000;
   border: none;
-  border-radius: 2px 0px 0px 2px;
+  border-radius: 2px;
   color: white;
-  align-items: center;
-  justify-content: center;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.subscribes-btn button:hover {
+    cursor: pointer;
 }
 
 .video-description {
@@ -169,16 +221,37 @@ section {
   align-items: flex-start;
   gap: 10px;
   font-size: 14px;
-  /*padding-left: 78px; */
+}
+
+.video-description > p {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.show-more-btn {
+    padding: 8px 0px 0px 64px;
 }
 
 .show-more-btn button {
   display: flex;
-  padding: 8px 0px 0px 64px;
   align-items: flex-start;
   gap: 10px;
   border: none;
   color: #aaaaaa;
+
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  background-color: transparent;
+  padding: 0;
+}
+
+.show-more-btn button:hover {
+    cursor: pointer;
 }
 
 /* end section - channel-title */
@@ -290,6 +363,7 @@ section {
 .secondary {
   width: 426px;
   display: flex;
+  padding: 24px 24px 0px 0px;
 }
 
 aside {
@@ -369,7 +443,6 @@ aside {
   color: white;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   padding: 7px 0px;
 }
 
@@ -380,6 +453,8 @@ aside {
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+  width: 202px;
+  word-break: break-all;
 }
 
 .channel-desc {
