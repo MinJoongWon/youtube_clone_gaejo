@@ -4,15 +4,15 @@
 }
 
 .section {
-    display: flex;
-    width: 100%;
-    float: right;
-    padding: 0;
-    gap: 40px 16px;
-    background-color: black;
+  display: flex;
+  width: 100%;
+  float: right;
+  padding: 0;
+  gap: 40px 16px;
+  background-color: black;
 
-    margin-top: 112px;
-    margin-left: 240px;
+  margin-top: 112px;
+  margin-left: 240px;
 }
 
 .thumbnail-box {
@@ -31,7 +31,7 @@
 
 .thumbnail-item {}
 
-.thumbnail-item-image > img {
+.thumbnail-item-image>img {
   width: 276px;
   height: 155px;
   cursor: pointer;
@@ -47,7 +47,7 @@
   padding: 12px 12px 26px 0px;
 }
 
-.thumbnail-profile-pic > img {
+.thumbnail-profile-pic>img {
   width: 36px;
   height: 36px;
   cursor: pointer;
@@ -89,30 +89,28 @@ section {
 }
 
 .top-menu {
-    display: flex;
-    position: relative;
-    width: 100%;
-    border-top: 1px solid #aaaaaaa9;
-    border-bottom: 1px solid #aaaaaaa9;
-    background-color: #212121;
-    overflow: hidden;
-
-    position: fixed;
-    top: 56px;
-    right: 0;
-    left: 240px;
-    z-index: 1;
+  display: flex;
+  width: 100%;
+  border-top: 1px solid #303030;
+  border-bottom: 1px solid #303030;
+  background-color: #212121;
+  overflow: hidden;
+  position: fixed;
+  top: 56px;
+  right: 0;
+  left: 240px;
+  z-index: 1;
 }
 
-.top-menu-item > ul > li:first-child {
+.top-menu-item>ul>li:first-child {
   padding: 12px 12px 12px 24px;
 }
 
-.top-menu-item > ul {
+.top-menu-item>ul {
   display: flex;
 }
 
-.top-menu-item > ul > li {
+.top-menu-item>ul>li {
   flex-wrap: nowrap;
   display: flex;
   padding: 12px 12px 12px 0px;
@@ -128,7 +126,7 @@ section {
   line-height: normal;
 }
 
-.top-menu-item > ul > li > span {
+.top-menu-item>ul>li>span {
   display: flex;
   padding: 8px 12px;
   flex-direction: column;
@@ -140,7 +138,7 @@ section {
   background: var(--border-color, #303030);
 }
 
-.top-menu-item li > span:hover {
+.top-menu-item li>span:hover {
   background-color: white;
   color: #030303;
   cursor: pointer;
@@ -149,15 +147,26 @@ section {
 .top-menu-icon {
   display: flex;
   align-items: center;
-  position: absolute;
+  padding: 20px;
+  position: fixed;
+  background: rgba(33, 33, 33, 0.90);
   right: 0;
+}
+
+.top-menu-icon:hover {
+  background-color: #303030;
+  color: #030303;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .top-menu-icon-leftBotton {
   border: none;
   color: #ffffff;
-  opacity: 0.7;
-  padding: 20px;
-  background: rgba(33, 33, 33, 0.9);
+  opacity: 0.5;
+  width: 16px;
+  height: 16px;
+  padding: 2.64px 4.97px 2.65px 4.97px;
+  background: rgba(33, 33, 33, 0.90);
   cursor: pointer;
 }
