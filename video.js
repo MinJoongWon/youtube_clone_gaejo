@@ -67,14 +67,15 @@ function timeForToday(value) {
 
 function addComment() {
     const comments = document.querySelector(".comments");
+    let comment = document.createElement("div");
+    comment.setAttribute('class', 'comment');
+    
     let innerHtml = '';
-
     let inputData = document.querySelector(".comment-inputBox > input");
     let currentTime = new Date();
     let formatTime = timeForToday(currentTime);
 
     innerHtml = `
-            <div class="comment">
               <div class="profile-pic">
                 <img
                   src="../images/sidebar_user_avatar.png"
@@ -103,9 +104,11 @@ function addComment() {
                   </div>
                 </div>
               </div>
-            </div>`;
+            `;
 
-    comments.innerHTML += innerHtml
+    // comments.innerHTML += innerHtml;
+    comment.innerHTML = innerHtml;
+    comments.prepend(comment);
     inputData.value = '';
 }
 
