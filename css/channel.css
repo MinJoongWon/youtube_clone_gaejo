@@ -23,7 +23,7 @@ section {
   background-repeat: repeat-x;
 }
 
-.channel-cover>img {
+.channel-cover > img {
   background-repeat: repeat-x;
   width: 100%;
   min-width: fit-content;
@@ -53,7 +53,7 @@ section {
   padding-right: 24px;
 }
 
-.profile-pic>img {
+.profile-pic > img {
   border-radius: 80px;
   opacity: 0.6499999761581421;
 }
@@ -66,7 +66,7 @@ section {
   align-items: flex-start;
 }
 
-.channel-profile ul>li {
+.channel-profile ul > li {
   line-height: normal;
 }
 
@@ -96,7 +96,7 @@ section {
   gap: 10px;
 }
 
-.channel-subscribes-btn>button {
+.channel-subscribes-btn > button {
   display: flex;
   padding: 10px 16px;
   align-items: flex-start;
@@ -115,7 +115,7 @@ section {
   text-transform: uppercase;
 }
 
-.channel-subscribes-btn>button:hover {
+.channel-subscribes-btn > button:hover {
   cursor: pointer;
   opacity: 0.85;
 }
@@ -150,12 +150,10 @@ section {
   padding: 16px 32px 15px 32px;
   align-items: flex-start;
   gap: 10px;
-
 }
 
 .channel-toolbar-menu li:hover {
   color: white;
-
 }
 
 .channel-toolbar-menu li:first-child {
@@ -167,14 +165,14 @@ section {
   display: flex;
 }
 
-.channel-toolbar-search>span {
+.channel-toolbar-search > span {
   display: flex;
   padding: 12px 8px;
   align-items: flex-start;
   color: #aaaaaa;
 }
 
-.channel-toolbar-search>input {
+.channel-toolbar-search > input {
   display: flex;
   padding-left: 0px;
   align-items: flex-start;
@@ -261,12 +259,12 @@ section {
   gap: 10px;
 }
 
-.player>video {
+.player > video {
   width: 424px;
   height: 238px;
 }
 
-.video-desc>video {
+.video-desc > video {
   width: 214px;
 }
 
@@ -284,7 +282,7 @@ section {
   align-items: flex-start;
 }
 
-.play-list>p {
+.play-list > p {
   padding: 9px 8px 8px 0px;
   align-items: flex-start;
   gap: 10px;
@@ -296,14 +294,14 @@ section {
   align-items: flex-start;
 }
 
-.play-btn>p {
+.play-btn > p {
   display: flex;
   padding: 3px 0px 2px 8px;
   align-items: flex-start;
   gap: 10px;
 }
 
-.play-btn>* {
+.play-btn > * {
   color: var(--gray-color, #aaa);
   font-family: Roboto;
   font-size: 16px;
@@ -313,7 +311,7 @@ section {
   text-transform: uppercase;
 }
 
-.video-desc>p {
+.video-desc > p {
   color: var(--white-color, #fff);
   font-family: Roboto;
   font-size: 14px;
@@ -368,6 +366,13 @@ section {
   align-items: flex-start;
 }
 
+.result {
+  justify-content: center;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+
 .right-arrow-container {
   display: flex;
   height: 118px;
@@ -390,7 +395,6 @@ section {
   flex-direction: column;
   position: absolute;
 }
-
 
 .right-arrow .material-symbols-outlined,
 .left-arrow .material-symbols-outlined {
@@ -426,3 +430,4 @@ section {
   flex-direction: column;
   position: absolute;
 }
+
