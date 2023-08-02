@@ -321,6 +321,7 @@ section {
 .comments {
   display: flex;
   align-content: flex-start;
+  flex-direction: column;
 }
 
 .comment {
