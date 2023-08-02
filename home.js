@@ -77,7 +77,7 @@ async function displayHomeItem() {
         <div class="thumbnail">
             <div class="thumbnail-item">
                 <div class="thumbnail-item-image">
-                    <img class="thumbnail-pic" src="${videoInfo.image_link}" onclick="${videoURL}">
+                    <img class="thumbnail-pic" src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}">
                 </div>
             </div>
             
@@ -123,7 +123,7 @@ async function displayVideoItem() {
         info += `
             <div class="secondary-thumbnail">
                 <div class="video-item">
-                    <img src="${videoInfo.image_link}" onclick="${videoURL}" controls></video>
+                    <img src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}" controls></video>
                 </div>
                 <div class="video-text">
                     <p><a href='../html/video.html?id=${videoId}'>${videoInfo.video_title}</a></p>
@@ -176,9 +176,8 @@ async function getVideoPlayerData() {
                 channelProfile.setAttribute("src", c.channel_profile);
                 let videoURL = `location.href='../html/channel.html?id=${name}'`;
                 channelProfile.setAttribute("onclick", videoURL);
-                channelProfile.setAttribute("alt", 'user avater');
-                channelProfile.setAttribute("title", 'user avater');
-                console.log(channelProfile);
+                channelProfile.setAttribute("alt", `${name} 프로필`);
+                channelProfile.setAttribute("title", `${name} 프로필`);
                 subscribers.innerHTML = c.subscribers.toLocaleString();
             });
         });
