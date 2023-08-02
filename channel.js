@@ -38,6 +38,29 @@ async function getVideoData(videoId) {
     }
 }
 
+function timeForToday(value) {
+    const today = new Date();
+    const timeValue = new Date(value);
+
+    const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+    if (betweenTime < 1) return '방금전';
+    if (betweenTime < 60) {
+        return `${betweenTime}분전`;
+    }
+
+    const betweenTimeHour = Math.floor(betweenTime / 60);
+    if (betweenTimeHour < 24) {
+        return `${betweenTimeHour}시간전`;
+    }
+
+    const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+    if (betweenTimeDay < 365) {
+        return `${betweenTimeDay}일전`;
+    }
+
+    return `${Math.floor(betweenTimeDay / 365)}년전`;
+}
+
 async function displayChannelVideoList(channelName) {
     let channelVideoList = await getChannelVideo(channelName);
     
@@ -55,12 +78,13 @@ async function displayChannelVideoList(channelName) {
         let videoId = videoIdList[i];
         let videoInfo = await getVideoData(videoId);
         let videoURL = `location.href='../html/video.html?id=${videoId}'`;
+        let uploadTime = timeForToday(videoInfo.upload_date);
 
         if (i == 0) {
             mainVideo.src = videoInfo.video_link;
             mainVideoTitle.innerText = videoInfo.video_title;
             mainVideoTitle.setAttribute("title", videoInfo.video_title);
-            mainVideoTime.innerText = videoInfo.views.toLocaleString() + ' views . ' + videoInfo.upload_date;
+            mainVideoTime.innerText = videoInfo.views.toLocaleString() + ' views . ' + uploadTime;
             mainVideoDesc.innerText = videoInfo.video_detail;
         }
 
@@ -71,7 +95,7 @@ async function displayChannelVideoList(channelName) {
                 <p title="${videoInfo.video_title}">${videoInfo.video_title}</p>
                 <div class="video-desc-views">
                     <p class="channel-name">${videoInfo.video_channel}</p>
-                    <p class="channel-views">${videoInfo.views.toLocaleString() + ' views. ' + videoInfo.upload_date}</p>
+                    <p class="channel-views">${videoInfo.views.toLocaleString() + ' views. ' + uploadTime}</p>
                 </div>
             </div>
         </div>
