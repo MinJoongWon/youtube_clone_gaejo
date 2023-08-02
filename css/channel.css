@@ -342,6 +342,11 @@ section {
   align-items: flex-start;
 }
 
+.video-card-container {
+  overflow:hidden;
+  width: 1090px;
+}
+
 .video-card {
   display: flex;
   /*아래코드 살릴시 옆으로 퍼진것들 홈화면처럼
@@ -350,6 +355,7 @@ section {
   flex: 1 1 40%; */
   padding: 24px 0px;
   align-items: flex-start;
+  transition:transform 0.3s;
 }
 
 .xsamll-video {
@@ -366,3 +372,62 @@ section {
   align-items: flex-start;
   padding-top: 20px;
 }
+
+.right-arrow-container {
+  display: flex;
+  height: 118px;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  top: -230px;
+  left: 1070px;
+}
+
+.right-arrow {
+  display: flex;
+  background-color: #303030;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+}
+
+.right-arrow .material-symbols-outlined,
+.left-arrow .material-symbols-outlined {
+  vertical-align: middle;
+  color: white;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.left-arrow-container {
+  display: flex;
+  height: 118px;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  top: -345px;
+  right: 20px;
+  visibility: hidden;
+}
+
+.left-arrow {
+  display: flex;
+  background-color: #303030;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+}
+
