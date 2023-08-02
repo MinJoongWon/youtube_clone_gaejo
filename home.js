@@ -67,10 +67,10 @@ function timeForToday(value) {
     return `${Math.floor(betweenTimeDay / 365)}년전`;
 }
 
+// top-menu에 태그 추가
 async function addTopMenu(videoList) {
     let videoTags = new Set();
     videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
-
 
     const topMenuItem = document.querySelector(".top-menu-item > ul");
     
