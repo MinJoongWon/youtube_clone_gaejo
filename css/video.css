@@ -193,7 +193,7 @@ section {
   color: white;
 }
 
-.profile-name > p:hover {
+.profile-name > a:hover {
   cursor: pointer;
 }
 
