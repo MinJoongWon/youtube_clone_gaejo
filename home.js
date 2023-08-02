@@ -67,6 +67,22 @@ function timeForToday(value) {
     return `${Math.floor(betweenTimeDay / 365)}년전`;
 }
 
+async function addTopMenu(videoList) {
+    let videoTags = new Set();
+    videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
+
+
+    const topMenuItem = document.querySelector(".top-menu-item > ul");
+    
+    for (tag of videoTags) {
+        let liTag = document.createElement("li");
+        let span = document.createElement("span");
+        span.innerHTML = tag;
+        liTag.appendChild(span);
+        topMenuItem.appendChild(liTag);
+    }
+}
+
 // home.html 비디오 리스트 표시
 async function displayHomeItem() {
     let videoList = await getVideoList();
@@ -128,6 +144,7 @@ async function displayHomeItem() {
     }
 
     thumbnail.innerHTML = info;
+    addTopMenu(videoList);
 }
 
 // video.html에 비디오 리스트 출력
