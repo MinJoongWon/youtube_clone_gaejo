@@ -177,6 +177,7 @@ async function searchInChannel(channelName, searchText) {
     }
 }
 
+// 채널내에서 검색
 const channelSearchIcon = document.querySelector(".channel-toolbar-search > .leftArrow");
 const channelSearchBox = document.querySelector(".channel-toolbar-search > input");
 const currentUrl = window.location.href;
@@ -193,3 +194,34 @@ channelSearchBox.addEventListener("keypress", function(event) {
         searchInChannel(parseChannelName, channelSearchBox.value);
     }
 });
+
+// 비디오 슬라이드 
+let currentPosition = 0;
+const left_button_container = document.querySelector('.left-arrow-container');
+
+function slideVideoCards() {
+    const video_cards = document.querySelector('.video-card');
+    currentPosition = currentPosition - 218;
+    console.log(currentPosition);
+    video_cards.style.transform = translateX(`${currentPosition}px`);
+
+    if(currentPosition != 0) {
+        left_button_container.style.visibility = 'visible';
+    }
+}
+
+function slideVideoCardsLeft() {
+    const video_cards = document.querySelector('.video-card');
+    currentPosition = currentPosition + 218;
+    video_cards.style.transform = translateX(`${currentPosition}px`);
+
+    if(currentPosition == 0) {
+        left_button_container.style.visibility = 'hidden';
+    }
+}
+
+const right_button = document.querySelector('.right-arrow');
+right_button.addEventListener('click', slideVideoCards);
+
+const left_button = document.querySelector('.left-arrow');
+left_button.addEventListener('click', slideVideoCardsLeft);
