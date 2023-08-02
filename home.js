@@ -189,10 +189,10 @@ async function displayVideoItem() {
                     <p><a href='../html/video.html?id=${videoId}'>${videoInfo.video_title}</a></p>
                     <div class="channel-desc">
                         <span class="channel-name">${videoInfo.video_channel}</span>
-                        <span>
+                        <p>
                             <span class="channel-views">${videoInfo.views.toLocaleString()} Views.</span>
                             <span class="channel-upload-time">${uploadTime}</span>
-                        </span>
+                        </p>
                     </div>
                 </div>
             </div>`;
