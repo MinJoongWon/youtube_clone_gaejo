@@ -177,7 +177,7 @@
 <script src="../sidebar.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        displayHomeItem().catch(err => {
+        displayHomeItem([]).catch(err => {
             console.error('API 호출에 실패하였습니다.: ', err);
         });
     });
