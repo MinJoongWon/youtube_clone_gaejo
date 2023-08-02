@@ -229,7 +229,7 @@ function slideVideoCards() {
     const video_cards = document.querySelector('.video-card');
     currentPosition = currentPosition - 218;
     console.log(currentPosition);
-    video_cards.style.transform = translateX(`${currentPosition}px`);
+    video_cards.style.transform = `translateX(${currentPosition}px)`;
 
     if(currentPosition != 0) {
         left_button_container.style.visibility = 'visible';
@@ -239,7 +239,7 @@ function slideVideoCards() {
 function slideVideoCardsLeft() {
     const video_cards = document.querySelector('.video-card');
     currentPosition = currentPosition + 218;
-    video_cards.style.transform = translateX(`${currentPosition}px`);
+    video_cards.style.transform = `translateX(${currentPosition}px)`;
 
     if(currentPosition == 0) {
         left_button_container.style.visibility = 'hidden';
