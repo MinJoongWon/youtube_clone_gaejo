@@ -53,6 +53,16 @@ async function displayHomeItem() {
     let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
     let videoInfoList = await Promise.all(videoInfoPromises);
 
+    let channelNames = new Set();
+    videoList.forEach(video => channelNames.add(video.video_channel));
+
+    let channelNameMap = new Map();
+    await Promise.all(
+        Array.from(channelNames).map(async (channelName) => {
+          let value = await channelData(channelName);
+          channelNameMap.set(channelName, value.channel_profile);
+        })
+    );
 
     for (let i = 0; i < videoList.length; i++) {
         let videoInfo = videoInfoList[i];
@@ -60,9 +70,7 @@ async function displayHomeItem() {
 
         let videoURL = `location.href='../html/video.html?id=${videoId}'`;
 
-        // 속도 느림 -> 개선 필요
-        let channel = await channelData(videoList[i].video_channel);
-        let channelImg = channel.channel_profile;
+        let channelImg = channelNameMap.get(videoList[i].video_channel);
         let channelUrl = `location.href='../html/channel.html?id=${videoInfo.video_channel}'`;
 
         info += `
@@ -107,7 +115,7 @@ async function displayVideoItem() {
     let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
     let videoInfoList = await Promise.all(videoInfoPromises);
 
-    for (let i = 0; i < videoList.length - 1; i++) {
+    for (let i = 0; i < videoList.length; i++) {
         let videoId = videoList[i].video_id;
         let videoInfo = videoInfoList[i];
         let videoURL = `location.href='../html/video.html?id=${videoId}'`;
