@@ -173,7 +173,22 @@ async function searchInChannel(channelName, searchText) {
     if (findVideoList.length !== 0) {
         displayChannelVideoList(parseChannelName, findVideoList);
     } else {
-        alert("no search List T.T");
+        let channel = document.querySelector('.channel');
+        let smallVideo = document.querySelector('.small-video');
+        let contentTag = document.querySelector('.content');
+
+        let pTag = document.createElement('p');
+        pTag.innerText = `이 채널에 ‘${searchText}’와(과) 일치하는 콘텐츠가 없습니다.`;
+        pTag.style.color = 'white';
+        pTag.setAttribute('class', 'searchResult');
+        
+        smallVideo.replaceChildren('');
+        contentTag.replaceChildren('');
+
+        let newDiv = document.createElement('div');
+        newDiv.setAttribute('class', 'result');
+        newDiv.appendChild(pTag);
+        channel.after(newDiv);
     }
 }
 
@@ -220,8 +235,8 @@ function slideVideoCardsLeft() {
     }
 }
 
-const right_button = document.querySelector('.right-arrow');
-right_button.addEventListener('click', slideVideoCards);
+// const right_button = document.querySelector('.right-arrow');
+// right_button.addEventListener('click', slideVideoCards);
 
-const left_button = document.querySelector('.left-arrow');
-left_button.addEventListener('click', slideVideoCardsLeft);
+// const left_button = document.querySelector('.left-arrow');
+// left_button.addEventListener('click', slideVideoCardsLeft);
