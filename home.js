@@ -150,32 +150,39 @@ async function getVideoPlayerData() {
         let id = currentUrl.substring(idx + 4);
         let player = document.querySelector('video');
         let title = document.querySelector('.title > span');
-        let channelName = document.querySelector('.profile-name > p');
+        let channelName = document.querySelector('.profile-name > a');
         let views = document.querySelector('.video-views');
         let upload_date = document.querySelector('.time');
         let video_detail = document.querySelector('.video-description > p');
+        let channelProfile = document.querySelector('.profile-pic > .user-avatar');
 
         let data = videoData(id);
         let name = '';
         data.then((v) => {
-            console.log(v);
             player.src = v.video_link;
             title.innerHTML = v.video_title;
             channelName.innerHTML = v.video_channel;
             channelName.setAttribute("title", v.video_channel);
+            channelName.setAttribute("href", `channel.html?id=${v.video_channel}`);
             views.innerHTML = v.views.toLocaleString();
             upload_date.innerHTML = v.upload_date;
             video_detail.innerHTML = v.video_detail;
 
-
             name = v.video_channel;
+
+            let subscribers = document.querySelector('.subscribers');
+            let channel = channelData(name);
+            channel.then((c) => {
+                channelProfile.setAttribute("src", c.channel_profile);
+                let videoURL = `location.href='../html/channel.html?id=${name}'`;
+                channelProfile.setAttribute("onclick", videoURL);
+                channelProfile.setAttribute("alt", 'user avater');
+                channelProfile.setAttribute("title", 'user avater');
+                console.log(channelProfile);
+                subscribers.innerHTML = c.subscribers.toLocaleString();
+            });
         });
 
-        let subscribers = document.querySelector('.subscribers');
-        let channel = channelData(name);
-        channel.then((c) => {
-            subscribers.innerHTML = c.subscribers.toLocaleString();
-        });
 
     }
 }   
