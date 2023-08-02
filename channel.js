@@ -181,20 +181,30 @@ async function searchInChannel(channelName, searchText) {
         }
     });
 
+    let channel = document.querySelector('.channel');
+    let smallVideo = document.querySelector('.small-video');
+    let contentTag = document.querySelector('.content');
+    let result = document.querySelector('.result');
+
     if (findVideoList.length !== 0) {
+        if (smallVideo.style.display === 'none') {
+            smallVideo.style.display = 'inline-flex';
+        }
+        if (contentTag.style.display === 'none') {
+            contentTag.style.display = 'flex';
+        }
+        
+        result.style.display = 'none';
         displayChannelVideoList(parseChannelName, findVideoList);
     } else {
-        let channel = document.querySelector('.channel');
-        let smallVideo = document.querySelector('.small-video');
-        let contentTag = document.querySelector('.content');
 
         let pTag = document.createElement('p');
         pTag.innerText = `이 채널에 ‘${searchText}’와(과) 일치하는 콘텐츠가 없습니다.`;
         pTag.style.color = 'white';
         pTag.setAttribute('class', 'searchResult');
         
-        smallVideo.replaceChildren('');
-        contentTag.replaceChildren('');
+        smallVideo.style.display = 'none';
+        contentTag.style.display = 'none';
 
         let newDiv = document.createElement('div');
         newDiv.setAttribute('class', 'result');
