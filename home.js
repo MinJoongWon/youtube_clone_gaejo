@@ -84,8 +84,14 @@ async function addTopMenu(videoList) {
 }
 
 // home.html 비디오 리스트 표시
-async function displayHomeItem() {
-    let videoList = await getVideoList();
+async function displayHomeItem(findVideoList) {
+    let videoList;
+    if (findVideoList.length > 0) {
+        videoList = findVideoList;
+    } else {
+        videoList = await getVideoList();
+    }
+    // let videoList = await getVideoList();
     let thumbnail = document.querySelector('.thumbnail-box');
     let info = '';
 
@@ -149,7 +155,7 @@ async function displayHomeItem() {
 
 // video.html에 비디오 리스트 출력
 async function displayVideoItem() {
-    let videoList = await getVideoList();
+    videoList = await getVideoList();
     let videoTag = document.querySelector('.videos');
     let info = '';
 
@@ -227,3 +233,45 @@ async function getVideoPlayerData() {
 
     }
 }   
+
+async function searchVedioList(videoList) {
+
+}
+
+// 검색기능
+async function search() {
+    let searchText = document.querySelector(".searchBox-input").value;
+    
+    let videoList = await getVideoList();
+    let videoTags = new Set();
+    videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
+
+    let findVideoList = videoList.filter((video) => {
+        let title = video.video_title.toLowerCase();
+        let detail = video.video_detail.toLowerCase();
+        let channelName = video.video_channel.toLowerCase();
+        let tag = video.video_tag;
+        let lowerCaseTag = tag.map(element => {
+            return element.toLowerCase();
+        });
+
+        if (title.includes(searchText) || detail.includes(searchText) 
+        || channelName.includes(searchText) || lowerCaseTag.includes(searchText)) {
+            return true;
+        }
+    });
+
+    if (findVideoList.length !== 0) {
+        displayHomeItem(findVideoList);
+    } else {
+        alert("no search List T.T");
+    }
+}
+
+const searchIcon = document.querySelector(".searchBox-icon > .searchBox-Button");
+searchIcon.addEventListener("click", search);
+document.querySelector(".searchBox-input").addEventListener("keypress", function(event) {
+    if (event.keyCode === 13) {
+        search();
+    }
+});
