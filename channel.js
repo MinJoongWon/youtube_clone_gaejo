@@ -2,18 +2,6 @@ const channelInfoApi = 'http://oreumi.appspot.com/channel/getChannelInfo?video_c
 const channelVideoListApi = 'http://oreumi.appspot.com/channel/getChannelVideo?video_channel=oreumi';
 
 async function getChannelInfo(channelName) {
-    try {
-        const response = await fetch(channelInfoApi, {
-            method: 'POST'
-        });
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('API 호출에 실패했습니다:', error);
-    }
-}
-
-async function getChannelInfo(channelName) {
     let newUrl = `http://oreumi.appspot.com/channel/getChannelInfo?video_channel=${channelName}`;
     try {
         const response = await fetch(newUrl, {
@@ -51,7 +39,6 @@ async function getVideoData(videoId) {
 }
 
 async function displayChannelVideoList(channelName) {
-    let channelInfo = await getChannelInfo(channelName);
     let channelVideoList = await getChannelVideo(channelName);
     
     let videoIdList = [];
@@ -63,9 +50,6 @@ async function displayChannelVideoList(channelName) {
     let mainVideoDesc = document.querySelector('.small-video-desc .descriptions');
     let videoCard = document.querySelector('.video-card');
     let innerInfo = ''
-
-    // let videoInfoPromises = videoList.map((video) => getVideoData(video.video_id));
-    // let videoInfoList = await Promise.all(videoInfoPromises);
 
     for (let i = 0; i < videoIdList.length; i++) {
         let videoId = videoIdList[i];
