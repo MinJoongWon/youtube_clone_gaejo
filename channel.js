@@ -61,8 +61,13 @@ function timeForToday(value) {
     return `${Math.floor(betweenTimeDay / 365)}년전`;
 }
 
-async function displayChannelVideoList(channelName) {
-    let channelVideoList = await getChannelVideo(channelName);
+async function displayChannelVideoList(channelName, findChannelVideoList) {
+    let channelVideoList;
+    if (findChannelVideoList.length > 0) {
+        channelVideoList = findChannelVideoList;
+    } else {
+        channelVideoList = await getChannelVideo(channelName);
+    }
     
     let videoIdList = [];
     channelVideoList.forEach(videoList => videoIdList.push(videoList.video_id));
@@ -128,7 +133,7 @@ async function displayChannelInfo() {
         channelSubscribers.innerHTML = formatSubscribersCount(v.subscribers);
     });
 
-    displayChannelVideoList(parseChannelName);
+    displayChannelVideoList(parseChannelName, []);
 }
 
 function formatSubscribersCount(subscribers) {
@@ -142,3 +147,49 @@ function formatSubscribersCount(subscribers) {
         return `${millions}M subscribers`;
     }
 }
+
+// 채널 내에서 검색
+async function searchInChannel(channelName, searchText) {
+    let videoList = await getChannelVideo(channelName);
+
+    let videoTags = new Set();
+    videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
+
+    let findVideoList = videoList.filter((video) => {
+        let title = video.video_title.toLowerCase();
+        let detail = video.video_detail.toLowerCase();
+        let channelName = video.video_channel.toLowerCase();
+        let tag = video.video_tag;
+        let lowerCaseTag = tag.map(element => {
+            return element.toLowerCase();
+        });
+
+        if (title.includes(searchText) || detail.includes(searchText) 
+        || channelName.includes(searchText) || lowerCaseTag.includes(searchText)) {
+            return true;
+        }
+    });
+
+    if (findVideoList.length !== 0) {
+        displayChannelVideoList(parseChannelName, findVideoList);
+    } else {
+        alert("no search List T.T");
+    }
+}
+
+const channelSearchIcon = document.querySelector(".channel-toolbar-search > .leftArrow");
+const channelSearchBox = document.querySelector(".channel-toolbar-search > input");
+const currentUrl = window.location.href;
+let idx = currentUrl.indexOf('?');
+let parseChannelName = '';
+if (idx !== -1) {
+    parseChannelName = currentUrl.substring(idx + 4);
+}
+channelSearchIcon.addEventListener("click", function() {
+    searchInChannel(parseChannelName, channelSearchBox.value);
+});
+channelSearchBox.addEventListener("keypress", function(event) {
+    if (event.keyCode === 13) {
+        searchInChannel(parseChannelName, channelSearchBox.value);
+    }
+});
