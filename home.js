@@ -79,6 +79,7 @@ async function addTopMenu(videoList) {
         let span = document.createElement("span");
         span.innerHTML = tag;
         liTag.appendChild(span);
+        span.setAttribute("onclick", `clickTagSearch('${tag}')`);
         topMenuItem.appendChild(liTag);
     }
 }
@@ -91,7 +92,7 @@ async function displayHomeItem(findVideoList) {
     } else {
         videoList = await getVideoList();
     }
-    // let videoList = await getVideoList();
+
     let thumbnail = document.querySelector('.thumbnail-box');
     let info = '';
 
@@ -155,7 +156,7 @@ async function displayHomeItem(findVideoList) {
 
 // video.html에 비디오 리스트 출력
 async function displayVideoItem() {
-    videoList = await getVideoList();
+    let videoList = await getVideoList();
     let videoTag = document.querySelector('.videos');
     let info = '';
 
@@ -234,14 +235,8 @@ async function getVideoPlayerData() {
     }
 }   
 
-async function searchVedioList(videoList) {
-
-}
-
 // 검색기능
-async function search() {
-    let searchText = document.querySelector(".searchBox-input").value;
-    
+async function search(searchText) {
     let videoList = await getVideoList();
     let videoTags = new Set();
     videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
@@ -269,9 +264,17 @@ async function search() {
 }
 
 const searchIcon = document.querySelector(".searchBox-icon > .searchBox-Button");
-searchIcon.addEventListener("click", search);
-document.querySelector(".searchBox-input").addEventListener("keypress", function(event) {
+const searchBox = document.querySelector(".searchBox-input");
+searchIcon.addEventListener("click", function() {
+    search(searchBox.value);
+});
+searchBox.addEventListener("keypress", function(event) {
     if (event.keyCode === 13) {
-        search();
+        search(searchBox.value);
     }
 });
+
+// 태그 클릭시 검색 할 수 있도록
+function clickTagSearch(tag) {
+    search(tag);
+}
