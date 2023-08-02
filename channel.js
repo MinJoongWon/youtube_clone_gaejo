@@ -246,8 +246,8 @@ function slideVideoCardsLeft() {
     }
 }
 
-// const right_button = document.querySelector('.right-arrow');
-// right_button.addEventListener('click', slideVideoCards);
+const right_button = document.querySelector('.right-arrow');
+right_button.addEventListener('click', slideVideoCards);
 
-// const left_button = document.querySelector('.left-arrow');
-// left_button.addEventListener('click', slideVideoCardsLeft);
+const left_button = document.querySelector('.left-arrow');
+left_button.addEventListener('click', slideVideoCardsLeft);
