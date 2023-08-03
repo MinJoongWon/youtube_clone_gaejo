@@ -388,5 +388,5 @@ function slideTags() {
     tags.style.transform = `translateX(${currentPosition}px)`;
 }
 
-const top_menu_button = document.querySelector('.top-menu-icon-leftBotton');
+const top_menu_button = document.querySelector('.top-menu-icon');
 top_menu_button.addEventListener('click', slideTags);
