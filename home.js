@@ -308,7 +308,7 @@ tags.forEach(tag => {
 
 // 검색기능
 async function search(searchText) {
-    searchText = searchText.toLowerCase();
+    
     let videoList = await getVideoList();
     let videoTags = new Set();
     videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
@@ -388,5 +388,5 @@ function slideTags() {
     tags.style.transform = `translateX(${currentPosition}px)`;
 }
 
-const top_menu_button = document.querySelector('.top-menu-icon-leftBotton');
+const top_menu_button = document.querySelector('.top-menu-icon');
 top_menu_button.addEventListener('click', slideTags);
