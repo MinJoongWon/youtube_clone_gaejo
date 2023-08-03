@@ -368,7 +368,7 @@ section {
 
 .result {
   justify-content: center;
-  display: flex;
+  display: none;
   align-items: flex-start;
   padding-top: 20px;
 }

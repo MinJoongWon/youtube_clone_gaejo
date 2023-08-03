@@ -134,17 +134,19 @@ async function displayChannelInfo() {
     let channelName = document.querySelector(".channel-profile-name");
     let channelSubscribers = document.querySelector(".channel-subscribes");
 
-    let data = getChannelInfo(parseChannelName);
-    data.then((v) => {
-        channelBanner.src = v.channel_banner;
-        channelProfile.src = v.channel_profile;
-        channelProfile.setAttribute('alt', `${v.channel_name} 프로필`);
-        channelProfile.setAttribute('title', `${v.channel_name} 프로필`);
-        channelName.innerHTML = v.channel_name;
-        channelSubscribers.innerHTML = formatSubscribersCount(v.subscribers);
-    });
+    if (idx !== -1) {
+        let data = getChannelInfo(parseChannelName);
+        data.then((v) => {
+            channelBanner.src = v.channel_banner;
+            channelProfile.src = v.channel_profile;
+            channelProfile.setAttribute('alt', `${v.channel_name} 프로필`);
+            channelProfile.setAttribute('title', `${v.channel_name} 프로필`);
+            channelName.innerHTML = v.channel_name;
+            channelSubscribers.innerHTML = formatSubscribersCount(v.subscribers);
+        });
+        displayChannelVideoList(parseChannelName, []);
+    }
 
-    displayChannelVideoList(parseChannelName, []);
 }
 
 function formatSubscribersCount(subscribers) {
@@ -193,23 +195,25 @@ async function searchInChannel(channelName, searchText) {
         if (contentTag.style.display === 'none') {
             contentTag.style.display = 'flex';
         }
-        
         result.style.display = 'none';
         displayChannelVideoList(parseChannelName, findVideoList);
     } else {
+        result.style.display = 'flex';
 
-        let pTag = document.createElement('p');
+        let pTag = document.querySelector('.result > p');
         pTag.innerText = `이 채널에 ‘${searchText}’와(과) 일치하는 콘텐츠가 없습니다.`;
-        pTag.style.color = 'white';
-        pTag.setAttribute('class', 'searchResult');
         
         smallVideo.style.display = 'none';
         contentTag.style.display = 'none';
 
-        let newDiv = document.createElement('div');
-        newDiv.setAttribute('class', 'result');
-        newDiv.appendChild(pTag);
-        channel.after(newDiv);
+        let old = document.querySelector('.result > p');
+
+        if (old != null) {
+            result.removeChild(old);
+            result.appendChild(pTag);
+        } else {
+            result.replaceChild(pTag, old);
+        }
     }
 }
 

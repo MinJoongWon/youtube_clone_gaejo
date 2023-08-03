@@ -104,6 +104,47 @@ async function displayHomeItem(findVideoList) {
         videoList = await getVideoList();
     }
 
+    const currentUrl = window.location.href;
+    if (currentUrl.includes('channel') || currentUrl.includes('video')) {
+        let channelSection = document.querySelector('.channel-section');
+        if (channelSection != null) {
+            channelSection.style.display = 'none';
+        }
+
+        let video = document.querySelector('.video-body');
+        if (video != null) {
+            video.style.display = 'none';
+        }
+
+        let homeBody = document.querySelector('.home-body');
+        homeBody.style.display = 'flex';
+        let setcionTag = `
+        <div class="section">
+        <section>
+            <div class="top-menu">
+                <div class="top-menu-item">
+                    <ul>
+                    </ul>
+                </div>
+                <div class="top-menu-icon">
+                    <button class="top-menu-icon-leftBotton">
+                        <img src="../images/top-menu-right.png" alt="arrow_right" title="arrow">
+                    </button>
+                </div>
+            </div>
+            <div class="thumbnail-box">
+            </div>
+        </section>
+        </div>`;
+        homeBody.innerHTML = setcionTag;
+        if (channelSection != null) {
+            channelSection.after(homeBody);
+        }
+        if (video != null) {
+            video.after(homeBody);
+        }
+    }
+
     let thumbnail = document.querySelector('.thumbnail-box');
     let info = '';
 
@@ -166,8 +207,14 @@ async function displayHomeItem(findVideoList) {
 }
 
 // video.html에 비디오 리스트 출력
-async function displayVideoItem() {
-    let videoList = await getVideoList();
+async function displayVideoItem(findVideoList) {
+    let videoList;
+    if(findVideoList.length > 0) {
+        videoList = findVideoList;
+    } else {
+        videoList = await getVideoList();
+    }
+
     let videoTag = document.querySelector('.videos');
     let info = '';
 
@@ -241,10 +288,23 @@ async function getVideoPlayerData() {
                 subscribers.innerHTML = c.subscribers.toLocaleString();
             });
         });
-
-
     }
 }   
+
+// video.html의 top-menu 태그 클릭 시 검색
+const tags = document.querySelectorAll('.top-menu li');
+
+tags.forEach(tag => {
+  tag.addEventListener('click', function(event) {
+    const clickedTag = event.target;
+    if(clickedTag.textContent == 'ALL') {
+        displayVideoItem([]);
+    } else {
+        
+        searchVideoTag(clickedTag.textContent);
+    }
+  });
+});
 
 // 검색기능
 async function search(searchText) {
@@ -274,6 +334,32 @@ async function search(searchText) {
     }
 }
 
+async function searchVideoTag(searchText) {
+    let videoList = await getVideoList();
+    let videoTags = new Set();
+    videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
+
+    let findVideoList = videoList.filter((video) => {
+        let title = video.video_title.toLowerCase();
+        let detail = video.video_detail.toLowerCase();
+        let channelName = video.video_channel.toLowerCase();
+        let tag = video.video_tag;
+        let lowerCaseTag = tag.map(element => {
+            return element.toLowerCase();
+        });
+        if (title.includes(searchText) || detail.includes(searchText) 
+        || channelName.includes(searchText) || lowerCaseTag.includes(searchText)) {
+            return true;
+        }
+    });
+
+    if(findVideoList.length !== 0) {
+        displayVideoItem(findVideoList);
+    } else {
+        alert("no search List T.T");
+    }
+}
+
 const searchIcon = document.querySelector(".searchBox-icon > .searchBox-Button");
 const searchBox = document.querySelector(".searchBox-input");
 searchIcon.addEventListener("click", function() {
@@ -289,3 +375,16 @@ searchBox.addEventListener("keypress", function(event) {
 function clickTagSearch(tag) {
     search(tag);
 }
+
+// top-menu 슬라이드
+let currentPosition = 0;
+function slideTags() {
+    const tags = document.querySelector('.top-menu-item ul');
+    
+    currentPosition -= 200;
+    
+    tags.style.transform = `translateX(${currentPosition}px)`;
+}
+
+const top_menu_button = document.querySelector('.top-menu-icon-leftBotton');
+top_menu_button.addEventListener('click', slideTags);
