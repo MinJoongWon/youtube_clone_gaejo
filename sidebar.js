@@ -2,7 +2,6 @@ const iconList = document.querySelectorAll(".sidebar-top ul li");
 iconList.forEach((icon) => {
   icon.addEventListener("click", () => {
     const iconSpan = icon.querySelector("span");
-    console.log(iconSpan);
     const prevSelectedIcon = document.querySelector(".selected");
     if (prevSelectedIcon) {
       prevSelectedIcon.style.fontVariationSettings =
@@ -20,7 +19,6 @@ const iconList2 = document.querySelectorAll(".sidebar-top2 ul li");
 iconList2.forEach((icon) => {
   icon.addEventListener("click", () => {
     const iconSpan = icon.querySelector("span");
-    console.log(iconSpan);
     const prevSelectedIcon = document.querySelector(".selected");
     if (prevSelectedIcon) {
       prevSelectedIcon.style.fontVariationSettings =

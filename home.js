@@ -207,8 +207,14 @@ async function displayHomeItem(findVideoList) {
 }
 
 // video.html에 비디오 리스트 출력
-async function displayVideoItem() {
-    let videoList = await getVideoList();
+async function displayVideoItem(findVideoList) {
+    let videoList;
+    if(findVideoList.length > 0) {
+        videoList = findVideoList;
+    } else {
+        videoList = await getVideoList();
+    }
+
     let videoTag = document.querySelector('.videos');
     let info = '';
 
@@ -282,10 +288,23 @@ async function getVideoPlayerData() {
                 subscribers.innerHTML = c.subscribers.toLocaleString();
             });
         });
-
-
     }
 }   
+
+// video.html의 top-menu 태그 클릭 시 검색
+const tags = document.querySelectorAll('.top-menu li');
+
+tags.forEach(tag => {
+  tag.addEventListener('click', function(event) {
+    const clickedTag = event.target;
+    if(clickedTag.textContent == 'ALL') {
+        displayVideoItem([]);
+    } else {
+        
+        searchVideoTag(clickedTag.textContent);
+    }
+  });
+});
 
 // 검색기능
 async function search(searchText) {
@@ -315,6 +334,32 @@ async function search(searchText) {
     }
 }
 
+async function searchVideoTag(searchText) {
+    let videoList = await getVideoList();
+    let videoTags = new Set();
+    videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
+
+    let findVideoList = videoList.filter((video) => {
+        let title = video.video_title.toLowerCase();
+        let detail = video.video_detail.toLowerCase();
+        let channelName = video.video_channel.toLowerCase();
+        let tag = video.video_tag;
+        let lowerCaseTag = tag.map(element => {
+            return element.toLowerCase();
+        });
+        if (title.includes(searchText) || detail.includes(searchText) 
+        || channelName.includes(searchText) || lowerCaseTag.includes(searchText)) {
+            return true;
+        }
+    });
+
+    if(findVideoList.length !== 0) {
+        displayVideoItem(findVideoList);
+    } else {
+        alert("no search List T.T");
+    }
+}
+
 const searchIcon = document.querySelector(".searchBox-icon > .searchBox-Button");
 const searchBox = document.querySelector(".searchBox-input");
 searchIcon.addEventListener("click", function() {
@@ -330,3 +375,16 @@ searchBox.addEventListener("keypress", function(event) {
 function clickTagSearch(tag) {
     search(tag);
 }
+
+// top-menu 슬라이드
+let currentPosition = 0;
+function slideTags() {
+    const tags = document.querySelector('.top-menu-item ul');
+    
+    currentPosition -= 200;
+    
+    tags.style.transform = `translateX(${currentPosition}px)`;
+}
+
+const top_menu_button = document.querySelector('.top-menu-icon-leftBotton');
+top_menu_button.addEventListener('click', slideTags);
