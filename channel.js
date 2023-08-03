@@ -134,17 +134,19 @@ async function displayChannelInfo() {
     let channelName = document.querySelector(".channel-profile-name");
     let channelSubscribers = document.querySelector(".channel-subscribes");
 
-    let data = getChannelInfo(parseChannelName);
-    data.then((v) => {
-        channelBanner.src = v.channel_banner;
-        channelProfile.src = v.channel_profile;
-        channelProfile.setAttribute('alt', `${v.channel_name} 프로필`);
-        channelProfile.setAttribute('title', `${v.channel_name} 프로필`);
-        channelName.innerHTML = v.channel_name;
-        channelSubscribers.innerHTML = formatSubscribersCount(v.subscribers);
-    });
+    if (idx !== -1) {
+        let data = getChannelInfo(parseChannelName);
+        data.then((v) => {
+            channelBanner.src = v.channel_banner;
+            channelProfile.src = v.channel_profile;
+            channelProfile.setAttribute('alt', `${v.channel_name} 프로필`);
+            channelProfile.setAttribute('title', `${v.channel_name} 프로필`);
+            channelName.innerHTML = v.channel_name;
+            channelSubscribers.innerHTML = formatSubscribersCount(v.subscribers);
+        });
+        displayChannelVideoList(parseChannelName, []);
+    }
 
-    displayChannelVideoList(parseChannelName, []);
 }
 
 function formatSubscribersCount(subscribers) {

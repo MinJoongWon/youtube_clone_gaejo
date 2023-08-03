@@ -104,6 +104,47 @@ async function displayHomeItem(findVideoList) {
         videoList = await getVideoList();
     }
 
+    const currentUrl = window.location.href;
+    if (currentUrl.includes('channel') || currentUrl.includes('video')) {
+        let channelSection = document.querySelector('.channel-section');
+        if (channelSection != null) {
+            channelSection.style.display = 'none';
+        }
+
+        let video = document.querySelector('.video-body');
+        if (video != null) {
+            video.style.display = 'none';
+        }
+
+        let homeBody = document.querySelector('.home-body');
+        homeBody.style.display = 'flex';
+        let setcionTag = `
+        <div class="section">
+        <section>
+            <div class="top-menu">
+                <div class="top-menu-item">
+                    <ul>
+                    </ul>
+                </div>
+                <div class="top-menu-icon">
+                    <button class="top-menu-icon-leftBotton">
+                        <img src="../images/top-menu-right.png" alt="arrow_right" title="arrow">
+                    </button>
+                </div>
+            </div>
+            <div class="thumbnail-box">
+            </div>
+        </section>
+        </div>`;
+        homeBody.innerHTML = setcionTag;
+        if (channelSection != null) {
+            channelSection.after(homeBody);
+        }
+        if (video != null) {
+            video.after(homeBody);
+        }
+    }
+
     let thumbnail = document.querySelector('.thumbnail-box');
     let info = '';
 
