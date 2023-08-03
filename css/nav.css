@@ -24,6 +24,12 @@ img {
   cursor: pointer;
 }
 
+.yt-button-icon:hover {
+  background-color: #303030;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
 div#side {
   display: none;
 }
@@ -59,7 +65,8 @@ input#menu:checked + div#side {
 
 .yt-button-icon {
   padding: 8px;
-  height: 100%;
+  align-self: center;
+  height: 24px;
 }
 
 .yt-button-logo {
@@ -69,6 +76,12 @@ input#menu:checked + div#side {
 .yt-button-logo img {
   width: 90px;
   height: 20px;
+}
+
+.yt-button-logo > a,
+.yt-button-logo > a > img {
+  display: flex;
+  align-items: center;
 }
 
 /* end nav-yt-button */
@@ -108,6 +121,11 @@ input#menu:checked + div#side {
   border: 1px solid var(--border-color, #303030);
 }
 
+.searchBox-Button:hover {
+  background-color: #212121;
+  border: 1px solid #212121;
+}
+
 .mic {
   display: flex;
   padding: 8px;
@@ -116,6 +134,12 @@ input#menu:checked + div#side {
   border-radius: 40px;
   background: var(--black, #000);
   color: white;
+}
+
+.mic:hover, .mic span:hover {
+  background-color: #303030;
+  cursor: pointer;
+  border: none;
 }
 
 /* end searchBoxArea */
@@ -132,6 +156,14 @@ input#menu:checked + div#side {
 .nav-profile-apps,
 .nav-profile-notifications {
   padding: 10px;
+}
+
+.nav-profile-create:hover,
+.nav-profile-apps:hover,
+.nav-profile-notifications:hover {
+  cursor: pointer;
+  background-color: #303030;
+  border-radius: 24px;
 }
 
 .nav-profile-pic {
