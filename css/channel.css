@@ -1,33 +1,50 @@
-.channel-body {
+.channel-section {
   display: flex;
+  flex-direction: column;
+  margin-top: 56px;
+  margin-left: 240px;
 }
 
-.channel-section, 
-.channel {
-  width: 100%;
+section {
   overflow: hidden;
 }
 
-.channel-cover {
-  width: 100vh;
-  height: 192px;
+.channel {
   display: flex;
+  height: 340px;
+  flex-direction: column;
+}
+
+.channel-cover {
+  min-width: fit-content;
+  width: 100%;
+  min-height: 192px;
+  display: flex;
+  background-repeat: repeat-x;
+}
+
+.channel-cover > img {
+  background-repeat: repeat-x;
+  width: 100%;
+  min-width: fit-content;
 }
 
 .channel-title {
   display: flex;
   padding: 16px 65px 4px 65px;
   align-items: flex-start;
-  width: 100%;
-
   gap: 699px;
   background-color: #181818;
 }
+
 .channel-profile {
   display: flex;
-  flex-direction: row;
+  padding-right: 0px;
+  align-items: flex-start;
+  gap: 10px;
   color: var(--white-color, #fff);
 }
+
 .profile-pic {
   display: flex;
   width: 80px;
@@ -43,6 +60,7 @@
 
 .channel-profile-desc {
   display: flex;
+  width: 143px;
   padding: 18px 0px;
   flex-direction: column;
   align-items: flex-start;
@@ -59,6 +77,7 @@
   line-height: normal;
   display: flex;
 }
+
 .channel-subscribes {
   color: var(--gray-color, #aaa);
   font-size: 14px;
@@ -70,11 +89,12 @@
 
 .channel-subscribes-btn {
   display: flex;
+  width: 124px;
   padding: 22px 4px;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-} 
+}
 
 .channel-subscribes-btn > button {
   display: flex;
@@ -82,28 +102,31 @@
   align-items: flex-start;
   gap: 10px;
   border-radius: 2px;
-  background: #C00;
+  background: #c00;
   border: none;
 
-  color: var(--white-color, #FFF);
+  color: var(--white-color, #fff);
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
   text-transform: uppercase;
 }
 
 .channel-subscribes-btn > button:hover {
   cursor: pointer;
+  opacity: 0.85;
 }
 
 /*toolbar*/
 .channel-toolbar {
   display: flex;
   flex-direction: row;
+  padding: 0px 65px;
+
   gap: 24px;
-  padding: 16px 32px 15px 32px;
   background-color: #181818;
   height: 48px;
   /* width: 100%; */
@@ -121,11 +144,21 @@
   line-height: normal;
   text-transform: uppercase;
 }
+
 .channel-toolbar-menu li {
   display: flex;
   padding: 16px 32px 15px 32px;
   align-items: flex-start;
   gap: 10px;
+}
+
+.channel-toolbar-menu li:hover {
+  color: white;
+}
+
+.channel-toolbar-menu li:first-child {
+  color: white;
+  border-bottom: solid 2px #aaaaaa;
 }
 
 .channel-toolbar-search {
@@ -136,7 +169,7 @@
   display: flex;
   padding: 12px 8px;
   align-items: flex-start;
-  color: #AAAAAA;
+  color: #aaaaaa;
 }
 
 .channel-toolbar-search > input {
@@ -144,7 +177,7 @@
   padding-left: 0px;
   align-items: flex-start;
   gap: 202px;
-
+  outline: none;
   border: none;
   appearance: none;
   -webkit-appearance: none;
@@ -159,7 +192,7 @@
   border: none;
   background-color: #181818;
   cursor: pointer;
-  color: #AAAAAA;
+  color: #aaaaaa;
 }
 
 /* channel-section */
@@ -169,15 +202,19 @@
 
 .small-video {
   display: inline-flex;
-  padding: 24px 287px 24px 65px;
   align-items: flex-start;
+  width: 848px;
+  height: 238px;
+  padding: 24px 287px 24px 65px;
 }
 
 .small-video-desc {
   padding-bottom: 0px;
 }
 
-.video-title, .title, .time {
+.video-title,
+.title,
+.time {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -185,7 +222,7 @@
 }
 
 .time {
-  color: var(--gray-color, #AAA);
+  color: var(--gray-color, #aaa);
   font-family: Roboto;
   font-size: 13px;
   font-style: normal;
@@ -204,9 +241,9 @@
 }
 
 .descriptions {
-  color: var(--white-color, #FFF);
+  color: var(--white-color, #fff);
   font-variant-numeric: stacked-fractions;
-  font-feature-settings: 'hlig' on, 'dlig' on;
+  font-feature-settings: "hlig" on, "dlig" on;
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
@@ -219,6 +256,7 @@
   padding-right: 24px;
   flex-direction: column;
   align-items: flex-start;
+  gap: 10px;
 }
 
 .player > video {
@@ -231,15 +269,14 @@
 }
 
 .play-list {
-  color: var(--white-color, #FFF);
+  color: var(--white-color, #fff);
   font-family: Roboto;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  border-top: 1px solid #AAAAAA;
+  border-top: 1px solid #303030;
   width: 100%;
-
   display: flex;
   padding-top: 8px;
   align-items: flex-start;
@@ -265,7 +302,7 @@
 }
 
 .play-btn > * {
-  color: var(--gray-color, #AAA);
+  color: var(--gray-color, #aaa);
   font-family: Roboto;
   font-size: 16px;
   font-style: normal;
@@ -275,7 +312,7 @@
 }
 
 .video-desc > p {
-  color: var(--white-color, #FFF);
+  color: var(--white-color, #fff);
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
@@ -289,7 +326,7 @@
 }
 
 .video-desc-views {
-  color: var(--gray-color, #AAA);
+  color: var(--gray-color, #aaa);
   font-family: Roboto;
   font-size: 12px;
   font-style: normal;
@@ -305,10 +342,20 @@
   align-items: flex-start;
 }
 
+.video-card-container {
+  overflow:hidden;
+  width: 1090px;
+}
+
 .video-card {
   display: flex;
+  /*아래코드 살릴시 옆으로 퍼진것들 홈화면처럼
+  반응형으로 정렬*/
+  /* flex-wrap: wrap;
+  flex: 1 1 40%; */
   padding: 24px 0px;
   align-items: flex-start;
+  transition:transform 0.3s;
 }
 
 .xsamll-video {
@@ -318,3 +365,69 @@
   flex-direction: column;
   align-items: flex-start;
 }
+
+.result {
+  justify-content: center;
+  display: none;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+
+.right-arrow-container {
+  display: flex;
+  height: 118px;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  top: -230px;
+  left: 1070px;
+}
+
+.right-arrow {
+  display: flex;
+  background-color: #303030;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+}
+
+.right-arrow .material-symbols-outlined,
+.left-arrow .material-symbols-outlined {
+  vertical-align: middle;
+  color: white;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.left-arrow-container {
+  display: flex;
+  height: 118px;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  top: -345px;
+  right: 20px;
+  visibility: hidden;
+}
+
+.left-arrow {
+  display: flex;
+  background-color: #303030;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+}
+

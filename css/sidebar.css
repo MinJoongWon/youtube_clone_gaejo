@@ -1,18 +1,34 @@
 @import url("http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700");
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .sidebar {
   display: flex;
   width: 240px;
   float: left;
   background-color: #212121;
-  padding-right: 16px;
+  padding: 12px 0;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   color: var(--white-color, #fff);
+  overflow: scroll;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  bottom: 0;
 }
 
-.sidebar-top, 
+.sidebar-top {
+  display: flex;
+  padding-bottom: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid #303030;
+}
+
 .sidebar-top2,
 .sidebar-subscriptions,
 .sidebar-more-from,
@@ -22,6 +38,14 @@
   flex-direction: column;
   align-items: flex-start;
   border-bottom: 1px solid #303030;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 48
 }
 
 aside {
@@ -37,7 +61,7 @@ li {
 .sidebar-top > ul > li > span,
 .sidebar-top2 > ul > li > span,
 .sidebar-subscriptions > ul > li > span,
-.sidebar-more-from > ul > li > span, 
+.sidebar-more-from > ul > li > span,
 .sidebar-bottom > ul > li > span {
   align-self: center;
 }
@@ -45,7 +69,7 @@ li {
 .sidebar-top > ul > li,
 .sidebar-top2 > ul > li,
 .sidebar-subscriptions > ul > li,
-.sidebar-more-from > ul > li, 
+.sidebar-more-from > ul > li,
 .sidebar-bottom > ul > li {
   display: flex;
   gap: 24px;
@@ -62,7 +86,7 @@ li {
 .sidebar-top > ul > li:hover,
 .sidebar-top2 > ul > li:hover,
 .sidebar-subscriptions > ul > li:hover,
-.sidebar-more-from > ul > li:hover, 
+.sidebar-more-from > ul > li:hover,
 .sidebar-bottom > ul > li:hover {
   background-color: #303030;
   cursor: pointer;
@@ -72,13 +96,13 @@ li {
   padding-top: 12px;
 }
 
-.sidebar-subscriptions > ul > :first-child, 
+.sidebar-subscriptions > ul > :first-child,
 .sidebar-more-from > ul > :first-child {
   font-weight: 700;
   cursor: default !important;
 }
 
-.sidebar-subscriptions > ul > :first-child:hover, 
+.sidebar-subscriptions > ul > :first-child:hover,
 .sidebar-more-from > ul > :first-child:hover {
   font-weight: 700;
   background-color: #212121;
@@ -91,6 +115,15 @@ li {
 
 .sidebar-footer > p {
   padding: 16px 24px 0px 24px;
+}
+
+.sidebar-footer span {
+  color: var(--gray-color, #AAA);
+  font-family: Roboto;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 .sidebar-footer > p:nth-child(1) {

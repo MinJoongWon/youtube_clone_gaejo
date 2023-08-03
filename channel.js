@@ -183,6 +183,7 @@ async function searchInChannel(channelName, searchText) {
         }
     });
 
+    let channel = document.querySelector('.channel');
     let smallVideo = document.querySelector('.small-video');
     let contentTag = document.querySelector('.content');
     let result = document.querySelector('.result');

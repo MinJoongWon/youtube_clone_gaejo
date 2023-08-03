@@ -35,6 +35,7 @@ iconList2.forEach((icon) => {
 });
 
 function menuEvent() {
+  const currentUrl = window.location.href;
   let side = document.querySelector('.sidebar');
   let sidebarTop2 = document.querySelector('.sidebar-top2');
   let sidebarSubscriptions = document.querySelector('.sidebar-subscriptions');
@@ -51,7 +52,9 @@ function menuEvent() {
     sidebarMoreFrom.style.display = 'none';
     sidebarBottom.style.display = 'none';
     sidebarFooter.style.display = 'none';
-    channelSection.style.marginLeft = '70px';
+    if (currentUrl.includes('channel')) {
+      channelSection.style.marginLeft = '70px';
+    }
   } else {
     side.style.width = '240px';
     sidebarTop.style = '';
@@ -60,7 +63,9 @@ function menuEvent() {
     sidebarMoreFrom.style = '';
     sidebarBottom.style = '';
     sidebarFooter.style = '';
-    channelSection.style.marginLeft = '240px';
+    if (currentUrl.includes('channel')) {
+      channelSection.style.marginLeft = '240px';
+    }
   }
 }
 
