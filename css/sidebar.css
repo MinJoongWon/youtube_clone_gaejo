@@ -15,7 +15,7 @@
   display: flex;
   float: left;
   z-index: 1;
-  transition: left .4s;
+  transition: all .35s;
   overflow: scroll;
 }
 
