@@ -308,6 +308,7 @@ tags.forEach(tag => {
 
 // 검색기능
 async function search(searchText) {
+    searchText = searchText.toLowerCase();
     let videoList = await getVideoList();
     let videoTags = new Set();
     videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
@@ -335,6 +336,7 @@ async function search(searchText) {
 }
 
 async function searchVideoTag(searchText) {
+    searchText = searchText.toLowerCase();
     let videoList = await getVideoList();
     let videoTags = new Set();
     videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
