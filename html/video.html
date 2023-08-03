@@ -240,15 +240,10 @@
   <script src="../sidebar.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      displayVideoItem().catch((err) => {
+      displayVideoItem([]).catch((err) => {
         console.error("API 호출에 실패하였습니다.: ", err);
       });
       getVideoPlayerData();
-    });
-    document.addEventListener("keyup", function (event) {
-      if (event.code === "Enter") {
-        addComment();
-      }
     });
   </script>
 </html>

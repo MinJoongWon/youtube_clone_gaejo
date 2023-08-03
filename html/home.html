@@ -20,8 +20,13 @@
         <div class="nav-yt-button">
             <div class="yt-button-icon">
                 <!-- <span class="material-symbols-outlined" for="menu">menu</span> -->
+                <style>
+                    input[id="menu"]:checked+label+div {
+                        left: 0;
+                    }
+                </style>
+                <input id="menu" type="checkbox" checked> <!-- 추가 -->
                 <label class="material-symbols-outlined" for="menu">menu</label> <!--라벨추가-->
-                <input id="menu" type="checkbox"> <!-- 추가 -->
                 <div class="sidebar" id="side"> <!--id="side" 추가-->
                     <aside>
                         <div class="sidebar-top">
