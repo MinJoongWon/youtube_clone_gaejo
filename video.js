@@ -198,3 +198,26 @@ commentInput.addEventListener('keyup', function(event) {
 });
 
 window.onload = updateCommentList;
+
+let isSubscribed = false;
+function subscribe() {
+  const subscribeBtn = document.querySelector('.subscribes-btn > button');
+  let subscribers = document.querySelector('.subscribers');
+  let count = parseInt(subscribers.innerHTML.replace(/,/g, ''));
+
+  isSubscribed = !isSubscribed;
+  if (isSubscribed) {
+    subscribeBtn.textContent = 'cancle subscribes'.toUpperCase();
+    subscribeBtn.style.opacity = 0.75;
+    count++;
+  } else {
+    subscribeBtn.textContent = 'subscribes'.toUpperCase();
+    subscribeBtn.style.opacity = 1;
+    count--;
+  }
+  
+  subscribers.innerHTML = count.toLocaleString();
+}
+
+const subscribeBtn = document.querySelector('.subscribes-btn');
+subscribeBtn.addEventListener("click", subscribe);
