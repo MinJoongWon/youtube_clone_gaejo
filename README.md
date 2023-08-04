@@ -15,6 +15,12 @@
 - css
 - javascript
 
+## 개발과정
+* 기획 및 설계
+ * 팀원간 릴레이 코딩
+* home 개발
+* channel 개발
+* video 개발
 ## EX)
 - HTML
   - HTML 코드전체
