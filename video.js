@@ -207,7 +207,7 @@ function subscribe() {
 
   isSubscribed = !isSubscribed;
   if (isSubscribed) {
-    subscribeBtn.textContent = 'cancle subscribes'.toUpperCase();
+    subscribeBtn.textContent = 'subscribed'.toUpperCase();
     subscribeBtn.style.opacity = 0.75;
     count++;
   } else {
