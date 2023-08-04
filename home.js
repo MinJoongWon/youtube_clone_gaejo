@@ -52,30 +52,30 @@ function timeForToday(value) {
 
     if (betweenTime < 1) return '방금전';
     if (betweenTime < 60) {
-        return `${betweenTime}분전`;
+        return `${betweenTime}분 전`;
     }
 
     const betweenTimeHour = Math.floor(betweenTime / 60);
     if (betweenTimeHour < 24) {
-        return `${betweenTimeHour}시간전`;
+        return `${betweenTimeHour}시간 전`;
     }
 
     const betweenWeek = Math.floor(betweenTime / 60 / 24 / 7);
     if (betweenWeek > 1 && betweenWeek <= 4) {
-        return `${betweenWeek}주전`;
+        return `${betweenWeek}주 전`;
     }
 
     const betweenMonth = Math.floor(betweenTime / 60 / 24 / 30);
     if (betweenMonth >= 1 && betweenMonth < 30) {
-        return `${betweenMonth}개월전`;
+        return `${betweenMonth}개월 전`;
     }
 
     const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
     if (betweenTimeDay < 365) {
-        return `${betweenTimeDay}일전`;
+        return `${betweenTimeDay}일 전`;
     }
 
-    return `${Math.floor(betweenTimeDay / 365)}년전`;
+    return `${Math.floor(betweenTimeDay / 365)}년 전`;
 }
 
 function formatCount(count) {
@@ -201,7 +201,7 @@ async function displayHomeItem(findVideoList) {
                             <span><a href='./html/channel.html?id=${videoInfo.video_channel}'>${videoInfo.video_channel}</a></span>
                         </div>
                         <div class="thumbnail-time">
-                            <span>${formatCount(videoInfo.views)} Views .</span>
+                            <span>${formatCount(videoInfo.views)} Views ·</span>
                             <span>${uploadTime}</span>
                         </div>
                     </div>
@@ -245,7 +245,7 @@ async function displayVideoItem(findVideoList) {
                     <div class="channel-desc">
                         <span class="channel-name">${videoInfo.video_channel}</span>
                         <p>
-                            <span class="channel-views">${formatCount(videoInfo.views)} Views.</span>
+                            <span class="channel-views">${formatCount(videoInfo.views)} Views ·</span>
                             <span class="channel-upload-time">${uploadTime}</span>
                         </p>
                     </div>
