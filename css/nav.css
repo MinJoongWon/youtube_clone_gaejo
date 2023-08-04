@@ -30,20 +30,24 @@ img {
   cursor: pointer;
 }
 
+/* 
 div#side {
   display: none;
-}
+} */
 input#menu {
   display: none;
 }
-input#menu:checked + div#side {
+
+input#menu:checked+div#side {
   display: block;
 }
+
 .nav-yt-button {
   display: flex;
   align-items: center;
   padding-left: 10px;
 }
+
 .nav-profile {
   display: flex;
   justify-content: flex-end;
@@ -78,8 +82,8 @@ input#menu:checked + div#side {
   height: 20px;
 }
 
-.yt-button-logo > a,
-.yt-button-logo > a > img {
+.yt-button-logo>a,
+.yt-button-logo>a>img {
   display: flex;
   align-items: center;
 }
@@ -97,7 +101,7 @@ input#menu:checked + div#side {
   border: 1px solid #303030;
 }
 
-.nav-searchBoxArea > .searchBox > input {
+.nav-searchBoxArea>.searchBox>input {
   background-color: #121212;
   width: 362px;
   border: 0;
@@ -106,12 +110,12 @@ input#menu:checked + div#side {
   outline: none;
 }
 
-.nav-searchBoxArea > input::placeholder {
+.nav-searchBoxArea>input::placeholder {
   color: #aaaaaa;
   padding: 6px 2px;
 }
 
-.searchBox-icon > span {
+.searchBox-icon>span {
   width: 50px;
   height: 40px;
   background-color: #303030;
@@ -136,7 +140,8 @@ input#menu:checked + div#side {
   color: white;
 }
 
-.mic:hover, .mic span:hover {
+.mic:hover,
+.mic span:hover {
   background-color: #303030;
   cursor: pointer;
   border: none;
@@ -171,7 +176,8 @@ input#menu:checked + div#side {
   padding: 4px 14px;
   justify-content: center;
 }
-.nav-profile-pic > img {
+
+.nav-profile-pic>img {
   width: 32px;
   height: 32px;
 }

@@ -23,7 +23,7 @@
         <span class="material-symbols-outlined">menu</span>
       </div>
       <div class="yt-button-logo">
-        <a href="./home.html">
+        <a href="./index.html">
           <img src="../images/youtube_logo.png" alt="youtube logo" title="Youtube">
         </a>
       </div>
@@ -50,9 +50,8 @@
   </nav>
   <!-- nav -->
 
-
   <!-- aside -->
-  <div class="sidebar">
+  <div class="sidebar active">
     <aside>
       <div class="sidebar-top">
         <ul>
@@ -134,8 +133,9 @@
     </aside>
   </div>
   <!-- aside -->
+  <div class="home-body" style="display: none;"></div>
 
-  <div class="channel-section">
+  <div class="channel-section active">
     <section>
       <!-- 채널 상단 부분 -->
       <div class="channel">
@@ -239,6 +239,7 @@
 </body>
 <script src="../channel.js"></script>
 <script src="../sidebar.js"></script>
+<script src="../home.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     displayChannelInfo().catch((err) => {
