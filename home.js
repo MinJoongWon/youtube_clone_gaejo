@@ -119,9 +119,9 @@ async function displayHomeItem(findVideoList) {
         let homeBody = document.querySelector('.home-body');
         homeBody.style.display = 'flex';
         let setcionTag = `
-        <div class="section">
+        <div class="section action">
         <section>
-            <div class="top-menu">
+            <div class="top-menu active">
                 <div class="top-menu-item">
                     <ul>
                     </ul>
