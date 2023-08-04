@@ -13,6 +13,17 @@
 
   margin-top: 112px;
   margin-left: 240px;
+  transition: margin-left 0.3s ease, transform 0.3s ease;
+}
+
+.section:not(.active) {
+  margin-left: 110px;
+  transition: margin-left 0.3s ease, transform 0.3s ease;
+}
+
+.top-menu:not(.active) {
+  left: 110px;
+  transition: left 0.3s ease, transform 0.3s ease;
 }
 
 .thumbnail-box {
@@ -100,6 +111,8 @@ section {
   right: 0;
   left: 240px;
   z-index: 1;
+
+  transition: left 0.3s ease, transform 0.3s ease;
 }
 
 .top-menu-item>ul>li:first-child {
