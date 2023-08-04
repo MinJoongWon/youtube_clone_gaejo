@@ -7,10 +7,15 @@
 '유튜브 클론 프로젝트'는 유명한 동영상 공유 플랫폼인 유튜브의 주요 기능과 디자인을 모방하여 웹 어플리케이션을 만드는 프로젝트입니다. 프로젝트를 진행에 Figma, GitHub, Discord 툴을 활용했습니다. 유튜브 클론코딩을 통해 기본적인 프론트앤드 기술을 연습하고, 실력을 향상시키고자 프로젝트를 시작하게 되었습니다. HTML, CSS, JavaScript를 사용하며 4명의 조원들과 함께 릴레이 코딩방식으로 프로젝트를 진행했습니다.
 
 # 기술 스택
-<img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=white">
-<img src="https://img.shields.io/badge/css3-1572B6?style=flat-square&logo=css3&logoColor=white">
-#1572B6
+### 개발
+<img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=white"> <img src="https://img.shields.io/badge/css3-1572B6?style=flat-square&logo=css3&logoColor=white">  
+
+### 환경
+<img src="https://img.shields.io/badge/visual studio code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=flat-square&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=flat-square&logo=github&logoColor=white">
+
+### 협업
+<img src="https://img.shields.io/badge/discord-5865F2?style=flat-square&logo=discord&logoColor=white">
+
 
 # 브렌치 구성
 - HTML
