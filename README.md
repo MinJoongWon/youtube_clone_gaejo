@@ -2,12 +2,18 @@
 ![WIKIDOC_thumbnail](https://github.com/MinJoongWon/youtube_clone_gaejo/assets/137133419/bc0eecbc-269f-40ec-b62c-bae042ddbe1b)
 
 ## :computer: 프로젝트 소개
-- 오르미 2기 프로젝트 유튜브 클론 코딩
-## 팀원
--강은하 
--민중원 
--이채림 
--임준성 
+오르미 2기 프로젝트 유튜브 클론 코딩
+
+## 🧑‍🤝‍🧑팀원
+-강은하 </br>
+-민중원 </br>
+-이채림 </br>
+-임준성 </br>
+
+## 사용언어
+- html
+- css
+- javascript
 
 ## EX)
 - HTML
