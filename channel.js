@@ -1,8 +1,8 @@
-const channelInfoApi = 'http://oreumi.appspot.com/channel/getChannelInfo?video_channel=oreumi';
-const channelVideoListApi = 'http://oreumi.appspot.com/channel/getChannelVideo?video_channel=oreumi';
+const channelInfoApi = 'https://oreumi.appspot.com/channel/getChannelInfo?video_channel=oreumi';
+const channelVideoListApi = 'https://oreumi.appspot.com/channel/getChannelVideo?video_channel=oreumi';
 
 async function getChannelInfo(channelName) {
-    let newUrl = `http://oreumi.appspot.com/channel/getChannelInfo?video_channel=${channelName}`;
+    let newUrl = `https://oreumi.appspot.com/channel/getChannelInfo?video_channel=${channelName}`;
     try {
         const response = await fetch(newUrl, {
             method: 'POST'
@@ -15,7 +15,7 @@ async function getChannelInfo(channelName) {
 }
 
 async function getChannelVideo(channelName) {
-    let newUrl = `http://oreumi.appspot.com/channel/getChannelVideo?video_channel=${channelName}`;
+    let newUrl = `https://oreumi.appspot.com/channel/getChannelVideo?video_channel=${channelName}`;
     try {
         const response = await fetch(newUrl, {
             method: 'POST'
@@ -29,7 +29,7 @@ async function getChannelVideo(channelName) {
 
 async function getVideoData(videoId) {
     try {
-        const apiUrl = `http://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
+        const apiUrl = `https://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         return data;
@@ -79,7 +79,7 @@ async function displayChannelVideoList(channelName, findChannelVideoList) {
     } else {
         channelVideoList = await getChannelVideo(channelName);
     }
-    
+
     let videoIdList = [];
     channelVideoList.forEach(videoList => videoIdList.push(videoList.video_id));
 
@@ -177,8 +177,8 @@ async function searchInChannel(channelName, searchText) {
             return element.toLowerCase();
         });
 
-        if (title.includes(searchText) || detail.includes(searchText) 
-        || channelName.includes(searchText) || lowerCaseTag.includes(searchText)) {
+        if (title.includes(searchText) || detail.includes(searchText)
+            || channelName.includes(searchText) || lowerCaseTag.includes(searchText)) {
             return true;
         }
     });
@@ -202,7 +202,7 @@ async function searchInChannel(channelName, searchText) {
 
         let pTag = document.querySelector('.result > p');
         pTag.innerText = `이 채널에 ‘${searchText}’와(과) 일치하는 콘텐츠가 없습니다.`;
-        
+
         smallVideo.style.display = 'none';
         contentTag.style.display = 'none';
 
@@ -226,10 +226,10 @@ let parseChannelName = '';
 if (idx !== -1) {
     parseChannelName = currentUrl.substring(idx + 4);
 }
-channelSearchIcon.addEventListener("click", function() {
+channelSearchIcon.addEventListener("click", function () {
     searchInChannel(parseChannelName, channelSearchBox.value);
 });
-channelSearchBox.addEventListener("keypress", function(event) {
+channelSearchBox.addEventListener("keypress", function (event) {
     if (event.keyCode === 13) {
         searchInChannel(parseChannelName, channelSearchBox.value);
     }
@@ -245,7 +245,7 @@ function slideVideoCards() {
     console.log(currentPosition);
     video_cards.style.transform = `translateX(${currentPosition}px)`;
 
-    if(currentPosition != 0) {
+    if (currentPosition != 0) {
         left_button_container.style.visibility = 'visible';
     }
 }
@@ -255,7 +255,7 @@ function slideVideoCardsLeft() {
     currentPosition = currentPosition + 218;
     video_cards.style.transform = `translateX(${currentPosition}px)`;
 
-    if(currentPosition == 0) {
+    if (currentPosition == 0) {
         left_button_container.style.visibility = 'hidden';
     }
 }
