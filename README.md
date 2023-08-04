@@ -34,6 +34,9 @@
 
 
 # 주요 기능
+
+![Animation (1)](https://github.com/MinJoongWon/youtube_clone_gaejo/assets/62634206/02c8a178-74d6-4629-827d-0211562a5002)
+
 ### 영상 목록 불러오기
 
 ### 영상 검색
