@@ -33,12 +33,18 @@ iconList2.forEach((icon) => {
 });
 
 let menu = document.querySelector('.yt-button-icon');
-// menu.addEventListener("click", menuEvent);
 const sidebar = document.querySelector('.sidebar');
 const channelSection = document.querySelector('.channel-section');
+const homeSection = document.querySelector('.section');
+const topMenu = document.querySelector('.top-menu');
 
 menu.addEventListener('click', () => {
   sidebar.classList.toggle('active');
-  channelSection.classList.toggle('active');
+  if (channelSection !== null)
+    channelSection.classList.toggle('active');
+  if (homeSection !== null) {
+    homeSection.classList.toggle('active');
+    topMenu.classList.toggle('active');
+  }
 });
 
