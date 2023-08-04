@@ -96,15 +96,11 @@ async function addTopMenu(videoList) {
     videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
 
     const topMenuItem = document.querySelector(".top-menu-item > ul");
-
+    let innerHTML = '';
     for (tag of videoTags) {
-        let liTag = document.createElement("li");
-        let span = document.createElement("span");
-        span.innerHTML = tag;
-        liTag.appendChild(span);
-        span.setAttribute("onclick", `clickTagSearch('${tag}')`);
-        topMenuItem.appendChild(liTag);
+        innerHTML += `<li><span onclick=clickTagSearch('${tag}')>${tag}</span></li>`;
     }
+    topMenuItem.innerHTML = innerHTML;
 }
 
 // home.html 비디오 리스트 표시
