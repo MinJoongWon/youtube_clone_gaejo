@@ -27,6 +27,11 @@
 - JS
   - 기본적 동작
 
+# 화면 구성
+![image](https://github.com/MinJoongWon/youtube_clone_gaejo/assets/62634206/abd61279-4782-427f-84f2-16fd690cd56b)
+![image](https://github.com/MinJoongWon/youtube_clone_gaejo/assets/62634206/472fddde-41b1-45d0-a465-58078c8c3dc6)
+![image](https://github.com/MinJoongWon/youtube_clone_gaejo/assets/62634206/99831b59-933e-4c00-b2dc-8cab247ed80d)
+
 
 # 주요 기능
 영상 목록 불러오기
