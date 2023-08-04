@@ -202,8 +202,8 @@ window.onload = updateCommentList;
 let isSubscribed = false;
 function subscribe() {
   const subscribeBtn = document.querySelector('.subscribes-btn > button');
-  let subscribers = document.querySelector('.subscribers');
-  let count = parseInt(subscribers.innerHTML.replace(/,/g, ''));
+  let subscribers = document.querySelector('.subscribers > span');
+  let count = parseSubscribers(subscribers.innerHTML);
 
   isSubscribed = !isSubscribed;
   if (isSubscribed) {
@@ -216,7 +216,7 @@ function subscribe() {
     count--;
   }
   
-  subscribers.innerHTML = count.toLocaleString();
+  subscribers.innerHTML = formatSubscribersCount(count);
 }
 
 const subscribeBtn = document.querySelector('.subscribes-btn');

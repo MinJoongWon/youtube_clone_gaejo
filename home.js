@@ -78,6 +78,18 @@ function timeForToday(value) {
     return `${Math.floor(betweenTimeDay / 365)}년전`;
 }
 
+function formatCount(count) {
+    if (count < 1000) {
+        return `${count.toString()}`;
+    } else if (count < 1000000) {
+        const thousands = (count / 1000).toFixed(1);
+        return `${thousands}K`;
+    } else {
+        const millions = (count / 1000000).toFixed(1);
+        return `${millions}M`;
+    }
+}
+
 // top-menu에 태그 추가
 async function addTopMenu(videoList) {
     let videoTags = new Set();
@@ -193,7 +205,7 @@ async function displayHomeItem(findVideoList) {
                             <span><a href='./html/channel.html?id=${videoInfo.video_channel}'>${videoInfo.video_channel}</a></span>
                         </div>
                         <div class="thumbnail-time">
-                            <span>${videoInfo.views.toLocaleString()} Views .</span>
+                            <span>${formatCount(videoInfo.views)} Views .</span>
                             <span>${uploadTime}</span>
                         </div>
                     </div>
@@ -237,7 +249,7 @@ async function displayVideoItem(findVideoList) {
                     <div class="channel-desc">
                         <span class="channel-name">${videoInfo.video_channel}</span>
                         <p>
-                            <span class="channel-views">${videoInfo.views.toLocaleString()} Views.</span>
+                            <span class="channel-views">${formatCount(videoInfo.views)} Views.</span>
                             <span class="channel-upload-time">${uploadTime}</span>
                         </p>
                     </div>
@@ -271,13 +283,13 @@ async function getVideoPlayerData() {
             channelName.innerHTML = v.video_channel;
             channelName.setAttribute("title", v.video_channel);
             channelName.setAttribute("href", `channel.html?id=${v.video_channel}`);
-            views.innerHTML = v.views.toLocaleString();
-            upload_date.innerHTML = v.upload_date;
+            views.innerHTML = formatCount(v.views);
+            upload_date.innerHTML = timeForToday(v.upload_date);
             video_detail.innerHTML = v.video_detail;
 
             name = v.video_channel;
 
-            let subscribers = document.querySelector('.subscribers');
+            let subscribers = document.querySelector('.subscribers > span');
             let channel = channelData(name);
             channel.then((c) => {
                 channelProfile.setAttribute("src", c.channel_profile);
@@ -285,7 +297,7 @@ async function getVideoPlayerData() {
                 channelProfile.setAttribute("onclick", videoURL);
                 channelProfile.setAttribute("alt", `${name} 프로필`);
                 channelProfile.setAttribute("title", `${name} 프로필`);
-                subscribers.innerHTML = c.subscribers.toLocaleString();
+                subscribers.innerHTML = `${formatCount(c.subscribers)}`;
             });
         });
     }
