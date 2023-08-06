@@ -91,36 +91,38 @@ function formatCount(count) {
 }
 
 // top-menu에 태그 추가
-async function addTopMenu(videoList, selecteTag) {
-    let videoTags = new Set();
-    videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
+async function addTopMenu(videoList, selectedTag) {
+    const videoTags = new Set(videoList.flatMap(video => video.video_tag));
 
     const topMenuItem = document.querySelector(".top-menu-item > ul");
+    const isTagSelected = videoTags.has(selectedTag.toLowerCase());
     let innerHTML = '';
-    
-    if (selecteTag === '') {
-        innerHTML = `<li><span class='selected' onclick=clickTagSearch('')>전체</span></li>`;
+
+    if (selectedTag === '' || !isTagSelected) {
+        innerHTML += `<li><span class='selected' onclick="clickTagSearch('')">전체</span></li>`;
     } else {
-        innerHTML = `<li><span onclick=clickTagSearch('')>전체</span></li>`;
+        innerHTML += `<li><span onclick="clickTagSearch('')">전체</span></li>`;
     }
 
-    for (tag of videoTags) {
-        if (tag.toLowerCase() === selecteTag) {
-            innerHTML += `<li><span class='selected' onclick=clickTagSearch('${tag}')>${tag}</span></li>`;
+    for (const tag of videoTags) {
+        if (selectedTag.toLowerCase() === tag.toLowerCase()) {
+            innerHTML += `<li><span class='selected' onclick="clickTagSearch('${tag}')">${tag}</span></li>`;
         } else {
-            innerHTML += `<li><span onclick=clickTagSearch('${tag}')>${tag}</span></li>`;
+            innerHTML += `<li><span onclick="clickTagSearch('${tag}')">${tag}</span></li>`;
         }
     }
+
     topMenuItem.innerHTML = innerHTML;
 
     const tagsContainer = document.querySelector('.top-menu-item ul');
-    topMenuCurrentPosition = 0
-    let topMenuLeft = document.querySelector('.top-menu-icon-left')
+    const topMenuLeft = document.querySelector('.top-menu-icon-left');
     if (topMenuLeft) {
         topMenuLeft.style.visibility = 'hidden';
     }
-    tagsContainer.style.transform = `translateX(${topMenuCurrentPosition}px)`;
+    tagsContainer.style.transform = `translateX(0)`;
 }
+  
+  
 
 function homeHoverPlay(thumbnailItems) {
     for (let i = 0; i < thumbnailItems.length; i++) {
