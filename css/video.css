@@ -420,11 +420,11 @@ aside {
 /* end aside */
 
 /* aside - top-menu */
-.top-menu {
+.video-top-menu {
   padding: 1px 12px 2px 0px;
 }
 
-.top-menu > ul {
+.video-top-menu > ul {
   color: white;
   display: flex;
   padding: 8px 8px 8px 0px;
@@ -432,7 +432,7 @@ aside {
   gap: 10px;
 }
 
-.top-menu > ul > li {
+.video-top-menu > ul > li {
   flex-wrap: nowrap;
   display: flex;
   padding: 8px 8px 8px 0px;
@@ -440,7 +440,7 @@ aside {
   gap: 10px;
 }
 
-.top-menu li > span:hover {
+.video-top-menu li > span:hover {
   background-color: white;
   color: #030303;
 
@@ -449,7 +449,7 @@ aside {
   cursor: pointer;
 }
 
-.top-menu > ul > li > span {
+.video-top-menu > ul > li > span {
   display: flex;
   padding: 8px 12px;
 
