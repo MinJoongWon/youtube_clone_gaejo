@@ -52,6 +52,62 @@ function formatSubscribersCount(subscribers) {
   }
 }
 
+function toggleLike(liked) {
+  const likeCountElement = liked.nextElementSibling;
+  let likeCount = parseInt(likeCountElement.textContent);
+  const commentId = liked.id;
+
+  if (liked.classList.contains('liked')) {
+      liked.style.fontVariationSettings = "'FILL' 0";
+      liked.classList.remove('liked');
+      likeCount--;
+  } else {
+      liked.style.fontVariationSettings = "'FILL' 1";
+      liked.classList.add('liked');
+      likeCount++;
+    } 
+    likeCountElement.textContent = likeCount;
+    saveCommentLike(commentId, likeCount);
+}
+
+function toggleDisLike(disliked) {
+  const disLikeCountElement = disliked.nextElementSibling;
+  let disLikeCount = parseInt(disLikeCountElement.textContent);
+  const commentId = disliked.id;
+  
+  if (disliked.classList.contains('disliked')) {
+      disliked.style.fontVariationSettings = "'FILL' 0";
+      disliked.classList.remove('disliked');
+      disLikeCount--;
+  } else {
+      disliked.style.fontVariationSettings = "'FILL' 1";
+      disliked.classList.add('disliked');
+      disLikeCount++;
+  } 
+  disLikeCountElement.textContent = disLikeCount;
+  saveCommentDisLike(commentId, disLikeCount);
+}
+
+function saveCommentLike(commentId, count) {
+  let localStorageItem = JSON.parse(localStorage.getItem('comment')) || [];
+  localStorageItem.forEach((comment) => {
+    if (comment.commentId === commentId) {
+      comment.like = count;
+    }
+  });
+  localStorage.setItem('comment', JSON.stringify(localStorageItem));
+}
+
+function saveCommentDisLike(commentId, count) {
+  let localStorageItem = JSON.parse(localStorage.getItem('comment')) || [];
+  localStorageItem.forEach((comment) => {
+    if (comment.commentId === commentId) {
+      comment.disLike = count;
+    }
+  });
+  localStorage.setItem('comment', JSON.stringify(localStorageItem));
+}
+
 function fillLikeButtonOnClick() {
   const like = document.querySelector(".video-like span");
   let likeCount = document.querySelector(".video-like > p");
@@ -314,12 +370,12 @@ function updateCommentList() {
           </div>
           <div class="comment-toolbar">
             <div class="comment-like">
-              <span class="material-symbols-outlined" title="좋아요">thumb_up</span>
-              <span></span>
+              <span id="${comment.commentId}" class="material-symbols-outlined" title="좋아요" onclick="toggleLike(this)">thumb_up</span>
+              <span>${comment.like}</span>
             </div>
             <div class="comment-dislike">
-              <span class="material-symbols-outlined" title="싫어요">thumb_down</span>
-              <span></span>
+              <span id="${comment.commentId}" class="material-symbols-outlined" title="싫어요" onclick="toggleDisLike(this)">thumb_down</span>
+              <span>${comment.disLike}</span>
             </div>
             <div class="reply">
               <span>REPLY</span>
@@ -350,13 +406,17 @@ function addComment() {
   let inputData = document.querySelector(".comment-inputBox > input");
   let currentTime = new Date();
 
+  let localStorageItem = JSON.parse(localStorage.getItem('comment')) || [];
+  let commentId = 'video' + id + 'commentId' + localStorageItem.length;
   let commentData = {
     id: id,
+    commentId: commentId,
     time: currentTime,
-    comment: inputData.value
+    comment: inputData.value,
+    like: 0,
+    disLike: 0
   };
 
-  let localStorageItem = JSON.parse(localStorage.getItem('comment')) || [];
   localStorageItem.push(commentData);
   localStorage.setItem('comment', JSON.stringify(localStorageItem));
 
