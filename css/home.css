@@ -40,12 +40,39 @@
   padding: 0 0 18px 0;
 }
 
-.thumbnail-item {}
+.thumbnail-item {
+  height: 155px;
+  position: relative;
+}
 
 .thumbnail-item-image>img {
   width: 276px;
   height: 155px;
   cursor: pointer;
+  position: absolute;
+  border-radius: 8px;
+}
+
+.played {
+  animation: fadeIn 1s;
+}
+
+.video-time {
+  background-color: black;
+  color: #FFF;
+  text-align: center;
+  line-height: 18px;
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  z-index: 1;
+
+  padding: 3px 4px;
+  font-family: Roboto;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .thumbnail-desc {
@@ -62,6 +89,13 @@
   width: 36px;
   height: 36px;
   cursor: pointer;
+}
+
+.video-play {
+  width: 276px;
+  height: 155px;
+  cursor: pointer;
+  padding: 0;
 }
 
 .thumbnail-pic {
@@ -159,6 +193,11 @@ section {
   cursor: pointer;
 }
 
+.top-menu-item li> .selected {
+  background-color: white;
+  color: #030303;
+}
+
 .top-menu-icon {
   display: flex;
   align-items: center;
@@ -166,6 +205,16 @@ section {
   position: fixed;
   background: rgba(33, 33, 33, 0.9);
   right: 0;
+}
+
+.top-menu-icon-left {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  background: rgba(33, 33, 33, 0.9);
+  left: 240px;
+  z-index: 1;
 }
 
 .top-menu-icon:hover {
@@ -183,5 +232,23 @@ section {
   height: 16px;
   padding: 2.64px 4.97px 2.65px 4.97px;
   background: rgba(33, 33, 33, 0.9);
+  cursor: pointer;
+}
+
+.top-menu-icon-leftToRightBotton {
+  border: none;
+  color: #ffffff;
+  opacity: 0.5;
+  width: 16px;
+  height: 16px;
+  padding: 2.64px 4.97px 2.65px 4.97px;
+  background: rgba(33, 33, 33, 0.9);
+  cursor: pointer;
+}
+
+.top-menu-icon-left:hover {
+  background-color: #303030;
+  color: #030303;
+  opacity: 0.5;
   cursor: pointer;
 }

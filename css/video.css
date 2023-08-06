@@ -471,7 +471,7 @@ aside {
 .secondary-thumbnail img {
     width: 168px;
     height: 94px;
-    padding-right: 8px;
+    border-radius: 8px;
 }
 
 .videos {
@@ -481,7 +481,40 @@ aside {
 }
 
 .video-item {
+  width: 168px;
+  height: 94px;
+  padding-right: 8px;
   padding-bottom: 10px;
+  position: relative;
+}
+
+.video-play {
+  width: 168px;
+  height: 94px;
+  position: absolute;
+  top: 0;  
+}
+
+.played {
+  animation: fadeIn 1s;
+}
+
+.video-time {
+  background-color: black;
+  color: #FFF;
+  text-align: center;
+  line-height: 18px;
+  position: absolute;
+  right: 12px;
+  bottom: 14px;
+  z-index: 1;
+
+  padding: 3px 4px;
+  font-family: Roboto;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .video-text {
