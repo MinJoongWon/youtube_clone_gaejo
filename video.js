@@ -190,7 +190,7 @@ like.addEventListener("click", fillLikeButtonOnClick);
 const dislike = document.querySelector(".video-dislike");
 dislike.addEventListener("click", fillDislikeButtonOnClick); 
 
-const commentInput = document.querySelector('.comment-inputBox input');
+const commentInput = document.querySelector('.comment-inputBox > input');
 commentInput.addEventListener('keyup', function(event) {
   if(event.key == 'Enter') {
     addComment();
@@ -221,3 +221,4 @@ function subscribe() {
 
 const subscribeBtn = document.querySelector('.subscribes-btn');
 subscribeBtn.addEventListener("click", subscribe);
+
