@@ -84,6 +84,18 @@ function formatCount(count) {
     }
 }
 
+function getParseUrl() {
+    const currentUrl = window.location.href;
+    let idx = currentUrl.indexOf('?');
+    let parseChannelName = '';
+
+    if (idx !== -1) {
+        parseChannelName = currentUrl.substring(idx + 4);
+    }
+
+    return parseChannelName;
+}
+
 async function displayMainVideo(videoInfoList) {
     let mainVideo = document.querySelector('.small-video .player video');
     let mainVideoTitle = document.querySelector('.small-video-desc .video-title .title');
@@ -102,14 +114,13 @@ async function displayMainVideo(videoInfoList) {
     }
 
     let videoInfo = videoInfoList.find(v => v.video_id === maxViewVideoId);
-
     let uploadTime = timeForToday(videoInfo.upload_date);
+
     mainVideo.src = videoInfo.video_link;
     mainVideoTitle.innerText = videoInfo.video_title;
     mainVideoTitle.setAttribute("title", videoInfo.video_title);
     mainVideoTime.innerText = videoInfo.views.toLocaleString() + ' views · ' + uploadTime;
     mainVideoDesc.innerText = videoInfo.video_detail;
-
 }
 
 function hoverPlay(thumbnailItems) {
@@ -192,20 +203,14 @@ async function displayChannelVideoList(channelName, findChannelVideoList) {
 }
 
 async function displayChannelInfo() {
-    const currentUrl = window.location.href;
-    let idx = currentUrl.indexOf('?');
-    let parseChannelName = '';
-
-    if (idx !== -1) {
-        parseChannelName = currentUrl.substring(idx + 4);
-    }
+    let parseChannelName = getParseUrl();
 
     let channelBanner = document.querySelector(".channel-cover img");
     let channelProfile = document.querySelector(".channel-profile .profile-pic .user-avatar");
     let channelName = document.querySelector(".channel-profile-name");
     let channelSubscribers = document.querySelector(".channel-subscribes");
 
-    if (idx !== -1) {
+    if (parseChannelName) {
         let data = getChannelInfo(parseChannelName);
         data.then((v) => {
             channelBanner.src = v.channel_banner;
@@ -290,18 +295,13 @@ async function searchInChannel(channelName, searchText) {
 // 채널내에서 검색
 const channelSearchIcon = document.querySelector(".channel-toolbar-search > .leftArrow");
 const channelSearchBox = document.querySelector(".channel-toolbar-search > input");
-const currentUrl = window.location.href;
-let idx = currentUrl.indexOf('?');
-let parseChannelName = '';
-if (idx !== -1) {
-    parseChannelName = currentUrl.substring(idx + 4);
-}
+
 channelSearchIcon.addEventListener("click", function () {
-    searchInChannel(parseChannelName, channelSearchBox.value);
+    searchInChannel(getParseUrl(), channelSearchBox.value);
 });
 channelSearchBox.addEventListener("keypress", function (event) {
     if (event.keyCode === 13) {
-        searchInChannel(parseChannelName, channelSearchBox.value);
+        searchInChannel(getParseUrl(), channelSearchBox.value);
     }
 });
 
@@ -341,6 +341,7 @@ function slideVideoCardsLeft() {
     if (currentPosition == 0) {
         left_button_container.style.visibility = 'hidden';
     }
+
     if (currentPosition >= -videoCardsWidth) {
         right_button.style.visibility = 'visible';
     }
