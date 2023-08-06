@@ -99,3 +99,17 @@ menu.addEventListener('click', () => {
   }
 });
 
+document.addEventListener('click', (event) => {
+  const videoSection = document.querySelector('.video-body');
+  if (videoSection) {
+    if (!sidebar.contains(event.target) && !menu.contains(event.target)) {
+      if (sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+        videoSection.style.opacity = 1;
+        sidebar.style.width = '0'; 
+        sidebar.style.transition = 'transition: width 0.3s ease, transform 0.3s ease';
+        document.querySelector('body').style.overflow = 'auto';
+      }
+    }
+  }
+});
