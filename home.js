@@ -148,16 +148,7 @@ function homeHoverPlay(thumbnailItems) {
     }
 }
 
-// home.html 비디오 리스트 표시
-async function displayHomeItem(findVideoList, selecteTag) {
-    let videoList;
-    if (findVideoList.length > 0) {
-        videoList = findVideoList;
-    } else {
-        videoList = await getVideoList();
-    }
-
-    const currentUrl = window.location.href;
+function checkCurrentUrl(currentUrl) {
     if (currentUrl.includes('channel') || currentUrl.includes('video')) {
         let channelSection = document.querySelector('.channel-section');
         if (channelSection != null) {
@@ -202,13 +193,9 @@ async function displayHomeItem(findVideoList, selecteTag) {
             video.after(homeBody);
         }
     }
+}
 
-    let thumbnail = document.querySelector('.thumbnail-box');
-    let info = '';
-
-    let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
-    let videoInfoList = await Promise.all(videoInfoPromises);
-
+async function getChannelName(videoList) {
     let channelNames = new Set();
     videoList.forEach(video => channelNames.add(video.video_channel));
 
@@ -220,18 +207,34 @@ async function displayHomeItem(findVideoList, selecteTag) {
         })
     );
 
+    return channelNameMap;
+}
+
+// home.html 비디오 리스트 표시
+async function displayHomeItem(findVideoList, selecteTag) {
+    let videoList;
+    if (findVideoList.length > 0) {
+        videoList = findVideoList;
+    } else {
+        videoList = await getVideoList();
+    }
+
+    const currentUrl = window.location.href;
+    checkCurrentUrl(currentUrl);
+
+    let thumbnail = document.querySelector('.thumbnail-box');
+    let info = '';
+    let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
+    let videoInfoList = await Promise.all(videoInfoPromises);
+    let channelNameMap = await getChannelName(videoList);
+
     for (let i = 0; i < videoList.length; i++) {
         let videoInfo = videoInfoList[i];
         let videoId = videoList[i].video_id;
 
-        let path = '';
-        if (currentUrl.includes('/html/')) {
-            path = '../html';
-        } else {
-            path = './html';
-        }
-        let videoURL = `location.href='${path}/video.html?id=${videoId}'`;
+        const path = currentUrl.includes('/html/') ? '../html' : './html';
 
+        let videoURL = `location.href='${path}/video.html?id=${videoId}'`;
         let channelImg = channelNameMap.get(videoList[i].video_channel);
         let channelUrl = `location.href='${path}/channel.html?id=${videoInfo.video_channel}'`;
         let uploadTime = timeForToday(videoInfo.upload_date);
@@ -241,7 +244,7 @@ async function displayHomeItem(findVideoList, selecteTag) {
             <div class="thumbnail-item">
                 <div class="thumbnail-item-image">
                     <img class="thumbnail-pic" src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}">
-                    <video class="video-play played" src="${videoInfo.video_link}" onclick="${videoURL}" control salt="${videoInfo.video_title}" title="${videoInfo.video_title}" style='display:none;'></video>
+                    <video class="video-play played" src="${videoInfo.video_link}" onclick="${videoURL}" controls alt="${videoInfo.video_title}" title="${videoInfo.video_title}" style='display:none;'></video>
                     <p class="video-time">0:10</p>
                 </div>
             </div>
