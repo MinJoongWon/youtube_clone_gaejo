@@ -72,6 +72,73 @@ function timeForToday(value) {
     return `${Math.floor(betweenTimeDay / 365)}년 전`;
 }
 
+function formatCount(count) {
+    if (count < 1000) {
+        return `${count.toString()}`;
+    } else if (count < 1000000) {
+        const thousands = (count / 1000).toFixed(1);
+        return `${thousands}K`;
+    } else {
+        const millions = (count / 1000000).toFixed(1);
+        return `${millions}M`;
+    }
+}
+
+async function displayMainVideo(videoInfoList) {
+    let mainVideo = document.querySelector('.small-video .player video');
+    let mainVideoTitle = document.querySelector('.small-video-desc .video-title .title');
+    let mainVideoTime = document.querySelector('.small-video-desc .video-title .time');
+    let mainVideoDesc = document.querySelector('.small-video-desc .descriptions');
+    
+    let viewscount = 0;
+    let maxViewVideoId = 0;
+    
+    for (let i = 0; i < videoInfoList.length; i++) {
+        let vInfo = videoInfoList[i];
+        if (vInfo.views > viewscount) {
+            viewscount = vInfo.views;
+            maxViewVideoId = vInfo.video_id;
+        }
+    }
+
+    let videoInfo = videoInfoList.find(v => v.video_id === maxViewVideoId);
+
+    let uploadTime = timeForToday(videoInfo.upload_date);
+    mainVideo.src = videoInfo.video_link;
+    mainVideoTitle.innerText = videoInfo.video_title;
+    mainVideoTitle.setAttribute("title", videoInfo.video_title);
+    mainVideoTime.innerText = videoInfo.views.toLocaleString() + ' views · ' + uploadTime;
+    mainVideoDesc.innerText = videoInfo.video_detail;
+
+}
+
+function hoverPlay(thumbnailItems) {
+    for (let i = 0; i < thumbnailItems.length; i++) {
+        let item = thumbnailItems[i];
+        let thumbnailPic = item.querySelector('.xsamll-video-img');
+        let current = item.querySelector('.xsamll-video-video');
+        let videoTime = item.querySelector('.video-time');
+
+        item.addEventListener('mouseenter', function() {
+            timeoutId = setTimeout(function() {
+                current.style.display = "block";
+                videoTime.style.display = "none";
+                thumbnailPic.style.height = "0px";
+                current.muted = true;
+                current.play();
+            }, 500);
+        });
+
+        item.addEventListener('mouseleave', function() {
+            clearTimeout(timeoutId);
+            current.currentTime = 0;
+            current.style.display = "none";
+            videoTime.style.display = "block";
+            thumbnailPic.style.height = "inherit";
+        });
+    }
+}
+
 async function displayChannelVideoList(channelName, findChannelVideoList) {
     let channelVideoList;
     if (findChannelVideoList.length > 0) {
@@ -82,42 +149,46 @@ async function displayChannelVideoList(channelName, findChannelVideoList) {
 
     let videoIdList = [];
     channelVideoList.forEach(videoList => videoIdList.push(videoList.video_id));
+    
+    let videoInfoPromises = videoIdList.map((video) => getVideoData(video));
+    let videoInfoList = await Promise.all(videoInfoPromises);
 
-    let mainVideo = document.querySelector('.small-video .player video');
-    let mainVideoTitle = document.querySelector('.small-video-desc .video-title .title');
-    let mainVideoTime = document.querySelector('.small-video-desc .video-title .time');
-    let mainVideoDesc = document.querySelector('.small-video-desc .descriptions');
+    displayMainVideo(videoInfoList);
+
     let videoCard = document.querySelector('.video-card');
     let innerInfo = ''
 
-    for (let i = 0; i < videoIdList.length; i++) {
-        let videoId = videoIdList[i];
-        let videoInfo = await getVideoData(videoId);
-        let videoURL = `location.href='../html/video.html?id=${videoId}'`;
+    for (let i = 0; i < videoInfoList.length; i++) {
+        let videoInfo = videoInfoList[i];
+        let videoURL = `location.href='../html/video.html?id=${i}'`;
         let uploadTime = timeForToday(videoInfo.upload_date);
-
-        if (i == 0) {
-            mainVideo.src = videoInfo.video_link;
-            mainVideoTitle.innerText = videoInfo.video_title;
-            mainVideoTitle.setAttribute("title", videoInfo.video_title);
-            mainVideoTime.innerText = videoInfo.views.toLocaleString() + ' views · ' + uploadTime;
-            mainVideoDesc.innerText = videoInfo.video_detail;
-        }
 
         innerInfo += `
         <div class="xsamll-video">
             <div class="video-desc">
-                <video src="${videoInfo.video_link}" onclick="${videoURL}" controls></video>
+                <div>
+                    <img class="xsamll-video-img" src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}">
+                    <video class="xsamll-video-video played" src="${videoInfo.video_link}" onclick="${videoURL}" controls style='display:none;'></video>
+                    <p class="video-time">0:10</p>
+                </div>
                 <p title="${videoInfo.video_title}">${videoInfo.video_title}</p>
                 <div class="video-desc-views">
                     <p class="channel-name">${videoInfo.video_channel}</p>
-                    <p class="channel-views">${videoInfo.views.toLocaleString() + ' views · ' + uploadTime}</p>
+                    <p class="channel-views">${formatCount(videoInfo.views) + ' views · ' + uploadTime}</p>
                 </div>
             </div>
         </div>
         `
     }
     videoCard.innerHTML = innerInfo;
+
+    const right_button = document.querySelector('.right-arrow');
+    if (videoIdList.length < 5) {
+        right_button.style.visibility = 'hidden';
+    }
+
+    const thumbnailItems = document.querySelectorAll('.video-desc');
+    hoverPlay(thumbnailItems);
 }
 
 async function displayChannelInfo() {
@@ -183,7 +254,6 @@ async function searchInChannel(channelName, searchText) {
         }
     });
 
-    let channel = document.querySelector('.channel');
     let smallVideo = document.querySelector('.small-video');
     let contentTag = document.querySelector('.content');
     let result = document.querySelector('.result');
@@ -238,12 +308,21 @@ channelSearchBox.addEventListener("keypress", function (event) {
 // 비디오 슬라이드 
 let currentPosition = 0;
 const left_button_container = document.querySelector('.left-arrow-container');
+const videoCardsWidth = document.querySelector('.video-card').offsetWidth;
 
 function slideVideoCards() {
-    const video_cards = document.querySelector('.video-card');
-    currentPosition = currentPosition - 218;
-    console.log(currentPosition);
-    video_cards.style.transform = `translateX(${currentPosition}px)`;
+    const videoCards = document.querySelector('.video-card');
+    const minPosition = -videoCardsWidth; 
+    
+    if (currentPosition >= minPosition + 218) {
+        currentPosition = currentPosition - 218;
+    }
+
+    if (currentPosition <= minPosition) {
+        right_button.style.visibility = 'hidden';
+    }
+
+    videoCards.style.transform = `translateX(${currentPosition}px)`;
 
     if (currentPosition != 0) {
         left_button_container.style.visibility = 'visible';
@@ -252,11 +331,18 @@ function slideVideoCards() {
 
 function slideVideoCardsLeft() {
     const video_cards = document.querySelector('.video-card');
-    currentPosition = currentPosition + 218;
+
+    if (videoCardsWidth >= 0) {
+        currentPosition = currentPosition + 218;
+    }
+
     video_cards.style.transform = `translateX(${currentPosition}px)`;
 
     if (currentPosition == 0) {
         left_button_container.style.visibility = 'hidden';
+    }
+    if (currentPosition >= -videoCardsWidth) {
+        right_button.style.visibility = 'visible';
     }
 }
 
