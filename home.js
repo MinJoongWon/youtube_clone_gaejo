@@ -115,7 +115,10 @@ async function addTopMenu(videoList, selecteTag) {
 
     const tagsContainer = document.querySelector('.top-menu-item ul');
     topMenuCurrentPosition = 0
-    document.querySelector('.top-menu-icon-left').style.visibility = 'hidden';
+    let topMenuLeft = document.querySelector('.top-menu-icon-left')
+    if (topMenuLeft) {
+        topMenuLeft.style.visibility = 'hidden';
+    }
     tagsContainer.style.transform = `translateX(${topMenuCurrentPosition}px)`;
 }
 
@@ -187,12 +190,17 @@ async function displayHomeItem(findVideoList, selecteTag) {
             channelSection.style.display = 'none';
         }
 
+        let homeBody = document.querySelector('.home-body');
         let video = document.querySelector('.video-body');
         if (video != null) {
             video.style.display = 'none';
+            let sidebar = document.querySelector('.sidebar');
+            sidebar.style.display = 'flex';
+            sidebar.style.width = '240px';
+            sidebar.classList.add('active');
+            document.querySelector('body').style.backgroundColor = 'black';
         }
 
-        let homeBody = document.querySelector('.home-body');
         homeBody.style.display = 'flex';
         let setcionTag = `
         <div class="section active">
@@ -384,7 +392,7 @@ async function getVideoPlayerData() {
 }
 
 // video.html의 top-menu 태그 클릭 시 검색
-const tags = document.querySelectorAll('.top-menu li');
+const tags = document.querySelectorAll('.video-top-menu li');
 
 tags.forEach(tag => {
     tag.addEventListener('click', function (event) {
@@ -392,7 +400,6 @@ tags.forEach(tag => {
         if (clickedTag.textContent == 'ALL') {
             displayVideoItem([]);
         } else {
-
             searchVideoTag(clickedTag.textContent);
         }
     });
