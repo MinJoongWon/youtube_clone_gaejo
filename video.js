@@ -1,3 +1,24 @@
+async function getVideoList() {
+  try {
+      const response = await fetch(videoListApi);
+      const videoInfo = await response.json();
+      return videoInfo;
+  } catch (error) {
+      console.error('API 호출에 실패하였습니다.:', error.message);
+  }
+}
+
+async function videoData(videoId) {
+  try {
+      const apiUrl = `https://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      return data;
+  } catch (error) {
+      console.error('API 호출에 실패했습니다:', error);
+  }
+}
+
 function parseSubscribers(subscriberString) {
   const units = {
     K: 1000,
@@ -97,6 +118,164 @@ function timeForToday(value) {
 
     return `${Math.floor(betweenTimeDay / 365)}년 전`;
 }
+
+function videoHoverPlay(thumbnailItems) {
+  for (let i = 0; i < thumbnailItems.length; i++) {
+      let item = thumbnailItems[i];
+      let thumbnailPic = item.querySelector('.thumbnail-pic');
+      let current = item.querySelector('.secondary-video-play');
+      let videoTime = item.querySelector('.secondary-video-time');
+
+      item.addEventListener('mouseenter', function() {
+          timeoutId = setTimeout(function() {
+              current.style.display = "block";
+              videoTime.style.display = "none";
+              thumbnailPic.style.height = "0px";
+              current.muted = true;
+              current.play();
+          }, 500);
+      });
+      item.addEventListener('mouseleave', function() {
+          clearTimeout(timeoutId);
+          current.currentTime = 0;
+          current.style.display = "none";
+          videoTime.style.display = "block";
+          thumbnailPic.style.height = "inherit";
+      });
+  }
+}
+
+// video.html에 비디오 리스트 출력
+async function displayVideoItem(findVideoList) {
+  let videoList;
+  if (findVideoList.length > 0) {
+      videoList = findVideoList;
+  } else {
+      videoList = await getVideoList();
+  }
+
+  let videoTag = document.querySelector('.videos');
+  let info = '';
+
+  let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
+  let videoInfoList = await Promise.all(videoInfoPromises);
+
+  for (let i = 0; i < videoList.length; i++) {
+      let videoId = videoList[i].video_id;
+      let videoInfo = videoInfoList[i];
+      let videoURL = `location.href='../html/video.html?id=${videoId}'`;
+      let uploadTime = timeForToday(videoInfo.upload_date);
+
+      info += `
+          <div class="secondary-thumbnail">
+              <div class="video-item">
+                  <img class="thumbnail-pic" src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}">
+                  <video class="secondary-video-play played" src="${videoInfo.video_link}" onclick="${videoURL}" control salt="${videoInfo.video_title}" title="${videoInfo.video_title}" style='display:none;'></video>
+                  <p class="secondary-video-time">0:10</p>
+              </div>
+              <div class="video-text">
+                  <p><a href='../html/video.html?id=${videoId}'>${videoInfo.video_title}</a></p>
+                  <div class="channel-desc">
+                      <span class="channel-name">${videoInfo.video_channel}</span>
+                      <p>
+                          <span class="channel-views">${formatCount(videoInfo.views)} Views ·</span>
+                          <span class="channel-upload-time">${uploadTime}</span>
+                      </p>
+                  </div>
+              </div>
+          </div>`;
+  }
+
+  videoTag.innerHTML = info;
+
+  const thumbnailItems = document.querySelectorAll('.video-item');
+  videoHoverPlay(thumbnailItems);
+}
+
+// video.html 비디오 플레이어 데이터 추가
+async function getVideoPlayerData() {
+  const currentUrl = window.location.href;
+  let idx = currentUrl.indexOf('?');
+
+  if (idx !== -1) {
+      let id = currentUrl.substring(idx + 4);
+      let player = document.querySelector('video');
+      let title = document.querySelector('.title > span');
+      let channelName = document.querySelector('.profile-name > a');
+      let views = document.querySelector('.video-views');
+      let upload_date = document.querySelector('.time');
+      let video_detail = document.querySelector('.video-description > p');
+      let channelProfile = document.querySelector('.profile-pic > .user-avatar');
+
+      let data = videoData(id);
+      let name = '';
+      data.then((v) => {
+          player.src = v.video_link;
+          title.innerHTML = v.video_title;
+          channelName.innerHTML = v.video_channel;
+          channelName.setAttribute("title", v.video_channel);
+          channelName.setAttribute("href", `channel.html?id=${v.video_channel}`);
+          views.innerHTML = formatCount(v.views);
+          upload_date.innerHTML = timeForToday(v.upload_date);
+          video_detail.innerHTML = v.video_detail;
+
+          name = v.video_channel;
+
+          let subscribers = document.querySelector('.subscribers > span');
+          let channel = channelData(name);
+          channel.then((c) => {
+              channelProfile.setAttribute("src", c.channel_profile);
+              let videoURL = `location.href='../html/channel.html?id=${name}'`;
+              channelProfile.setAttribute("onclick", videoURL);
+              channelProfile.setAttribute("alt", `${name} 프로필`);
+              channelProfile.setAttribute("title", `${name} 프로필`);
+              subscribers.innerHTML = `${formatCount(c.subscribers)}`;
+          });
+      });
+  }
+}
+
+// video.html의 top-menu 태그 클릭 시 검색
+const videoTopMenuTags = document.querySelectorAll('.video-top-menu li');
+
+videoTopMenuTags.forEach(tag => {
+    tag.addEventListener('click', function (event) {
+        const clickedTag = event.target;
+        if (clickedTag.textContent == 'ALL') {
+            displayVideoItem([]);
+        } else {
+            searchVideoTag(clickedTag.textContent);
+        }
+    });
+});
+
+async function searchVideoTag(searchText) {
+  searchText = searchText.toLowerCase();
+  let videoList = await getVideoList();
+  let videoTags = new Set();
+  videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
+
+  let findVideoList = videoList.filter((video) => {
+      let title = video.video_title.toLowerCase();
+      let detail = video.video_detail.toLowerCase();
+      let channelName = video.video_channel.toLowerCase();
+      let tag = video.video_tag;
+      let lowerCaseTag = tag.map(element => {
+          return element.toLowerCase();
+      });
+      if (title.includes(searchText) || detail.includes(searchText)
+          || channelName.includes(searchText) || lowerCaseTag.includes(searchText)) {
+          return true;
+      }
+  });
+
+  if (findVideoList.length !== 0) {
+      displayVideoItem(findVideoList);
+  } else {
+      alert("no search List T.T");
+  }
+}
+
 function updateCommentList() {
   const currentUrl = window.location.href;
   let idx = currentUrl.indexOf('?');

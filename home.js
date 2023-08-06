@@ -121,8 +121,6 @@ async function addTopMenu(videoList, selectedTag) {
     }
     tagsContainer.style.transform = `translateX(0)`;
 }
-  
-  
 
 function homeHoverPlay(thumbnailItems) {
     for (let i = 0; i < thumbnailItems.length; i++) {
@@ -130,32 +128,6 @@ function homeHoverPlay(thumbnailItems) {
         let thumbnailPic = item.querySelector('.thumbnail-pic');
         let current = item.querySelector('.video-play');
         let videoTime = item.querySelector('.video-time');
-
-        item.addEventListener('mouseenter', function() {
-            timeoutId = setTimeout(function() {
-                current.style.display = "block";
-                videoTime.style.display = "none";
-                thumbnailPic.style.height = "0px";
-                current.muted = true;
-                current.play();
-            }, 500);
-        });
-        item.addEventListener('mouseleave', function() {
-            clearTimeout(timeoutId);
-            current.currentTime = 0;
-            current.style.display = "none";
-            videoTime.style.display = "block";
-            thumbnailPic.style.height = "inherit";
-        });
-    }
-}
-
-function videoHoverPlay(thumbnailItems) {
-    for (let i = 0; i < thumbnailItems.length; i++) {
-        let item = thumbnailItems[i];
-        let thumbnailPic = item.querySelector('.thumbnail-pic');
-        let current = item.querySelector('.secondary-video-play');
-        let videoTime = item.querySelector('.secondary-video-time');
 
         item.addEventListener('mouseenter', function() {
             timeoutId = setTimeout(function() {
@@ -303,110 +275,6 @@ async function displayHomeItem(findVideoList, selecteTag) {
     homeHoverPlay(thumbnailItems);
 }
 
-// video.html에 비디오 리스트 출력
-async function displayVideoItem(findVideoList) {
-    let videoList;
-    if (findVideoList.length > 0) {
-        videoList = findVideoList;
-    } else {
-        videoList = await getVideoList();
-    }
-
-    let videoTag = document.querySelector('.videos');
-    let info = '';
-
-    let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
-    let videoInfoList = await Promise.all(videoInfoPromises);
-
-    for (let i = 0; i < videoList.length; i++) {
-        let videoId = videoList[i].video_id;
-        let videoInfo = videoInfoList[i];
-        let videoURL = `location.href='../html/video.html?id=${videoId}'`;
-        let uploadTime = timeForToday(videoInfo.upload_date);
-
-        info += `
-            <div class="secondary-thumbnail">
-                <div class="video-item">
-                    <img class="thumbnail-pic" src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}">
-                    <video class="secondary-video-play played" src="${videoInfo.video_link}" onclick="${videoURL}" control salt="${videoInfo.video_title}" title="${videoInfo.video_title}" style='display:none;'></video>
-                    <p class="secondary-video-time">0:10</p>
-                </div>
-                <div class="video-text">
-                    <p><a href='../html/video.html?id=${videoId}'>${videoInfo.video_title}</a></p>
-                    <div class="channel-desc">
-                        <span class="channel-name">${videoInfo.video_channel}</span>
-                        <p>
-                            <span class="channel-views">${formatCount(videoInfo.views)} Views ·</span>
-                            <span class="channel-upload-time">${uploadTime}</span>
-                        </p>
-                    </div>
-                </div>
-            </div>`;
-    }
-
-    videoTag.innerHTML = info;
-
-    const thumbnailItems = document.querySelectorAll('.video-item');
-    videoHoverPlay(thumbnailItems);
-}
-
-// video.html 비디오 플레이어 데이터 추가
-async function getVideoPlayerData() {
-    const currentUrl = window.location.href;
-    let idx = currentUrl.indexOf('?');
-
-    if (idx !== -1) {
-        let id = currentUrl.substring(idx + 4);
-        let player = document.querySelector('video');
-        let title = document.querySelector('.title > span');
-        let channelName = document.querySelector('.profile-name > a');
-        let views = document.querySelector('.video-views');
-        let upload_date = document.querySelector('.time');
-        let video_detail = document.querySelector('.video-description > p');
-        let channelProfile = document.querySelector('.profile-pic > .user-avatar');
-
-        let data = videoData(id);
-        let name = '';
-        data.then((v) => {
-            player.src = v.video_link;
-            title.innerHTML = v.video_title;
-            channelName.innerHTML = v.video_channel;
-            channelName.setAttribute("title", v.video_channel);
-            channelName.setAttribute("href", `channel.html?id=${v.video_channel}`);
-            views.innerHTML = formatCount(v.views);
-            upload_date.innerHTML = timeForToday(v.upload_date);
-            video_detail.innerHTML = v.video_detail;
-
-            name = v.video_channel;
-
-            let subscribers = document.querySelector('.subscribers > span');
-            let channel = channelData(name);
-            channel.then((c) => {
-                channelProfile.setAttribute("src", c.channel_profile);
-                let videoURL = `location.href='../html/channel.html?id=${name}'`;
-                channelProfile.setAttribute("onclick", videoURL);
-                channelProfile.setAttribute("alt", `${name} 프로필`);
-                channelProfile.setAttribute("title", `${name} 프로필`);
-                subscribers.innerHTML = `${formatCount(c.subscribers)}`;
-            });
-        });
-    }
-}
-
-// video.html의 top-menu 태그 클릭 시 검색
-const tags = document.querySelectorAll('.video-top-menu li');
-
-tags.forEach(tag => {
-    tag.addEventListener('click', function (event) {
-        const clickedTag = event.target;
-        if (clickedTag.textContent == 'ALL') {
-            displayVideoItem([]);
-        } else {
-            searchVideoTag(clickedTag.textContent);
-        }
-    });
-});
-
 // 검색기능
 async function search(searchText) {
     searchText = searchText.toLowerCase();
@@ -431,33 +299,6 @@ async function search(searchText) {
 
     if (findVideoList.length !== 0) {
         displayHomeItem(findVideoList, searchText);
-    } else {
-        alert("no search List T.T");
-    }
-}
-
-async function searchVideoTag(searchText) {
-    searchText = searchText.toLowerCase();
-    let videoList = await getVideoList();
-    let videoTags = new Set();
-    videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
-
-    let findVideoList = videoList.filter((video) => {
-        let title = video.video_title.toLowerCase();
-        let detail = video.video_detail.toLowerCase();
-        let channelName = video.video_channel.toLowerCase();
-        let tag = video.video_tag;
-        let lowerCaseTag = tag.map(element => {
-            return element.toLowerCase();
-        });
-        if (title.includes(searchText) || detail.includes(searchText)
-            || channelName.includes(searchText) || lowerCaseTag.includes(searchText)) {
-            return true;
-        }
-    });
-
-    if (findVideoList.length !== 0) {
-        displayVideoItem(findVideoList);
     } else {
         alert("no search List T.T");
     }
