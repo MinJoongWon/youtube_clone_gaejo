@@ -480,3 +480,8 @@ section {
   position: absolute;
 }
 
+.right-arrow:hover,
+.left-arrow:hover {
+  cursor: pointer;
+  background-color: #aaa;
+}
