@@ -499,7 +499,7 @@ aside {
   animation: fadeIn 1s;
 }
 
-.video-time {
+.secondary-video-time {
   background-color: black;
   color: #FFF;
   text-align: center;
@@ -507,7 +507,6 @@ aside {
   position: absolute;
   right: 12px;
   bottom: 14px;
-  z-index: 1;
 
   padding: 3px 4px;
   font-family: Roboto;
