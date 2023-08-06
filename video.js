@@ -170,7 +170,7 @@ async function displayVideoItem(findVideoList) {
           <div class="secondary-thumbnail">
               <div class="video-item">
                   <img class="thumbnail-pic" src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}">
-                  <video class="secondary-video-play played" src="${videoInfo.video_link}" onclick="${videoURL}" control salt="${videoInfo.video_title}" title="${videoInfo.video_title}" style='display:none;'></video>
+                  <video class="secondary-video-play played" onclick="${videoURL}" controls alt="${videoInfo.video_title}" title="${videoInfo.video_title}" style='display:none;'></video>
                   <p class="secondary-video-time">0:10</p>
               </div>
               <div class="video-text">
@@ -400,4 +400,3 @@ function subscribe() {
 
 const subscribeBtn = document.querySelector('.subscribes-btn');
 subscribeBtn.addEventListener("click", subscribe);
-
