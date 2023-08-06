@@ -155,8 +155,14 @@
         <div class="section active">
             <section>
                 <div class="top-menu active">
+                    <div class="top-menu-icon-left" style="visibility:hidden;">
+                        <button class="top-menu-icon-leftToRightBotton">
+                            <img src="./images/top-menu-left.png" alt="arrow_left" title="arrow">
+                        </button>
+                    </div>
                     <div class="top-menu-item">
                         <ul>
+                            <li><span>전체</span></li>
                         </ul>
                     </div>
                     <div class="top-menu-icon">
@@ -175,7 +181,7 @@
 <script src="./sidebar.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        displayHomeItem([]).catch(err => {
+        displayHomeItem([], '').catch(err => {
             console.error('API 호출에 실패하였습니다.: ', err);
         });
     });
