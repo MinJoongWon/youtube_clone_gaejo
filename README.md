@@ -17,7 +17,7 @@
 <img src="https://img.shields.io/badge/discord-5865F2?style=flat-square&logo=discord&logoColor=white">
 
 
-# 브렌치 구성
+# 브랜치 구성
 - HTML
   - HTML 코드 전체
 - CSS_1
