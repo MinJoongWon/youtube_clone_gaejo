@@ -338,13 +338,11 @@ const slideWidth = 200; // 슬라이드의 너비
 function slideTags() {
     const tagsContainer = document.querySelector('.top-menu-item ul');
     const containerWidth = document.querySelector('.top-menu-item').offsetWidth;
-    const maxPosition = 0; // 최대 이동 범위 (초기 위치)
     const minPosition = -containerWidth; // 최소 이동 범위
     
     if (topMenuCurrentPosition > minPosition + slideWidth) {
         topMenuCurrentPosition -= slideWidth; // 슬라이드를 왼쪽으로 이동시키기 위해 감소
         top_menu_left_button.style.visibility = 'visible';
-    } else if (topMenuCurrentPosition != 0){
     }
 
     tagsContainer.style.transform = `translateX(${topMenuCurrentPosition}px)`;
@@ -352,12 +350,10 @@ function slideTags() {
 
 function slideVideoCardsLeft() {
     const tagsContainer = document.querySelector('.top-menu-item ul');
-    const containerWidth = document.querySelector('.top-menu-item').offsetWidth;
     const maxPosition = 0; // 최대 이동 범위 (초기 위치)
-    const minPosition = -containerWidth; // 최소 이동 범위
     
     if (topMenuCurrentPosition < maxPosition) {
-        topMenuCurrentPosition += slideWidth; // 슬라이드를 왼쪽으로 이동시키기 위해 wmdrk
+        topMenuCurrentPosition += slideWidth; // 슬라이드를 왼쪽으로 이동시키기 위해 증가
     } else if (topMenuCurrentPosition >= 0){
         top_menu_left_button.style.visibility = 'hidden';
     }
