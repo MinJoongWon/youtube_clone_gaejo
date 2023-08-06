@@ -153,7 +153,7 @@ function videoHoverPlay(thumbnailItems) {
         let item = thumbnailItems[i];
         let thumbnailPic = item.querySelector('.thumbnail-pic');
         let current = item.querySelector('.secondary-video-play');
-        let videoTime = item.querySelector('.video-time');
+        let videoTime = item.querySelector('.secondary-video-time');
 
         item.addEventListener('mouseenter', function() {
             timeoutId = setTimeout(function() {
@@ -327,7 +327,7 @@ async function displayVideoItem(findVideoList) {
                 <div class="video-item">
                     <img class="thumbnail-pic" src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}">
                     <video class="secondary-video-play played" src="${videoInfo.video_link}" onclick="${videoURL}" control salt="${videoInfo.video_title}" title="${videoInfo.video_title}" style='display:none;'></video>
-                    <p class="video-time">0:10</p>
+                    <p class="secondary-video-time">0:10</p>
                 </div>
                 <div class="video-text">
                     <p><a href='../html/video.html?id=${videoId}'>${videoInfo.video_title}</a></p>
