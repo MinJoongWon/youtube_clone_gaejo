@@ -160,6 +160,7 @@ section {
 
 .channel-toolbar-menu li:hover {
   color: white;
+  cursor: pointer;
 }
 
 .channel-toolbar-menu li:first-child {
@@ -169,6 +170,10 @@ section {
 
 .channel-toolbar-search {
   display: flex;
+}
+
+.channel-toolbar-search > span:first-child:hover {
+  cursor: default;
 }
 
 .channel-toolbar-search > span {
@@ -270,8 +275,46 @@ section {
   height: 238px;
 }
 
-.video-desc > video {
-  width: 214px;
+.video-desc > div {
+  width: 210px;
+  height: 118px;
+  position: relative;
+  flex-direction: column;
+}
+
+.video-desc > div > video {
+  width: 210px;
+  height: 118px;
+  position: absolute;
+  top: 0;
+}
+
+.xsamll-video-img {
+  width: 210px;
+  height: 118px;
+  border-radius: 10px;
+}
+
+.played {
+  animation: fadeIn 1s;
+}
+
+.video-time {
+  background-color: black;
+  color: #FFF;
+  text-align: center;
+  line-height: 18px;
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  z-index: 1;
+
+  padding: 3px 4px;
+  font-family: Roboto;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .play-list {
