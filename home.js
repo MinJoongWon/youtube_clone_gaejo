@@ -91,35 +91,35 @@ function formatCount(count) {
 }
 
 // top-menu에 태그 추가
-async function addTopMenu(videoList, selecteTag) {
-    let videoTags = new Set();
-    videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
+async function addTopMenu(videoList, selectedTag) {
+    const videoTags = new Set(videoList.flatMap(video => video.video_tag));
 
     const topMenuItem = document.querySelector(".top-menu-item > ul");
+    const isTagSelected = videoTags.has(selectedTag.toLowerCase());
     let innerHTML = '';
-    
-    if (selecteTag === '') {
-        innerHTML = `<li><span class='selected' onclick=clickTagSearch('')>전체</span></li>`;
+
+    if (selectedTag === '' || !isTagSelected) {
+        innerHTML += `<li><span class='selected' onclick="clickTagSearch('')">전체</span></li>`;
     } else {
-        innerHTML = `<li><span onclick=clickTagSearch('')>전체</span></li>`;
+        innerHTML += `<li><span onclick="clickTagSearch('')">전체</span></li>`;
     }
 
-    for (tag of videoTags) {
-        if (tag.toLowerCase() === selecteTag) {
-            innerHTML += `<li><span class='selected' onclick=clickTagSearch('${tag}')>${tag}</span></li>`;
+    for (const tag of videoTags) {
+        if (selectedTag.toLowerCase() === tag.toLowerCase()) {
+            innerHTML += `<li><span class='selected' onclick="clickTagSearch('${tag}')">${tag}</span></li>`;
         } else {
-            innerHTML += `<li><span onclick=clickTagSearch('${tag}')>${tag}</span></li>`;
+            innerHTML += `<li><span onclick="clickTagSearch('${tag}')">${tag}</span></li>`;
         }
     }
+
     topMenuItem.innerHTML = innerHTML;
 
     const tagsContainer = document.querySelector('.top-menu-item ul');
-    topMenuCurrentPosition = 0
-    let topMenuLeft = document.querySelector('.top-menu-icon-left')
+    const topMenuLeft = document.querySelector('.top-menu-icon-left');
     if (topMenuLeft) {
         topMenuLeft.style.visibility = 'hidden';
     }
-    tagsContainer.style.transform = `translateX(${topMenuCurrentPosition}px)`;
+    tagsContainer.style.transform = `translateX(0)`;
 }
 
 function homeHoverPlay(thumbnailItems) {
@@ -148,42 +148,7 @@ function homeHoverPlay(thumbnailItems) {
     }
 }
 
-function videoHoverPlay(thumbnailItems) {
-    for (let i = 0; i < thumbnailItems.length; i++) {
-        let item = thumbnailItems[i];
-        let thumbnailPic = item.querySelector('.thumbnail-pic');
-        let current = item.querySelector('.secondary-video-play');
-        let videoTime = item.querySelector('.video-time');
-
-        item.addEventListener('mouseenter', function() {
-            timeoutId = setTimeout(function() {
-                current.style.display = "block";
-                videoTime.style.display = "none";
-                thumbnailPic.style.height = "0px";
-                current.muted = true;
-                current.play();
-            }, 500);
-        });
-        item.addEventListener('mouseleave', function() {
-            clearTimeout(timeoutId);
-            current.currentTime = 0;
-            current.style.display = "none";
-            videoTime.style.display = "block";
-            thumbnailPic.style.height = "inherit";
-        });
-    }
-}
-
-// home.html 비디오 리스트 표시
-async function displayHomeItem(findVideoList, selecteTag) {
-    let videoList;
-    if (findVideoList.length > 0) {
-        videoList = findVideoList;
-    } else {
-        videoList = await getVideoList();
-    }
-
-    const currentUrl = window.location.href;
+function checkCurrentUrl(currentUrl) {
     if (currentUrl.includes('channel') || currentUrl.includes('video')) {
         let channelSection = document.querySelector('.channel-section');
         if (channelSection != null) {
@@ -228,13 +193,9 @@ async function displayHomeItem(findVideoList, selecteTag) {
             video.after(homeBody);
         }
     }
+}
 
-    let thumbnail = document.querySelector('.thumbnail-box');
-    let info = '';
-
-    let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
-    let videoInfoList = await Promise.all(videoInfoPromises);
-
+async function getChannelName(videoList) {
     let channelNames = new Set();
     videoList.forEach(video => channelNames.add(video.video_channel));
 
@@ -246,18 +207,34 @@ async function displayHomeItem(findVideoList, selecteTag) {
         })
     );
 
+    return channelNameMap;
+}
+
+// home.html 비디오 리스트 표시
+async function displayHomeItem(findVideoList, selecteTag) {
+    let videoList;
+    if (findVideoList.length > 0) {
+        videoList = findVideoList;
+    } else {
+        videoList = await getVideoList();
+    }
+
+    const currentUrl = window.location.href;
+    checkCurrentUrl(currentUrl);
+
+    let thumbnail = document.querySelector('.thumbnail-box');
+    let info = '';
+    let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
+    let videoInfoList = await Promise.all(videoInfoPromises);
+    let channelNameMap = await getChannelName(videoList);
+
     for (let i = 0; i < videoList.length; i++) {
         let videoInfo = videoInfoList[i];
         let videoId = videoList[i].video_id;
 
-        let path = '';
-        if (currentUrl.includes('/html/')) {
-            path = '../html';
-        } else {
-            path = './html';
-        }
-        let videoURL = `location.href='${path}/video.html?id=${videoId}'`;
+        const path = currentUrl.includes('/html/') ? '../html' : './html';
 
+        let videoURL = `location.href='${path}/video.html?id=${videoId}'`;
         let channelImg = channelNameMap.get(videoList[i].video_channel);
         let channelUrl = `location.href='${path}/channel.html?id=${videoInfo.video_channel}'`;
         let uploadTime = timeForToday(videoInfo.upload_date);
@@ -267,7 +244,7 @@ async function displayHomeItem(findVideoList, selecteTag) {
             <div class="thumbnail-item">
                 <div class="thumbnail-item-image">
                     <img class="thumbnail-pic" src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}">
-                    <video class="video-play played" src="${videoInfo.video_link}" onclick="${videoURL}" control salt="${videoInfo.video_title}" title="${videoInfo.video_title}" style='display:none;'></video>
+                    <video class="video-play played" src="${videoInfo.video_link}" onclick="${videoURL}" controls alt="${videoInfo.video_title}" title="${videoInfo.video_title}" style='display:none;'></video>
                     <p class="video-time">0:10</p>
                 </div>
             </div>
@@ -301,110 +278,6 @@ async function displayHomeItem(findVideoList, selecteTag) {
     homeHoverPlay(thumbnailItems);
 }
 
-// video.html에 비디오 리스트 출력
-async function displayVideoItem(findVideoList) {
-    let videoList;
-    if (findVideoList.length > 0) {
-        videoList = findVideoList;
-    } else {
-        videoList = await getVideoList();
-    }
-
-    let videoTag = document.querySelector('.videos');
-    let info = '';
-
-    let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
-    let videoInfoList = await Promise.all(videoInfoPromises);
-
-    for (let i = 0; i < videoList.length; i++) {
-        let videoId = videoList[i].video_id;
-        let videoInfo = videoInfoList[i];
-        let videoURL = `location.href='../html/video.html?id=${videoId}'`;
-        let uploadTime = timeForToday(videoInfo.upload_date);
-
-        info += `
-            <div class="secondary-thumbnail">
-                <div class="video-item">
-                    <img class="thumbnail-pic" src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}">
-                    <video class="secondary-video-play played" src="${videoInfo.video_link}" onclick="${videoURL}" control salt="${videoInfo.video_title}" title="${videoInfo.video_title}" style='display:none;'></video>
-                    <p class="video-time">0:10</p>
-                </div>
-                <div class="video-text">
-                    <p><a href='../html/video.html?id=${videoId}'>${videoInfo.video_title}</a></p>
-                    <div class="channel-desc">
-                        <span class="channel-name">${videoInfo.video_channel}</span>
-                        <p>
-                            <span class="channel-views">${formatCount(videoInfo.views)} Views ·</span>
-                            <span class="channel-upload-time">${uploadTime}</span>
-                        </p>
-                    </div>
-                </div>
-            </div>`;
-    }
-
-    videoTag.innerHTML = info;
-
-    const thumbnailItems = document.querySelectorAll('.video-item');
-    videoHoverPlay(thumbnailItems);
-}
-
-// video.html 비디오 플레이어 데이터 추가
-async function getVideoPlayerData() {
-    const currentUrl = window.location.href;
-    let idx = currentUrl.indexOf('?');
-
-    if (idx !== -1) {
-        let id = currentUrl.substring(idx + 4);
-        let player = document.querySelector('video');
-        let title = document.querySelector('.title > span');
-        let channelName = document.querySelector('.profile-name > a');
-        let views = document.querySelector('.video-views');
-        let upload_date = document.querySelector('.time');
-        let video_detail = document.querySelector('.video-description > p');
-        let channelProfile = document.querySelector('.profile-pic > .user-avatar');
-
-        let data = videoData(id);
-        let name = '';
-        data.then((v) => {
-            player.src = v.video_link;
-            title.innerHTML = v.video_title;
-            channelName.innerHTML = v.video_channel;
-            channelName.setAttribute("title", v.video_channel);
-            channelName.setAttribute("href", `channel.html?id=${v.video_channel}`);
-            views.innerHTML = formatCount(v.views);
-            upload_date.innerHTML = timeForToday(v.upload_date);
-            video_detail.innerHTML = v.video_detail;
-
-            name = v.video_channel;
-
-            let subscribers = document.querySelector('.subscribers > span');
-            let channel = channelData(name);
-            channel.then((c) => {
-                channelProfile.setAttribute("src", c.channel_profile);
-                let videoURL = `location.href='../html/channel.html?id=${name}'`;
-                channelProfile.setAttribute("onclick", videoURL);
-                channelProfile.setAttribute("alt", `${name} 프로필`);
-                channelProfile.setAttribute("title", `${name} 프로필`);
-                subscribers.innerHTML = `${formatCount(c.subscribers)}`;
-            });
-        });
-    }
-}
-
-// video.html의 top-menu 태그 클릭 시 검색
-const tags = document.querySelectorAll('.video-top-menu li');
-
-tags.forEach(tag => {
-    tag.addEventListener('click', function (event) {
-        const clickedTag = event.target;
-        if (clickedTag.textContent == 'ALL') {
-            displayVideoItem([]);
-        } else {
-            searchVideoTag(clickedTag.textContent);
-        }
-    });
-});
-
 // 검색기능
 async function search(searchText) {
     searchText = searchText.toLowerCase();
@@ -429,33 +302,6 @@ async function search(searchText) {
 
     if (findVideoList.length !== 0) {
         displayHomeItem(findVideoList, searchText);
-    } else {
-        alert("no search List T.T");
-    }
-}
-
-async function searchVideoTag(searchText) {
-    searchText = searchText.toLowerCase();
-    let videoList = await getVideoList();
-    let videoTags = new Set();
-    videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
-
-    let findVideoList = videoList.filter((video) => {
-        let title = video.video_title.toLowerCase();
-        let detail = video.video_detail.toLowerCase();
-        let channelName = video.video_channel.toLowerCase();
-        let tag = video.video_tag;
-        let lowerCaseTag = tag.map(element => {
-            return element.toLowerCase();
-        });
-        if (title.includes(searchText) || detail.includes(searchText)
-            || channelName.includes(searchText) || lowerCaseTag.includes(searchText)) {
-            return true;
-        }
-    });
-
-    if (findVideoList.length !== 0) {
-        displayVideoItem(findVideoList);
     } else {
         alert("no search List T.T");
     }
@@ -492,13 +338,11 @@ const slideWidth = 200; // 슬라이드의 너비
 function slideTags() {
     const tagsContainer = document.querySelector('.top-menu-item ul');
     const containerWidth = document.querySelector('.top-menu-item').offsetWidth;
-    const maxPosition = 0; // 최대 이동 범위 (초기 위치)
     const minPosition = -containerWidth; // 최소 이동 범위
     
     if (topMenuCurrentPosition > minPosition + slideWidth) {
         topMenuCurrentPosition -= slideWidth; // 슬라이드를 왼쪽으로 이동시키기 위해 감소
         top_menu_left_button.style.visibility = 'visible';
-    } else if (topMenuCurrentPosition != 0){
     }
 
     tagsContainer.style.transform = `translateX(${topMenuCurrentPosition}px)`;
@@ -506,12 +350,10 @@ function slideTags() {
 
 function slideVideoCardsLeft() {
     const tagsContainer = document.querySelector('.top-menu-item ul');
-    const containerWidth = document.querySelector('.top-menu-item').offsetWidth;
     const maxPosition = 0; // 최대 이동 범위 (초기 위치)
-    const minPosition = -containerWidth; // 최소 이동 범위
     
     if (topMenuCurrentPosition < maxPosition) {
-        topMenuCurrentPosition += slideWidth; // 슬라이드를 왼쪽으로 이동시키기 위해 wmdrk
+        topMenuCurrentPosition += slideWidth; // 슬라이드를 왼쪽으로 이동시키기 위해 증가
     } else if (topMenuCurrentPosition >= 0){
         top_menu_left_button.style.visibility = 'hidden';
     }
