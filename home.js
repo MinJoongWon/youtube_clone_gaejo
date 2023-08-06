@@ -6,7 +6,7 @@
 //GPT API 불러보기..
 // API 엔드포인트 URL
 const videoListApi = 'https://oreumi.appspot.com/video/getVideoList';
-
+let topMenuCurrentPosition = 0;
 // 비디오 리스트
 async function getVideoList() {
     try {
@@ -91,20 +91,88 @@ function formatCount(count) {
 }
 
 // top-menu에 태그 추가
-async function addTopMenu(videoList) {
+async function addTopMenu(videoList, selecteTag) {
     let videoTags = new Set();
     videoList.forEach(video => video.video_tag.forEach(tag => videoTags.add(tag)));
 
     const topMenuItem = document.querySelector(".top-menu-item > ul");
     let innerHTML = '';
+    
+    if (selecteTag === '') {
+        innerHTML = `<li><span class='selected' onclick=clickTagSearch('')>전체</span></li>`;
+    } else {
+        innerHTML = `<li><span onclick=clickTagSearch('')>전체</span></li>`;
+    }
+
     for (tag of videoTags) {
-        innerHTML += `<li><span onclick=clickTagSearch('${tag}')>${tag}</span></li>`;
+        if (tag.toLowerCase() === selecteTag) {
+            innerHTML += `<li><span class='selected' onclick=clickTagSearch('${tag}')>${tag}</span></li>`;
+        } else {
+            innerHTML += `<li><span onclick=clickTagSearch('${tag}')>${tag}</span></li>`;
+        }
     }
     topMenuItem.innerHTML = innerHTML;
+
+    const tagsContainer = document.querySelector('.top-menu-item ul');
+    topMenuCurrentPosition = 0
+    document.querySelector('.top-menu-icon-left').style.visibility = 'hidden';
+    tagsContainer.style.transform = `translateX(${topMenuCurrentPosition}px)`;
+}
+
+function homeHoverPlay(thumbnailItems) {
+    for (let i = 0; i < thumbnailItems.length; i++) {
+        let item = thumbnailItems[i];
+        let thumbnailPic = item.querySelector('.thumbnail-pic');
+        let current = item.querySelector('.video-play');
+        let videoTime = item.querySelector('.video-time');
+
+        item.addEventListener('mouseenter', function() {
+            timeoutId = setTimeout(function() {
+                current.style.display = "block";
+                videoTime.style.display = "none";
+                thumbnailPic.style.height = "0px";
+                current.muted = true;
+                current.play();
+            }, 500);
+        });
+        item.addEventListener('mouseleave', function() {
+            clearTimeout(timeoutId);
+            current.currentTime = 0;
+            current.style.display = "none";
+            videoTime.style.display = "block";
+            thumbnailPic.style.height = "inherit";
+        });
+    }
+}
+
+function videoHoverPlay(thumbnailItems) {
+    for (let i = 0; i < thumbnailItems.length; i++) {
+        let item = thumbnailItems[i];
+        let thumbnailPic = item.querySelector('.thumbnail-pic');
+        let current = item.querySelector('.video-play');
+        let videoTime = item.querySelector('.video-time');
+
+        item.addEventListener('mouseenter', function() {
+            timeoutId = setTimeout(function() {
+                current.style.display = "block";
+                videoTime.style.display = "none";
+                thumbnailPic.style.height = "0px";
+                current.muted = true;
+                current.play();
+            }, 500);
+        });
+        item.addEventListener('mouseleave', function() {
+            clearTimeout(timeoutId);
+            current.currentTime = 0;
+            current.style.display = "none";
+            videoTime.style.display = "block";
+            thumbnailPic.style.height = "inherit";
+        });
+    }
 }
 
 // home.html 비디오 리스트 표시
-async function displayHomeItem(findVideoList) {
+async function displayHomeItem(findVideoList, selecteTag) {
     let videoList;
     if (findVideoList.length > 0) {
         videoList = findVideoList;
@@ -127,21 +195,21 @@ async function displayHomeItem(findVideoList) {
         let homeBody = document.querySelector('.home-body');
         homeBody.style.display = 'flex';
         let setcionTag = `
-        <div class="section action">
-        <section>
-            <div class="top-menu active">
-                <div class="top-menu-item">
-                    <ul>
-                    </ul>
+        <div class="section active">
+            <section>
+                <div class="top-menu active">
+                    <div class="top-menu-item">
+                        <ul>
+                        </ul>
+                    </div>
+                    <div class="top-menu-icon">
+                        <button class="top-menu-icon-leftBotton">
+                            <img src="../images/top-menu-right.png" alt="arrow_right" title="arrow">
+                        </button>
+                    </div>
                 </div>
-                <div class="top-menu-icon">
-                    <button class="top-menu-icon-leftBotton">
-                        <img src="../images/top-menu-right.png" alt="arrow_right" title="arrow">
-                    </button>
+                <div class="thumbnail-box">
                 </div>
-            </div>
-            <div class="thumbnail-box">
-            </div>
         </section>
         </div>`;
         homeBody.innerHTML = setcionTag;
@@ -174,10 +242,16 @@ async function displayHomeItem(findVideoList) {
         let videoInfo = videoInfoList[i];
         let videoId = videoList[i].video_id;
 
-        let videoURL = `location.href='./html/video.html?id=${videoId}'`;
+        let path = '';
+        if (currentUrl.includes('/html/')) {
+            path = '../html';
+        } else {
+            path = './html';
+        }
+        let videoURL = `location.href='${path}/video.html?id=${videoId}'`;
 
         let channelImg = channelNameMap.get(videoList[i].video_channel);
-        let channelUrl = `location.href='./html/channel.html?id=${videoInfo.video_channel}'`;
+        let channelUrl = `location.href='${path}/channel.html?id=${videoInfo.video_channel}'`;
         let uploadTime = timeForToday(videoInfo.upload_date);
 
         info += `
@@ -185,6 +259,8 @@ async function displayHomeItem(findVideoList) {
             <div class="thumbnail-item">
                 <div class="thumbnail-item-image">
                     <img class="thumbnail-pic" src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}">
+                    <video class="video-play played" src="${videoInfo.video_link}" onclick="${videoURL}" control salt="${videoInfo.video_title}" title="${videoInfo.video_title}" style='display:none;'></video>
+                    <p class="video-time">0:10</p>
                 </div>
             </div>
             
@@ -211,7 +287,10 @@ async function displayHomeItem(findVideoList) {
     }
 
     thumbnail.innerHTML = info;
-    addTopMenu(videoList);
+    addTopMenu(videoList, selecteTag);
+
+    const thumbnailItems = document.querySelectorAll('.thumbnail-item');
+    homeHoverPlay(thumbnailItems);
 }
 
 // video.html에 비디오 리스트 출력
@@ -238,7 +317,9 @@ async function displayVideoItem(findVideoList) {
         info += `
             <div class="secondary-thumbnail">
                 <div class="video-item">
-                    <img src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}" controls></video>
+                    <img class="thumbnail-pic" src="${videoInfo.image_link}" onclick="${videoURL}" alt="${videoInfo.video_title}" title="${videoInfo.video_title}">
+                    <video class="video-play played" src="${videoInfo.video_link}" onclick="${videoURL}" control salt="${videoInfo.video_title}" title="${videoInfo.video_title}" style='display:none;'></video>
+                    <p class="video-time">0:10</p>
                 </div>
                 <div class="video-text">
                     <p><a href='../html/video.html?id=${videoId}'>${videoInfo.video_title}</a></p>
@@ -254,6 +335,9 @@ async function displayVideoItem(findVideoList) {
     }
 
     videoTag.innerHTML = info;
+
+    const thumbnailItems = document.querySelectorAll('.video-item');
+    videoHoverPlay(thumbnailItems);
 }
 
 // video.html 비디오 플레이어 데이터 추가
@@ -337,7 +421,7 @@ async function search(searchText) {
     });
 
     if (findVideoList.length !== 0) {
-        displayHomeItem(findVideoList);
+        displayHomeItem(findVideoList, searchText);
     } else {
         alert("no search List T.T");
     }
@@ -384,17 +468,56 @@ searchBox.addEventListener("keypress", function (event) {
 // 태그 클릭시 검색 할 수 있도록
 function clickTagSearch(tag) {
     search(tag);
+
+    let topmenu = document.querySelectorAll(".top-menu-item>ul>li>span");
+    topmenu.forEach(item => {
+        item.addEventListener("click", function() {
+            topmenu.forEach(menuItem => {
+                menuItem.classList.remove("selected");
+            });
+        });
+    });
 }
 
 // top-menu 슬라이드
-let currentPosition = 0;
+const slideWidth = 200; // 슬라이드의 너비
+
 function slideTags() {
-    const tags = document.querySelector('.top-menu-item ul');
+    const tagsContainer = document.querySelector('.top-menu-item ul');
+    const containerWidth = document.querySelector('.top-menu-item').offsetWidth;
+    const maxPosition = 0; // 최대 이동 범위 (초기 위치)
+    const minPosition = -containerWidth; // 최소 이동 범위
+    
+    if (topMenuCurrentPosition > minPosition + slideWidth) {
+        topMenuCurrentPosition -= slideWidth; // 슬라이드를 왼쪽으로 이동시키기 위해 감소
+        top_menu_left_button.style.visibility = 'visible';
+    } else if (topMenuCurrentPosition != 0){
+    }
 
-    currentPosition -= 200;
+    tagsContainer.style.transform = `translateX(${topMenuCurrentPosition}px)`;
+}
 
-    tags.style.transform = `translateX(${currentPosition}px)`;
+function slideVideoCardsLeft() {
+    const tagsContainer = document.querySelector('.top-menu-item ul');
+    const containerWidth = document.querySelector('.top-menu-item').offsetWidth;
+    const maxPosition = 0; // 최대 이동 범위 (초기 위치)
+    const minPosition = -containerWidth; // 최소 이동 범위
+    
+    if (topMenuCurrentPosition < maxPosition) {
+        topMenuCurrentPosition += slideWidth; // 슬라이드를 왼쪽으로 이동시키기 위해 wmdrk
+    } else if (topMenuCurrentPosition >= 0){
+        top_menu_left_button.style.visibility = 'hidden';
+    }
+
+    tagsContainer.style.transform = `translateX(${topMenuCurrentPosition}px)`;
 }
 
 const top_menu_button = document.querySelector('.top-menu-icon');
-top_menu_button.addEventListener('click', slideTags);
+if (top_menu_button) {
+    top_menu_button.addEventListener('click', slideTags);
+}
+
+let top_menu_left_button = document.querySelector('.top-menu-icon-left');
+if (top_menu_left_button) {
+    top_menu_left_button.addEventListener('click', slideVideoCardsLeft);
+}
