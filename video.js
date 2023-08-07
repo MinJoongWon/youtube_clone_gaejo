@@ -221,6 +221,10 @@ function videoHoverPlay(thumbnailItems) {
   }
 }
 
+let currentURL = window.location.href;
+let url = new URL(currentURL);
+let videoId = url.searchParams.get("id");
+
 // video.html에 비디오 리스트 출력
 async function displayVideoItem(findVideoList) {
   let videoList;
@@ -236,9 +240,84 @@ async function displayVideoItem(findVideoList) {
   let videoInfoPromises = videoList.map((video) => videoData(video.video_id));
   let videoInfoList = await Promise.all(videoInfoPromises);
 
-  for (let i = 0; i < videoList.length; i++) {
-      let videoId = videoList[i].video_id;
-      let videoInfo = videoInfoList[i];
+  let currentVideoInfo = await videoData(videoId);
+  let targetTagList = currentVideoInfo.video_tag; //현재 비디오 태그
+
+  async function getSimilarity(firstWord, secondWord) {
+    const openApiURL = "http://aiopen.etri.re.kr:8000/WiseWWN/WordRel";
+    const access_key = "281a5a80-1338-476e-993d-56aea243628e";
+  
+    let requestJson = {
+      argument: {
+        first_word: firstWord,
+        second_word: secondWord,
+      },
+    };
+  
+    let response = await fetch(openApiURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: access_key,
+      },
+      body: JSON.stringify(requestJson),
+    });
+    let data = await response.json();
+    return data.return_object["WWN WordRelInfo"].WordRelInfo.Distance;
+  }
+  async function calculateVideoSimilarities(videoList, targetTagList) {
+    let filteredVideoList = [];
+  
+    for (let video of videoList) {
+      let totalDistance = 0;
+      let promises = [];
+  
+      for (let videoTag of video.video_tag) {
+        for (let targetTag of targetTagList) {
+          if (videoTag == targetTag) {
+            promises.push(0);
+          } else {
+            promises.push(getSimilarity(videoTag, targetTag));
+          }
+        }
+      }
+  
+      let distances = await Promise.all(promises);
+  
+      for (let distance of distances) {
+  
+        if (distance !== -1) {
+          totalDistance += distance;
+        }
+      }
+  
+      if (totalDistance !== 0) {
+        if (videoId !== video.video_id) {
+          filteredVideoList.push({ ...video, score: totalDistance });
+        }
+      }
+    }
+  
+    filteredVideoList.sort((a, b) => a.score - b.score);
+  
+    filteredVideoList = filteredVideoList.map((video) => ({
+      ...video,
+      score: 0,
+    }));
+    console.log(filteredVideoList);
+    return filteredVideoList;
+  }
+  
+  let filteredVideoList = await calculateVideoSimilarities(
+    videoInfoList,
+    targetTagList
+  );  
+
+  videoList = filteredVideoList;
+
+  for (let i = 0; i < 5; i++) {
+      let videoId = filteredVideoList[i].video_id;
+      let videoInfo = filteredVideoList[i];
       let videoURL = `location.href='../html/video.html?id=${videoId}'`;
       let uploadTime = timeForToday(videoInfo.upload_date);
 
