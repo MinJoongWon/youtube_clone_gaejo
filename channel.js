@@ -85,7 +85,7 @@ async function displayChannelVideoList(channelName, findChannelVideoList) {
 
     for (let i = 0; i < videoInfoList.length; i++) {
         let videoInfo = videoInfoList[i];
-        let videoURL = `location.href='../html/video.html?id=${i}'`;
+        let videoURL = `location.href='../html/video.html?id=${videoInfo.video_id}'`;
         let uploadTime = timeForToday(videoInfo.upload_date);
 
         innerInfo += `
