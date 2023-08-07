@@ -426,25 +426,31 @@ function addComment() {
   let inputData = document.querySelector(".comment-inputBox > input");
   let currentTime = new Date();
 
-  let userData = getUserProfile();
-  let localStorageItem = JSON.parse(localStorage.getItem('comment')) || [];
-  let commentId = 'video' + id + 'commentId' + localStorageItem.length;
+  console.log(inputData.value);
+  if (!inputData.value || inputData.value === '') {
+    alert('댓글 내용을 작성해주세요.');
+  } else {
+    let userData = getUserProfile();
+    let localStorageItem = JSON.parse(localStorage.getItem('comment')) || [];
+    let commentId = 'video' + id + 'commentId' + localStorageItem.length;
+  
+    let commentData = {
+      id: id,
+      commentId: commentId,
+      userName: userData.get('userName'),
+      userProfile: userData.get('userProfile'),
+      time: currentTime,
+      comment: inputData.value,
+      like: 0,
+      disLike: 0
+    };
+  
+    localStorageItem.push(commentData);
+    localStorage.setItem('comment', JSON.stringify(localStorageItem));
+  
+    updateCommentList();
+  }
 
-  let commentData = {
-    id: id,
-    commentId: commentId,
-    userName: userData.get('userName'),
-    userProfile: userData.get('userProfile'),
-    time: currentTime,
-    comment: inputData.value,
-    like: 0,
-    disLike: 0
-  };
-
-  localStorageItem.push(commentData);
-  localStorage.setItem('comment', JSON.stringify(localStorageItem));
-
-  updateCommentList();
 }
 
 const like = document.querySelector(".video-like");
@@ -454,7 +460,7 @@ const dislike = document.querySelector(".video-dislike");
 dislike.addEventListener("click", fillDislikeButtonOnClick); 
 
 const commentInput = document.querySelector('.comment-inputBox > input');
-commentInput.addEventListener('keyup', function(event) {
+commentInput.addEventListener('keypress', function(event) {
   if(event.key == 'Enter') {
     addComment();
   }
