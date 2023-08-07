@@ -54,8 +54,8 @@ function getNotiContent() {
                 newComment.setAttribute('onclick', videoURL);
                 content += `
                     <img
-                        src="${comment[i].userProfile}"
-                        class="user-avatar" alt="${comment[i].userProfile} avatar" title="avatar"
+                        src="${userProfile}"
+                        class="user-avatar" alt="${comment[i].userName} avatar" title="${comment[i].userName} avatar"
                     />
                     <p>${comment[i].comment}</p>
                     <p>${timeForToday(comment[i].time)}</p>
