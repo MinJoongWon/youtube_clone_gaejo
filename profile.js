@@ -48,6 +48,9 @@ function setProfile(profile) {
         "Oreumi": "../images/oreumi_logo.jpg",
         "Gaejo": "../images/cooldog.jpg",
         "Eunha": "../images/sidebar_user_eunha.jpg",
+        "Chaerim": "../images/sidebar_user_chaerim.jpg",
+        "Joongwon": "../images/sidebar_user_joongwon.jpg",
+        "Junsung": "../images/sidebar_user_junsung.jpg",
     };
 
     let userProfile = profileMap[userName];
