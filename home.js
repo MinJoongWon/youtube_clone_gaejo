@@ -116,8 +116,14 @@ async function addTopMenu(videoList, selectedTag) {
 
     const tagsContainer = document.querySelector('.top-menu-item ul');
     const topMenuLeft = document.querySelector('.top-menu-icon-left');
+    const topMenuIcon = document.querySelector('.top-menu-icon');
     if (topMenuLeft) {
         topMenuLeft.style.visibility = 'hidden';
+    }
+    if (videoTags.size < 10) {
+        topMenuIcon.style.visibility = 'hidden';
+    } else {
+        topMenuIcon.style.visibility = 'visible';
     }
     tagsContainer.style.transform = `translateX(0)`;
 }
@@ -340,7 +346,7 @@ function slideTags() {
     const containerWidth = document.querySelector('.top-menu-item').offsetWidth;
     const minPosition = -containerWidth; // 최소 이동 범위
     
-    if (topMenuCurrentPosition > minPosition + slideWidth) {
+    if (topMenuCurrentPosition > minPosition + slideWidth + 72) {
         topMenuCurrentPosition -= slideWidth; // 슬라이드를 왼쪽으로 이동시키기 위해 감소
         top_menu_left_button.style.visibility = 'visible';
     }
