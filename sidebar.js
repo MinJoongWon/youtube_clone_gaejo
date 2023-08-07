@@ -76,10 +76,18 @@ menu.addEventListener('click', () => {
   const videoSection = document.querySelector('.video-body');
   const homeSection = document.querySelector('.section');
   const topMenu = document.querySelector('.top-menu');
+  const topMenuLeft = document.querySelector('.top-menu-icon-left');
   sidebar.classList.toggle('active');
   if (homeSection !== null) {
     homeSection.classList.toggle('active');
     topMenu.classList.toggle('active');
+  }
+  if (topMenuLeft) {
+    if (sidebar.classList.contains('active')) {
+      topMenuLeft.style.left = '240px';
+    } else {
+      topMenuLeft.style.left = '110px';
+    }
   }
   if (channelSection !== null) {
     channelSection.classList.toggle('active');
