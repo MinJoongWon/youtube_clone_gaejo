@@ -38,7 +38,7 @@ function getNotiContent() {
         old.style.display = 'none';
 
         const currentUrl = window.location.href;     
-        for (let i = 0; i < notificationCount; i++) {
+        for (let i = notificationCount - 1; i >= 0; i--) {
             let userProfile = comment[i].userProfile;
             if (currentUrl.includes('index')) {
                 userProfile = comment[i].userProfile.substring(1);
