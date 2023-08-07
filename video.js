@@ -225,9 +225,9 @@ function videoHoverPlay(thumbnailItems) {
 async function displayVideoItem(findVideoList) {
   let videoList;
   if (findVideoList.length > 0) {
-      videoList = findVideoList;
+    videoList = findVideoList;
   } else {
-      videoList = await getVideoList();
+    videoList = await getVideoList();
   }
 
   let videoTag = document.querySelector('.videos');
@@ -377,7 +377,7 @@ function updateCommentList() {
         <div class="profile-pic">
           <img
             src="${comment.userProfile}"
-            class="user-avatar" alt="${comment.userProfile} avatar"
+            class="user-avatar" alt="${comment.userProfile} avatar" title="${comment.userProfile} avatar"
           />
         </div>
         <div class="comment-header">
@@ -415,6 +415,26 @@ function updateCommentList() {
   commentsCount.innerHTML = cnt.length;
 }
 
+function updateNotification() {
+  const notificationList = JSON.parse(localStorage.getItem('notification')) || [];
+  const currentProfile = getUserProfile();
+  const channelName = document.querySelector('.channel-title > .profile-name > a').innerHTML;
+  const currentUserName = currentProfile.get('userName');
+
+  notificationList.forEach((noti) => {
+    if (channelName !== currentUserName) {
+      if (noti[0] === 'Oreumi' && noti[0] !== currentUserName && noti[0].toLowerCase() === channelName) {
+        noti[1].notification = noti[1].notification + 1; 
+        noti[1].isRead = false;
+      } else if (noti[0] === 'Gaejo' && noti[0] !== currentUserName && channelName === '개조') {
+        noti[1].notification = noti[1].notification + 1; 
+        noti[1].isRead = false;
+      }
+    }
+  });
+  localStorage.setItem('notification', JSON.stringify(notificationList));
+}
+
 function addComment() {
   const currentUrl = window.location.href;
   let idx = currentUrl.indexOf('?');
@@ -426,7 +446,6 @@ function addComment() {
   let inputData = document.querySelector(".comment-inputBox > input");
   let currentTime = new Date();
 
-  console.log(inputData.value);
   if (!inputData.value || inputData.value === '') {
     alert('댓글 내용을 작성해주세요.');
   } else {
@@ -449,6 +468,7 @@ function addComment() {
     localStorage.setItem('comment', JSON.stringify(localStorageItem));
   
     updateCommentList();
+    updateNotification();
   }
 
 }
