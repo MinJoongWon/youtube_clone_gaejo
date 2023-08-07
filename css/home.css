@@ -112,11 +112,15 @@
 }
 
 .thumbnail-desc-info {
-  color: gray;
+  color: var(--gray-color, #AAA);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.thumbnail-desc-info p > a {
+  color: var(--gray-color, #AAA);
 }
 
 .thumbnail-desc-box {
