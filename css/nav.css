@@ -236,3 +236,69 @@ input#menu:checked+div#side {
   background-color:#212121;
   cursor: pointer;
 }
+
+.notificationCount {
+  display: flex;
+  position: absolute;
+  border-radius: 40px;
+  background-color: #cc0000;
+  justify-content: center;
+  align-items: center;
+  height: 16px;
+  width: 16px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  right: 76px;
+  top: 10px;
+}
+
+.notificationList {
+  display: flex;
+  position: absolute;
+  right: 70px;
+  top: 10px;
+  border-radius: 10px;
+  background-color: #303030;
+  color: #aaaaaa;
+
+  padding: 10px;
+  flex-direction: column;
+}
+
+.notificationList p {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.notiHeader {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #aaaaaa;
+}
+
+.notiHeader > p {
+  font-weight: 700;
+}
+
+.notificationContents {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 10px;
+  align-items: center;
+}
+
+.notiContent {
+  padding-top: 10px;
+}
+
+.notiContent > p {
+  padding-top: 10px;
+}
+
+.notificationContents > .user-avatar {
+  height: 24px;
+  width: 24px;
+}
