@@ -225,8 +225,6 @@ let currentURL = window.location.href;
 let url = new URL(currentURL);
 let videoId = url.searchParams.get("id");
 
-
-
 // video.html에 비디오 리스트 출력
 async function displayVideoItem(findVideoList) {
   let videoList;
