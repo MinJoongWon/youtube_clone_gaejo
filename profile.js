@@ -35,8 +35,16 @@ function getNotiContent() {
         old.style.display = 'flex';
     } else {
         old.style.display = 'none';
+
         
         for (let i = 0; i < notificationCount; i++) {
+            let userProfile = comment[i].userProfile;
+            if (currentUrl.includes('index')) {
+                userProfile = userData.get('userProfile').substring(1);
+            } else {
+                userProfile = userData.get('userProfile');
+            }
+            
             let newComment = document.createElement('div');
             newComment.setAttribute('class', 'notificationContents');
             let content = '';
