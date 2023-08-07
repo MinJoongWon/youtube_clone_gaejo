@@ -54,7 +54,8 @@ function getNotiContent() {
                     let newComment = document.createElement('div');
                     newComment.setAttribute('class', 'notificationContents');
                     let content = '';
-                    let videoURL = `location.href='../html/video.html?id=${comment[i].id}'`;
+                    let path = currentUrl.includes('index') ? './' : '../';
+                    let videoURL = `location.href='${path}html/video.html?id=${comment[i].id}'`;
                     newComment.setAttribute('onclick', videoURL);
                     content += `
                         <img

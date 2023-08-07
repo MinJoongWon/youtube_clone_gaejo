@@ -225,6 +225,16 @@ async function search(searchText) {
 
 const searchIcon = document.querySelector(".searchBox-icon > .searchBox-Button");
 const searchBox = document.querySelector(".searchBox-input");
+const originalPlaceholder = searchBox.getAttribute('placeholder');
+
+searchBox.addEventListener('focus', () => {
+    searchBox.removeAttribute('placeholder');
+});
+
+searchBox.addEventListener('blur', () => {
+    searchBox.setAttribute('placeholder', originalPlaceholder);
+});
+
 searchIcon.addEventListener("click", function () {
     search(searchBox.value);
 });
