@@ -286,3 +286,35 @@ let top_menu_left_button = document.querySelector('.top-menu-icon-left');
 if (top_menu_left_button) {
     top_menu_left_button.addEventListener('click', slideVideoCardsLeft);
 }
+
+// 음성 인식 검색
+const searchConsole = document.querySelector(".mic");
+function availabilityFunc() {
+  recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+  recognition.lang = "ko"; 
+  recognition.maxAlternatives = 5;
+
+  if (!recognition) {
+    alert("현재 브라우저는 사용이 불가능합니다.");
+  }
+}
+
+function startRecord() {
+  recognition.addEventListener("speechstart", () => {
+  });
+  recognition.addEventListener("speechend", () => {
+    recognition.stop(); 
+  });
+  //음성인식 결과를 반환
+  recognition.addEventListener("result", (e) => {
+    const recognitionSearchText = e.results[0][0].transcript;
+    document.querySelector(".searchBox-input").value = recognitionSearchText;
+    search(recognitionSearchText);
+  });
+  recognition.start();
+}
+
+searchConsole.addEventListener("click", () => {
+    availabilityFunc();
+    searchConsole.addEventListener("click", startRecord());
+});
