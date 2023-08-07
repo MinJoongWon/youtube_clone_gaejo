@@ -475,6 +475,13 @@ const dislike = document.querySelector(".video-dislike");
 dislike.addEventListener("click", fillDislikeButtonOnClick); 
 
 const commentInput = document.querySelector('.comment-inputBox > input');
+const originalCommentPlaceholder = commentInput.getAttribute('placeholder');
+commentInput.addEventListener('focus', () => {
+  commentInput.removeAttribute('placeholder');
+});
+commentInput.addEventListener('blur', () => {
+  commentInput.setAttribute('placeholder', originalCommentPlaceholder);
+});
 commentInput.addEventListener('keypress', function(event) {
   if(event.key == 'Enter') {
     addComment();
