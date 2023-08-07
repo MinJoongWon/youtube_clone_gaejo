@@ -17,6 +17,7 @@ function getNotiContent() {
     const comment = JSON.parse(localStorage.getItem('comment')) || [];
     let userName = getUserProfile().get('userName');
     let notificationCount = 0;
+    const userData = getUserProfile();
 
     comment.sort((a, b) => new Date(b.time) - new Date(a.time));
 
@@ -36,7 +37,7 @@ function getNotiContent() {
     } else {
         old.style.display = 'none';
 
-        
+        const currentUrl = window.location.href;     
         for (let i = 0; i < notificationCount; i++) {
             let userProfile = comment[i].userProfile;
             if (currentUrl.includes('index')) {
