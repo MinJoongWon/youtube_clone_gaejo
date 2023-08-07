@@ -1,3 +1,23 @@
+function getUserProfile() {
+  let storedUser = localStorage.getItem('user');
+  let userName = '';
+  let userProfile = '';
+
+  if (storedUser) {
+    let userData = new Map(JSON.parse(storedUser));
+    userName = userData.get('userName');
+    userProfile = userData.get('userProfile');
+  } else {
+    userName = 'oreumi';
+    userProfile = '../images/oreumi_logo.jpg';
+  }
+
+  let userData = new Map();
+  userData.set('userName', userName);
+  userData.set('userProfile', userProfile);
+  return userData;
+}
+
 async function getVideoList() {
   try {
       const response = await fetch(videoListApi);
@@ -356,13 +376,13 @@ function updateCommentList() {
       let innerHtml = `
         <div class="profile-pic">
           <img
-            src="../images/sidebar_user_avatar.png"
-            class="user-avatar" alt="user avatar"
+            src="${comment.userProfile}"
+            class="user-avatar" alt="${comment.userProfile} avatar"
           />
         </div>
         <div class="comment-header">
           <div class="comment-top">
-            <span class="comment-name">James Gouse</span>
+            <span class="comment-name">${comment.userName}</span>
             <span class="published-date">${timeForToday(comment.time)}</span>
           </div>
           <div class="comment-text">
@@ -406,11 +426,15 @@ function addComment() {
   let inputData = document.querySelector(".comment-inputBox > input");
   let currentTime = new Date();
 
+  let userData = getUserProfile();
   let localStorageItem = JSON.parse(localStorage.getItem('comment')) || [];
   let commentId = 'video' + id + 'commentId' + localStorageItem.length;
+
   let commentData = {
     id: id,
     commentId: commentId,
+    userName: userData.get('userName'),
+    userProfile: userData.get('userProfile'),
     time: currentTime,
     comment: inputData.value,
     like: 0,
@@ -436,7 +460,7 @@ commentInput.addEventListener('keyup', function(event) {
   }
 });
 
-window.onload = updateCommentList;
+window.onload = updateCommentList();
 
 let isSubscribed = false;
 function subscribe() {
