@@ -41,9 +41,9 @@ function getNotiContent() {
         for (let i = 0; i < notificationCount; i++) {
             let userProfile = comment[i].userProfile;
             if (currentUrl.includes('index')) {
-                userProfile = userData.get('userProfile').substring(1);
+                userProfile = comment[i].userProfile.substring(1);
             } else {
-                userProfile = userData.get('userProfile');
+                userProfile = comment[i].userProfile;
             }
             
             let newComment = document.createElement('div');
