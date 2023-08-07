@@ -1,89 +1,3 @@
-const channelInfoApi = 'https://oreumi.appspot.com/channel/getChannelInfo?video_channel=oreumi';
-const channelVideoListApi = 'https://oreumi.appspot.com/channel/getChannelVideo?video_channel=oreumi';
-
-async function getChannelInfo(channelName) {
-    let newUrl = `https://oreumi.appspot.com/channel/getChannelInfo?video_channel=${channelName}`;
-    try {
-        const response = await fetch(newUrl, {
-            method: 'POST'
-        });
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('API 호출에 실패했습니다:', error);
-    }
-}
-
-async function getChannelVideo(channelName) {
-    let newUrl = `https://oreumi.appspot.com/channel/getChannelVideo?video_channel=${channelName}`;
-    try {
-        const response = await fetch(newUrl, {
-            method: 'POST'
-        });
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('API 호출에 실패했습니다:', error);
-    }
-}
-
-async function getVideoData(videoId) {
-    try {
-        const apiUrl = `https://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('API 호출에 실패했습니다:', error);
-    }
-}
-
-function timeForToday(value) {
-    const today = new Date();
-    const timeValue = new Date(value);
-
-    const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
-    if (betweenTime < 1) return '방금전';
-    if (betweenTime < 60) {
-        return `${betweenTime}분 전`;
-    }
-
-    const betweenTimeHour = Math.floor(betweenTime / 60);
-    if (betweenTimeHour < 24) {
-        return `${betweenTimeHour}시간 전`;
-    }
-
-    const betweenWeek = Math.floor(betweenTime / 60 / 24 / 7);
-    if (betweenWeek > 1 && betweenWeek <= 4) {
-        return `${betweenWeek}주 전`;
-    }
-
-    const betweenMonth = Math.floor(betweenTime / 60 / 24 / 30);
-    if (betweenMonth >= 1 && betweenMonth < 30) {
-        return `${betweenMonth}개월 전`;
-    }
-
-    const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
-    if (betweenTimeDay < 365) {
-        return `${betweenTimeDay}일 전`;
-    }
-
-
-    return `${Math.floor(betweenTimeDay / 365)}년 전`;
-}
-
-function formatCount(count) {
-    if (count < 1000) {
-        return `${count.toString()}`;
-    } else if (count < 1000000) {
-        const thousands = (count / 1000).toFixed(1);
-        return `${thousands}K`;
-    } else {
-        const millions = (count / 1000000).toFixed(1);
-        return `${millions}M`;
-    }
-}
-
 function getParseUrl() {
     const currentUrl = window.location.href;
     let idx = currentUrl.indexOf('?');
@@ -161,7 +75,7 @@ async function displayChannelVideoList(channelName, findChannelVideoList) {
     let videoIdList = [];
     channelVideoList.forEach(videoList => videoIdList.push(videoList.video_id));
     
-    let videoInfoPromises = videoIdList.map((video) => getVideoData(video));
+    let videoInfoPromises = videoIdList.map((video) => videoData(video));
     let videoInfoList = await Promise.all(videoInfoPromises);
 
     displayMainVideo(videoInfoList);
@@ -218,23 +132,11 @@ async function displayChannelInfo() {
             channelProfile.setAttribute('alt', `${v.channel_name} 프로필`);
             channelProfile.setAttribute('title', `${v.channel_name} 프로필`);
             channelName.innerHTML = v.channel_name;
-            channelSubscribers.innerHTML = formatSubscribersCount(v.subscribers);
+            channelSubscribers.innerHTML = `${formatCount(v.subscribers)} subscribers`;
         });
         displayChannelVideoList(parseChannelName, []);
     }
 
-}
-
-function formatSubscribersCount(subscribers) {
-    if (subscribers < 1000) {
-        return `${subscribers.toString()} subscribers`;
-    } else if (subscribers < 1000000) {
-        const thousands = (subscribers / 1000).toFixed(1);
-        return `${thousands}K subscribers`;
-    } else {
-        const millions = (subscribers / 1000000).toFixed(1);
-        return `${millions}M subscribers`;
-    }
 }
 
 // 채널 내에서 검색
