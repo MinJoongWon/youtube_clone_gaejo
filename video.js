@@ -1,23 +1,3 @@
-// function getUserProfile() {
-//   let storedUser = localStorage.getItem('user');
-//   let userName = '';
-//   let userProfile = '';
-
-//   if (storedUser) {
-//     let userData = new Map(JSON.parse(storedUser));
-//     userName = userData.get('userName');
-//     userProfile = userData.get('userProfile');
-//   } else {
-//     userName = 'oreumi';
-//     userProfile = '../images/oreumi_logo.jpg';
-//   }
-
-//   let userData = new Map();
-//   userData.set('userName', userName);
-//   userData.set('userProfile', userProfile);
-//   return userData;
-// }
-
 function parseSubscribers(subscriberString) {
   const units = {
     K: 1000,
@@ -428,7 +408,7 @@ function updateCommentList() {
   commentsCount.innerHTML = cnt.length;
 }
 
-function updateNotification() {
+function updateNotification(commentId) {
   const notificationList = JSON.parse(localStorage.getItem('notification')) || [];
   const currentProfile = getUserProfile();
   const channelName = document.querySelector('.channel-title > .profile-name > a').innerHTML;
@@ -439,9 +419,11 @@ function updateNotification() {
       if (noti[0] === 'Oreumi' && noti[0] !== currentUserName && noti[0].toLowerCase() === channelName) {
         noti[1].notification = noti[1].notification + 1; 
         noti[1].isRead = false;
+        noti[1].commentId.push(commentId);
       } else if (noti[0] === 'Gaejo' && noti[0] !== currentUserName && channelName === '개조') {
         noti[1].notification = noti[1].notification + 1; 
         noti[1].isRead = false;
+        noti[1].commentId.push(commentId);
       }
     }
   });
@@ -481,7 +463,7 @@ function addComment() {
     localStorage.setItem('comment', JSON.stringify(localStorageItem));
   
     updateCommentList();
-    updateNotification();
+    updateNotification(commentId);
   }
 
 }

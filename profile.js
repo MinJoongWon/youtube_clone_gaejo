@@ -17,6 +17,7 @@ function getNotiContent() {
     const comment = JSON.parse(localStorage.getItem('comment')) || [];
     let userName = getUserProfile().get('userName');
     let notificationCount = 0;
+    let notiContentList = [];
     const userData = getUserProfile();
 
     comment.sort((a, b) => new Date(b.time) - new Date(a.time));
@@ -24,8 +25,9 @@ function getNotiContent() {
     notificationList.forEach((noti) => {
       if (noti[0] === userName) {
         notificationCount = noti[1].notification;
+        notiContentList = noti[1].commentId;
       }
-    });
+    }); 
 
     let old = document.querySelector('.noNoti');
     if (notificationCount == 0) {
@@ -36,33 +38,36 @@ function getNotiContent() {
         old.style.display = 'flex';
     } else {
         old.style.display = 'none';
-
         const currentUrl = window.location.href;     
-        for (let i = notificationCount - 1; i >= 0; i--) {
-            let userProfile = comment[i].userProfile;
-            if (currentUrl.includes('index')) {
-                userProfile = comment[i].userProfile.substring(1);
-            } else {
-                userProfile = comment[i].userProfile;
-            }
-            
-            let newComment = document.createElement('div');
-            newComment.setAttribute('class', 'notificationContents');
-            let content = '';
-            if (userName !== comment[i].userName) {
-                let videoURL = `location.href='../html/video.html?id=${comment[i].id}'`;
-                newComment.setAttribute('onclick', videoURL);
-                content += `
-                    <img
-                        src="${userProfile}"
-                        class="user-avatar" alt="${comment[i].userName} avatar" title="${comment[i].userName} avatar"
-                    />
-                    <p>${comment[i].comment}</p>
-                    <p>${timeForToday(comment[i].time)}</p>
-                `;
-            }
-            newComment.innerHTML = content;
-            notiContent.prepend(newComment);
+
+        for (let i = 0; i < comment.length; i++) {
+            const currentUrl = window.location.href;     
+            notiContentList.forEach((noti) => {
+                if (noti === comment[i].commentId) {
+                    let userProfile = comment[i].userProfile;
+                    if (currentUrl.includes('index')) {
+                        userProfile = comment[i].userProfile.substring(1);
+                    } else {
+                        userProfile = comment[i].userProfile;
+                    }
+                    
+                    let newComment = document.createElement('div');
+                    newComment.setAttribute('class', 'notificationContents');
+                    let content = '';
+                    let videoURL = `location.href='../html/video.html?id=${comment[i].id}'`;
+                    newComment.setAttribute('onclick', videoURL);
+                    content += `
+                        <img
+                            src="${userProfile}"
+                            class="user-avatar" alt="${comment[i].userName} avatar" title="${comment[i].userName} avatar"
+                        />
+                        <p>${comment[i].comment}</p>
+                        <p>${timeForToday(comment[i].time)}</p>
+                    `;
+                    newComment.innerHTML = content;
+                    notiContent.prepend(newComment);
+                }
+            });
         }
     }
 
@@ -74,6 +79,7 @@ function getNotiContent() {
             if (noti[0] === userName) {
                 noti[1].notification = 0; 
                 noti[1].isRead = true; 
+                noti[1].commentId = []; 
                 notificationIcon.style.display = 'none';  
             }
         });
@@ -160,12 +166,12 @@ function setNotification() {
     if (notificationData === null) {
         let oreumi = {
             "notification": 0,
-            "videoId": [],
+            "commentId": [],
             "isRead": false
         };
         let gaejo = {
             "notification": 0,
-            "videoId": [],
+            "commentId": [],
             "isRead": false
         };
     
@@ -207,6 +213,7 @@ function notificationSend() {
             if (noti[0] === userData.get('userName')) {
                 noti[1].notification = 0; 
                 noti[1].isRead = true; 
+                noti[1].commentId = [];
                 notificationIcon.style.display = 'none';  
             }
         });
