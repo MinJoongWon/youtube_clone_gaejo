@@ -215,6 +215,7 @@ input#menu:checked+div#side {
   flex-direction: column;
   align-items: center;
   z-index: 2;
+  padding: 10px;
 }
 
 .nav-profile-pic-list img {
@@ -228,4 +229,10 @@ input#menu:checked+div#side {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.nav-profile-pic-list > div:hover {
+  border-radius: 10px;
+  background-color:#212121;
+  cursor: pointer;
 }
