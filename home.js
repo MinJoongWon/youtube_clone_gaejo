@@ -171,11 +171,11 @@ async function displayHomeItem(findVideoList, selecteTag) {
                 </div>
                 <div class="thumbnail-desc-box">
                     <div class="thumbnail-desc-title">
-                        <span><a href='./html/video.html?id=${videoId}'>${videoInfo.video_title}</a></span>
+                        <span><a href='${path}/video.html?id=${videoId}'>${videoInfo.video_title}</a></span>
                     </div>
                     <div class="thumbnail-desc-info">
                         <div class="thumbnail-channelName">
-                            <span><a href='./html/channel.html?id=${videoInfo.video_channel}'>${videoInfo.video_channel}</a></span>
+                            <p><a href='${path}/channel.html?id=${videoInfo.video_channel}'>${videoInfo.video_channel}</a></p>
                         </div>
                         <div class="thumbnail-time">
                             <span>${formatCount(videoInfo.views)} Views ·</span>
