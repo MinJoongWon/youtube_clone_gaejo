@@ -83,7 +83,7 @@ function timeForToday(value) {
 function formatCount(count) {
     if (count < 1000) {
         return `${count.toString()}`;
-    } else if (count < 1000000) {
+    } else if (count < 1000000 && count >= 1000) {
         const thousands = (count / 1000).toFixed(1);
         return `${thousands}K`;
     } else {
