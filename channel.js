@@ -173,6 +173,7 @@ async function searchInChannel(channelName, searchText) {
             contentTag.style.display = 'flex';
         }
         result.style.display = 'none';
+        let parseChannelName = getParseUrl();
         displayChannelVideoList(parseChannelName, findVideoList);
     } else {
         result.style.display = 'flex';

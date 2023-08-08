@@ -85,10 +85,10 @@ function fillLikeButtonOnClick() {
   
   if(currentFillValue == "\"FILL\" 1") {
       like.style.fontVariationSettings = "'FILL' 0";
-      likeCount.innerHTML = formatSubscribersCount(count - 1);
+      likeCount.innerHTML = formatCount(count - 1);
   } else {
       like.style.fontVariationSettings = "'FILL' 1";
-      likeCount.innerHTML = formatSubscribersCount(count + 1);
+      likeCount.innerHTML = formatCount(count + 1);
   }
 }
 
@@ -102,10 +102,10 @@ function fillDislikeButtonOnClick() {
     
     if(currentFillValue == "\"FILL\" 1") {
         dislike.style.fontVariationSettings = "'FILL' 0";
-        dislikeCount.innerHTML = formatSubscribersCount(count - 1);
+        dislikeCount.innerHTML = formatCount(count - 1);
     } else {
         dislike.style.fontVariationSettings = "'FILL' 1";
-        dislikeCount.innerHTML = formatSubscribersCount(count + 1);
+        dislikeCount.innerHTML = formatCount(count + 1);
     }
 }
 
@@ -507,7 +507,7 @@ function subscribe() {
     count--;
   }
   
-  subscribers.innerHTML = formatSubscribersCount(count);
+  subscribers.innerHTML = formatCount(count);
 }
 
 const subscribeBtn = document.querySelector('.subscribes-btn');
